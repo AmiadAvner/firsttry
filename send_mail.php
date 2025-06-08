@@ -1,52 +1,56 @@
 <?php
+// כתובת האימייל שתקבל את הפניות
+$to = "amiadavner@gmail.com";
+$subject = "פנייה חדשה מהאתר - עמיעד אבנר";
+
+// בודק אם נשלח POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name    = htmlspecialchars($_POST["שם מלא"] ?? "");
-    $phone   = htmlspecialchars($_POST["טלפון"] ?? "");
-    $email   = htmlspecialchars($_POST["אימייל"] ?? "");
-    $message = htmlspecialchars($_POST["הודעה"] ?? "");
+    // קבלת הנתונים ומסנן תווים לא תקינים
+    $name = strip_tags(trim($_POST["name"] ?? ''));
+    $phone = strip_tags(trim($_POST["phone"] ?? ''));
+    $email = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
+    $message = strip_tags(trim($_POST["message"] ?? ''));
 
-    $to = "amiadavner@gmail.com";
-    $subject = "פנייה חדשה מאתר עמיעד אבנר";
-    $body = "שם מלא: $name\nטלפון: $phone\nאימייל: $email\n\nהפנייה:\n$message";
-    $headers = "From: $email\r\nReply-To: $email\r\nContent-Type: text/plain; charset=utf-8";
+    // בדיקת תקינות (אפשר להחמיר בהתאם לצורך)
+    if (
+        empty($name) ||
+        empty($phone) ||
+        empty($email) ||
+        empty($message) ||
+        !filter_var($email, FILTER_VALIDATE_EMAIL)
+    ) {
+        // הודעה במקרה של שגיאה (אפשר לעצב יפה יותר, או להחזיר ללקוח Json/Html)
+        echo "אנא מלא/י את כל השדות בצורה תקינה.";
+        exit;
+    }
 
-    // נשלח? מציג הודעה מתאימה
+    // מבנה ההודעה
+    $body = "פנייה חדשה התקבלה מהאתר:\n\n";
+    $body .= "שם מלא: $name\n";
+    $body .= "טלפון: $phone\n";
+    $body .= "אימייל: $email\n";
+    $body .= "--------------------------\n";
+    $body .= "פנייה:\n$message\n";
+    $body .= "--------------------------\n";
+    $body .= "נשלח מאתר עמיעד אבנר.\n";
+
+    // כותרות המייל
+    $headers = "From: $name <$email>\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+    // שליחת המייל
     if (mail($to, $subject, $body, $headers)) {
-        echo "<!DOCTYPE html>
-        <html lang='he' dir='rtl'>
-        <head>
-          <meta charset='UTF-8' />
-          <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-          <title>הודעה נשלחה</title>
-          <style>
-            body { background: #f9f9f9; font-family: 'Alef', sans-serif; text-align: center; }
-            .msg-box {
-              margin: 8em auto 0 auto;
-              max-width: 450px;
-              background: #fff;
-              border-radius: 16px;
-              box-shadow: 0 2px 12px #e5d6c2;
-              padding: 2.5em 2em;
-              color: #26507a;
-              font-size: 1.3em;
-            }
-            .msg-box strong { color: #c06a27; font-size:1.15em; }
-            a { color: #2366b8; text-decoration: underline; }
-          </style>
-        </head>
-        <body>
-          <div class='msg-box'>
-            <strong>הודעתך נשלחה בהצלחה!</strong>
-            <div style='margin-top:1em;'>תודה על פנייתך.<br>נחזור אליך בהקדם.</div>
-            <div style='margin-top:2em;'><a href='index.html'>חזרה לאתר</a></div>
-          </div>
-        </body>
-        </html>";
+        // הפנייה לעמוד תודה (אפשר לשנות את הנתיב/שם)
+        header('Location: thankyou.html');
+        exit;
     } else {
-        echo "<div style='text-align:center; margin-top:3em; font-size:1.2em; color:red;'>אירעה שגיאה בשליחת ההודעה.<br>אנא נסה שוב מאוחר יותר.</div>";
+        echo "אירעה שגיאה בשליחת הפנייה. נסה שוב מאוחר יותר.";
+        exit;
     }
 } else {
-    header("Location: index.html");
-    exit();
+    // אם מישהו ניסה להיכנס ישירות
+    echo "גישה לא תקינה.";
+    exit;
 }
 ?>
