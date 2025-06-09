@@ -37,13 +37,28 @@
       height: 70px;
       direction: rtl;
     }
-    .logo {
+    /* התחלה – הוספת לוגו */
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .logo-image {
+      height: 38px;
+      width: auto;
+      /* אם הלוגו גבוה מדי אפשר להקטין ל-32px */
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .logo-text {
       font-size: 1.4rem;
       font-weight: 700;
       color: #2c3e50;
-      margin-left: 2rem;
-      margin-right: 2rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      display: inline-block;
     }
+    /* סוף – הוספת לוגו */
     /* Phone box */
     .phone-box {
       display: inline-flex;
@@ -60,11 +75,23 @@
       margin-right: 0;
       cursor: default;
       user-select: text;
+      transition: box-shadow 0.2s;
     }
     .phone-box .phone-icon {
       margin-right: 0.4em;
       vertical-align: middle;
     }
+    /* התחלה – אפקט עכבר על מספר טלפון */
+    .phone-number {
+      transition: font-size 0.25s cubic-bezier(.37,.37,.27,1.32), color 0.2s;
+      display: inline-block;
+    }
+    .phone-box:hover .phone-number,
+    .phone-number:hover {
+      font-size: 1.35rem;
+      color: #8a470a;
+    }
+    /* סוף – אפקט עכבר על מספר טלפון */
     nav ul {
       display: flex;
       gap: 1.5rem;
@@ -144,7 +171,6 @@
       background-color: #174270;
       box-shadow: 0 2px 12px #b8c7dd;
     }
-
     /* Hero boxes */
     .hero-boxes {
       display: flex;
@@ -193,6 +219,14 @@
         padding: 0.8em 0.2em;
         font-size: 1rem;
       }
+      /* התחלה – התאמה ללוגו במסך קטן */
+      .logo-image {
+        height: 30px;
+      }
+      .logo-text {
+        font-size: 1.13rem;
+      }
+      /* סוף */
     }
     @media (max-width: 600px) {
       .header-inner {
@@ -201,7 +235,7 @@
         padding: 0.5rem 0;
       }
       nav ul { gap: 0.7rem; }
-      .logo { margin: 0.5rem 0; }
+      .logo-box { margin: 0.5rem 0; }
       .phone-box { margin: 0.5rem 0; }
       .hero-inner { gap: 1rem; }
       .hero-boxes { gap: 0.6rem; }
@@ -362,18 +396,24 @@
   <!-- Header -->
   <header>
     <div class="container header-inner">
- 
-      <div class="logo">עמיעד אבנר – משרד עורך דין</div>
+      <!-- התחלה – לוגו + שם המשרד -->
+      <div class="logo-box">
+        <img src="logo.png" alt="לוגו עמיעד אבנר – משרד עורך דין" class="logo-image" />
+        <span class="logo-text">עמיעד אבנר – משרד עורך דין</span>
+      </div>
+      <!-- סוף -->
       <nav>
         <ul>
           <li><a href="#home">דף הבית</a></li>
           <li><a href="#services">תחומי התמחות</a></li>
           <li><a href="#about">אודות</a></li>
           <li><a href="#contact">צרו קשר</a></li>
- <div class="phone-box">
-        <svg xmlns="http://www.w3.org/2000/svg" class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c06a27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .93 3.67 2 2 0 0 1 2.92 1.5h3a2 2 0 0 1 2 1.72c.13 1.21.36 2.39.7 3.53a2 2 0 0 1-.45 2.11l-1.27 1.28a16 16 0 0 0 6.25 6.25l1.28-1.27a2 2 0 0 1 2.11-.45c1.14.34 2.32.57 3.53.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>052-450-0645</span>
-      </div>
+          <!-- התחלה – מספר טלפון עם אפקט עכבר -->
+          <div class="phone-box">
+            <svg xmlns="http://www.w3.org/2000/svg" class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c06a27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .93 3.67 2 2 0 0 1 2.92 1.5h3a2 2 0 0 1 2 1.72c.13 1.21.36 2.39.7 3.53a2 2 0 0 1-.45 2.11l-1.27 1.28a16 16 0 0 0 6.25 6.25l1.28-1.27a2 2 0 0 1 2.11-.45c1.14.34 2.32.57 3.53.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="phone-number">052-450-0645</span>
+          </div>
+          <!-- סוף -->
         </ul>
       </nav>
     </div>
@@ -407,81 +447,4 @@
         </div>
         <div class="service-card">
           <img src="https://source.unsplash.com/100x100/?will" alt="צוואות" />
-          <h3>צוואות</h3>
-          <p>הכנת צוואה מקצועית שתבטיח את רצונכם ותשמור על שלום המשפחה.</p>
-        </div>
-        <div class="service-card">
-          <img src="https://source.unsplash.com/100x100/?power-of-attorney" alt="ייפוי כוח מתמשך" />
-          <h3>ייפוי כוח מתמשך</h3>
-          <p>ייעוץ ועריכת ייפוי כוח מתמשך על מנת להבטיח את הטיפול האחראי במקרה הצורך.</p>
-        </div>
-        <div class="service-card">
-          <img src="https://source.unsplash.com/100x100/?family,law" alt="דיני משפחה" />
-          <h3>דיני משפחה</h3>
-          <p>ייצוג וייעוץ בדיני משפחה, גירושין, מזונות והסדרי ראייה.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="about">
-    <div class="container">
-      <h2>נעים להכיר – אודות המשרד</h2>
-      <div class="about-content">
-        <div class="about-text">
-                    <p>
-            משרד “עמיעד אבנר – משרד עורך דין” מנוהל על ידי עו"ד עמיעד אבנר, בעל מעל 10 שנות ניסיון בתחום דיני המשפחה, צוואות, ייפוי כוח מתמשך והסכמי ממון.<br>
-            אנו מאמינים בגישה אישית ומקצועית לכל לקוח, מתמקדים בהקשבה מלאה לצרכים ובמתן פתרונות משפטיים מותאמים באופן ייחודי.
-          </p>
-          <p>
-            לאורך השנים ליווינו מאות לקוחות בטיפול משפטי מקצועי ומסור, וזכינו לביטחון ולשקט נפשי עבורם. חשוב לנו להעניק לכם תמיכה מלאה בכל שלב, הן מבחינה משפטית והן מבחינה רגשית.
-          </p>
-        </div>
-        <div class="about-image">
-          <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>צרו קשר</h2>
-      <form class="contact-form" action="https://formspree.io/f/xyzjezoe" method="POST">
-        <label for="name">שם מלא</label>
-        <input type="text" id="name" name="שם מלא" placeholder="הקלידו את שמכם המלא" required />
-
-        <label for="phone">טלפון</label>
-        <input type="tel" id="phone" name="טלפון" placeholder="הקלידו מספר טלפון" required />
-
-        <label for="email">אימייל</label>
-        <input type="email" id="email" name="אימייל" placeholder="הקלידו כתובת אימייל" required />
-
-        <label for="message">תוכן הפנייה</label>
-        <textarea id="message" name="פנייה" placeholder="כתבו כאן את הפנייה שלכם..." required></textarea>
-
-        <button type="submit">שלח</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-inner">
-      <nav>
-        <ul>
-          <li><a href="#home">דף הבית</a></li>
-          <li><a href="#services">תחומי התמחות</a></li>
-          <li><a href="#about">אודות</a></li>
-          <li><a href="#contact">צרו קשר</a></li>
-        </ul>
-      </nav>
-      <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורך דין</p>
-    </div>
-  </footer>
-</body>
-</html>
-
-         
+          <h
