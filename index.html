@@ -44,7 +44,7 @@
       gap: 0.6rem;
     }
     .logo-image {
-      height: 38px;
+      height: 50px;
       width: auto;
       /* אם הלוגו גבוה מדי אפשר להקטין ל-32px */
       display: inline-block;
@@ -221,7 +221,7 @@
       }
       /* התחלה – התאמה ללוגו במסך קטן */
       .logo-image {
-        height: 30px;
+        height: 38px;
       }
       .logo-text {
         font-size: 1.13rem;
@@ -447,4 +447,82 @@
         </div>
         <div class="service-card">
           <img src="https://source.unsplash.com/100x100/?will" alt="צוואות" />
-          <h
+          <h3>צוואות</h3>
+          <p>הכנת צוואה מקצועית שתבטיח את רצונכם ותשמור על שלום המשפחה.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://source.unsplash.com/100x100/?power-of-attorney" alt="ייפוי כוח מתמשך" />
+          <h3>ייפוי כוח מתמשך</h3>
+          <p>ייעוץ ועריכת ייפוי כוח מתמשך על מנת להבטיח את הטיפול האחראי במקרה הצורך.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://source.unsplash.com/100x100/?family,law" alt="דיני משפחה" />
+          <h3>דיני משפחה</h3>
+          <p>ייצוג וייעוץ בדיני משפחה, גירושין, מזונות והסדרי ראייה.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>נעים להכיר – אודות המשרד</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            משרד “עמיעד אבנר – משרד עורך דין” מנוהל על ידי עו"ד עמיעד אבנר, בעל מעל 10 שנות ניסיון בתחום דיני המשפחה, צוואות, ייפוי כוח מתמשך והסכמי ממון.<br>
+            אנו מאמינים בגישה אישית ומקצועית לכל לקוח, מתמקדים בהקשבה מלאה לצרכים ובמתן פתרונות משפטיים מותאמים באופן ייחודי.
+          </p>
+          <p>
+            לאורך השנים ליווינו מאות לקוחות בטיפול משפטי מקצועי ומסור, וזכינו לביטחון ולשקט נפשי עבורם. חשוב לנו להעניק לכם תמיכה מלאה בכל שלב, הן מבחינה משפטית והן מבחינה רגשית.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>צרו קשר</h2>
+      <form class="contact-form" action="https://formspree.io/f/xyzjezoe" method="POST">
+        <label for="name">שם מלא</label>
+        <input type="text" id="name" name="שם מלא" placeholder="הקלידו את שמכם המלא" required />
+
+        <label for="phone">טלפון</label>
+        <input type="tel" id="phone" name="טלפון" placeholder="הקלידו מספר טלפון" required />
+
+        <label for="email">אימייל</label>
+        <input type="email" id="email" name="אימייל" placeholder="הקלידו כתובת אימייל" required />
+
+        <label for="message">תוכן הפנייה</label>
+        <textarea id="message" name="פנייה" placeholder="כתבו כאן את הפנייה שלכם..." required></textarea>
+
+        <button type="submit">שלח</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <nav>
+        <ul>
+          <li><a href="#home">דף הבית</a></li>
+          <li><a href="#services">תחומי התמחות</a></li>
+          <li><a href="#about">אודות</a></li>
+          <li><a href="#contact">צרו קשר</a></li>
+        </ul>
+      </nav>
+      <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורך דין</p>
+    </div>
+  </footer>
+  <!-- התחלה – סקריפט נגישות -->
+  <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
+  <!-- סוף -->
+</body>
+</html>
