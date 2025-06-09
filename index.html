@@ -49,7 +49,6 @@
     .logo-image {
       height: 70px;
       width: auto;
-      /* אם הלוגו גבוה מדי אפשר להקטין ל-32px */
       display: inline-block;
       vertical-align: middle;
     }
@@ -283,34 +282,66 @@
       font-size: 0.95rem;
       color: #555;
     }
-    /* אודות */
-    .about {
-      padding: 4rem 0;
-      background-color: #ffffff;
-    }
-    .about h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-    }
-    .about-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+    /* --- אודות חדש --- */
+    .about-section-custom {
       max-width: 1000px;
       margin: 0 auto;
-      font-size: 1rem;
-      color: #555;
+      padding: 3em 0 3em 0;
+      background: none;
     }
-    .about-content p {
-      text-align: justify;
+    .about-flex {
+      display: flex;
+      flex-direction: row;
+      gap: 2.5em;
+      align-items: center;
+      background: #fafbfc;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      padding: 2.2em 2em;
     }
-    @media (min-width: 768px) {
-      .about-content {
-        flex-direction: row;
+    .about-text-custom {
+      flex: 2;
+      font-size: 1.1em;
+      line-height: 1.9;
+      color: #22356f;
+    }
+    .about-text-custom h2 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #22356f;
+      font-weight: bold;
+    }
+    .about-text-custom strong { color: #245c3f; }
+    .about-highlight {
+      font-size: 1.15em;
+      line-height: 2;
+      color: #245c3f;
+      font-weight: bold;
+      margin-top: 2em;
+    }
+    .about-image-custom {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .about-image-custom img {
+      max-width: 270px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(34,53,84,0.10);
+      object-fit: cover;
+    }
+    @media (max-width: 900px) {
+      .about-flex {
+        flex-direction: column-reverse;
+        padding: 1.4em 0.7em;
+        gap: 1.5em;
       }
-      .about-text { flex: 2; }
-      .about-image { flex: 1; }
+      .about-image-custom img {
+        max-width: 200px;
+      }
+      .about-section-custom { padding: 2em 0; }
     }
     /* צור קשר */
     .contact {
@@ -467,29 +498,30 @@
     </div>
   </section>
 
-  <!-- About -->
- <section class="about-section" style="max-width: 600px; margin: 0 auto; padding: 2em; background: #fafbfc; border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06);">
-  <h2 style="font-size: 2em; margin-bottom: 0.5em; color: #22356f;">נעים להכיר - קצת עלי ועל המשרד</h2>
-  <p style="font-size: 1.1em; line-height: 1.9;">
-    משרד <strong>“עמיעד אבנר – משרד עורך דין”</strong> מנוהל על ידי עו״ד עמיעד אבנר, בעל ניסיון של למעלה מעשור בליווי לקוחות וייצוגם במגוון תחומים משפטיים.<br>
-    המשרד דוגל בגישה אישית, מקצועית ורגישה – תוך הקשבה אמיתית לצרכי כל לקוח והתאמת פתרונות משפטיים מדויקים וייחודיים עבורו.
-  </p>
-  <p style="font-size: 1.1em; line-height: 1.9;">
-    אני בעל תואר ראשון במשפטים (<strong>בהצטיינות</strong>) מאוניברסיטת בר-אילן, ואת דרכי המקצועית התחלתי במשרדי עורכי הדין המובילים בישראל:<br>
-    במחלקת מיסוי מקרקעין של משרד ארנון תדמור לוי, מחלקת המקרקעין במשרד וקסלר ברגמן, ובמשרד המיסים אודי ברזלי.
-  </p>
-  <p style="font-size: 1.1em; line-height: 1.9;">
-    <strong>האני מאמין שלי:</strong> “סוף מעשה במחשבה תחילה”.<br>
-    אני מאמין שתכנון משפטי מקדים, יסודי ומותאם לצרכים הייחודיים של הלקוח – הוא המפתח להצלחה ולשקט הנפשי שלך.
-  </p>
-  <p style="font-size: 1.15em; line-height: 2; color: #245c3f; font-weight: bold; margin-top: 2em;">
-    אצלנו תקבלו לא רק שירות אמין ומקצועי,<br>
-    אלא גם יחס חם וליווי מכל הלב, מתוך אכפתיות אמיתית להצלחה שלכם.
-  </p>
-</section
-        <div class="about-image">
-          <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" />
-        </div>
+  <!-- About (חדש) -->
+  <section id="about" class="about-section-custom">
+    <div class="container about-flex">
+      <div class="about-text-custom">
+        <h2>קצת עליי</h2>
+        <p>
+          משרד <strong>“עמיעד אבנר – משרד עורך דין”</strong> מנוהל על ידי עו״ד עמיעד אבנר, בעל ניסיון של למעלה מעשור בליווי לקוחות וייצוגם במגוון תחומים משפטיים.<br>
+          המשרד דוגל בגישה אישית, מקצועית ורגישה – תוך הקשבה אמיתית לצרכי כל לקוח והתאמת פתרונות משפטיים מדויקים וייחודיים עבורו.
+        </p>
+        <p>
+          אני בעל תואר ראשון במשפטים (<strong>בהצטיינות</strong>) מאוניברסיטת בר-אילן, ואת דרכי המקצועית התחלתי במשרדי עורכי הדין המובילים בישראל:<br>
+          במחלקת מיסוי מקרקעין של משרד ארנון תדמור לוי, מחלקת המקרקעין במשרד וקסלר ברגמן, ובמשרד המיסים אודי ברזלי.
+        </p>
+        <p>
+          <strong>האני מאמין שלי:</strong> “סוף מעשה במחשבה תחילה”.<br>
+          אני מאמין שתכנון משפטי מקדים, יסודי ומותאם לצרכים הייחודיים של הלקוח – הוא המפתח להצלחה ולשקט הנפשי שלך.
+        </p>
+        <p class="about-highlight">
+          אצלנו תקבלו לא רק שירות אמין ומקצועי,<br>
+          אלא גם יחס חם וליווי מכל הלב, מתוך אכפתיות אמיתית להצלחה שלכם.
+        </p>
+      </div>
+      <div class="about-image-custom">
+        <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" />
       </div>
     </div>
   </section>
