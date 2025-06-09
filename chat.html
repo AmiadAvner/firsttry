@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>עמיעד אבנר – משרד עורך דין</title>
+  <!-- Google Fonts: Heebo & Alef -->
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&family=Alef:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #4158D0;
+      --main-gradient: linear-gradient(90deg, #4158D0 0%, #C850C0 100%);
+      --accent-color: #F7931E;
+      --bg-color: #f6f7fb;
+      --card-bg: #fff;
+      --text-dark: #23263A;
+      --text-light: #6C7A89;
+      --box-shadow: 0 4px 24px rgba(65, 88, 208, 0.09);
+      --radius: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: 'Heebo', 'Alef', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-dark);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    body { font-size: 18px; }
+    a { color: inherit; text-decoration: none; }
+    h1,h2,h3,h4 {
+      font-family: 'Alef', 'Heebo', sans-serif;
+      font-weight: 900;
+      letter-spacing: -1.2px;
+    }
+    .container {
+      width: 92%;
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+    /* Header */
+    header {
+      background: var(--card-bg);
+      box-shadow: var(--box-shadow);
+      position: fixed;
+      top: 0; width: 100%; z-index: 100;
+      transition: box-shadow 0.22s;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 76px;
+      padding: 0 0.5rem;
+      direction: rtl;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      user-select: none;
+    }
+    .logo-image {
+      height: 62px; width: auto;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(200,80,192,0.11);
+    }
+    .logo-text {
+      font-size: 1.48rem;
+      font-weight: 900;
+      color: var(--main-color);
+      letter-spacing: -1px;
+      margin: 0 0.4rem;
+      transition: color 0.25s;
+    }
+    .logo-text:hover {
+      color: var(--accent-color);
+    }
+    /* Phone Box */
+    .phone-box {
+      display: flex;
+      align-items: center;
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      border-radius: 999px;
+      padding: 0.34em 1.1em;
+      font-size: 1.07rem;
+      font-weight: 700;
+      background: #fff;
+      gap: 0.35em;
+      margin-left: 1.2rem;
+      transition: box-shadow 0.25s, background 0.22s;
+      box-shadow: 0 2px 8px rgba(247,147,30,0.10);
+    }
+    .phone-box .phone-icon {
+      margin-right: 0.5em;
+    }
+    .phone-number {
+      transition: font-size 0.28s cubic-bezier(.37,.37,.27,1.32), color 0.2s;
+      display: inline-block;
+      direction: ltr;
+      font-family: 'Heebo', 'Alef', sans-serif;
+      letter-spacing: 1px;
+    }
+    .phone-box:hover, .phone-number:hover {
+      background: var(--main-gradient);
+      color: #fff;
+      box-shadow: 0 4px 18px #c850c025;
+    }
+    .phone-box:hover .phone-number, .phone-number:hover {
+      font-size: 1.28rem;
+      color: #fff;
+    }
+    /* Nav */
+    nav ul {
+      display: flex;
+      gap: 1.65rem;
+      align-items: center;
+    }
+    nav ul li a {
+      font-size: 1.09rem;
+      color: var(--main-color);
+      padding: 0.48rem 0.8rem;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+      font-weight: 600;
+    }
+    nav ul li a:hover {
+      background: var(--main-gradient);
+      color: #fff;
+    }
+    /* Hamburger menu (mobile) */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 4px;
+      margin-right: 0.8rem;
+    }
+    .hamburger span {
+      width: 27px; height: 4px;
+      background: var(--main-color);
+      border-radius: 3px;
+      transition: all 0.28s;
+    }
+    .nav-mobile { display: none; }
+
+    /* Hero */
+    .hero {
+      min-height: 470px;
+      background: var(--main-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+      margin-top: 76px;
+      overflow: hidden;
+      /* Parallax-ish bg decoration */
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/cubes.png');
+      opacity: 0.11;
+      pointer-events: none;
+      z-index: 0;
+      animation: moveBg 30s linear infinite;
+    }
+    @keyframes moveBg {
+      from { background-position: 0 0; }
+      to { background-position: 300px 300px; }
+    }
+    .hero-inner {
+      display: flex;
+      flex-direction: row;
+      gap: 2.8rem;
+      width: 100%;
+      max-width: 1100px;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content {
+      color: var(--main-color);
+      background: rgba(255,255,255,0.98);
+      border-radius: var(--radius);
+      box-shadow: var(--box-shadow);
+      padding: 3.2rem 2.3rem 2.3rem 2.3rem;
+      max-width: 560px;
+      min-width: 320px;
+      margin: 0 auto;
+      border: 1.7px solid #dde6f7;
+      text-align: center;
+      flex: 2;
+      animation: fadeInUp 1.2s;
+    }
+    .hero-content h1 {
+      font-size: 2.3rem;
+      margin-bottom: 1.2rem;
+      color: var(--main-color);
+      background: var(--main-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+    }
+    .hero-content p {
+      font-size: 1.22rem;
+      margin-bottom: 2rem;
+      color: var(--text-light);
+    }
+    .btn-primary {
+      background: var(--main-gradient);
+      color: #fff;
+      padding: 0.9rem 2.4rem;
+      font-size: 1.12rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.14s, box-shadow 0.18s;
+      font-weight: 900;
+      box-shadow: 0 4px 24px #4158D022;
+      margin-top: 0.2em;
+      letter-spacing: 1px;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #C850C0 0%, #4158D0 100%);
+      transform: scale(1.07);
+      box-shadow: 0 8px 30px #c850c033;
+    }
+    /* Hero Boxes */
+    .hero-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      flex: 1;
+      min-width: 160px;
+      align-items: stretch;
+      animation: fadeIn 1.7s;
+    }
+    .hero-box {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: var(--box-shadow);
+      padding: 1.25em 0.3em;
+      font-size: 1.09rem;
+      font-weight: bold;
+      color: var(--main-color);
+      border: 1.6px solid #e3e6fb;
+      letter-spacing: 2px;
+      transition: transform 0.20s, box-shadow 0.22s;
+      cursor: pointer;
+      text-shadow: 0 1px 7px #c850c018;
+    }
+    .hero-box:hover {
+      transform: translateY(-5px) scale(1.08) rotate(-2deg);
+      box-shadow: 0 5px 25px #c850c045;
+      background: var(--main-gradient);
+      color: #fff;
+    }
+    /* אפקטים */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+
+    /* Services */
+    .services {
+      padding: 4.2rem 0 4.2rem 0;
+      background: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    .services h2 {
+      text-align: center;
+      margin-bottom: 2.3rem;
+      font-size: 2.05rem;
+      color: var(--main-color);
+      letter-spacing: 1.5px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.3rem;
+      animation: fadeIn 1.5s;
+    }
+    .service-card {
+      background: var(--card-bg);
+      padding: 2.1rem 1.3rem 1.6rem 1.3rem;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px #4158D016;
+      text-align: center;
+      transition: transform 0.18s, box-shadow 0.22s, background 0.18s;
+      border: 1.5px solid #eef0fa;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card img {
+      width: 66px; height: 66px;
+      margin-bottom: 1.25rem;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 1px 8px #4158D022;
+      background: #f7f7fa;
+      transition: box-shadow 0.21s;
+    }
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.04);
+      box-shadow: 0 8px 28px #C850C045;
+      background: linear-gradient(120deg, #f8f7fd 0%, #f9e6f9 100%);
+    }
+    .service-card:hover img {
+      box-shadow: 0 3px 20px #C850C044;
+    }
+    .service-card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 0.65rem;
+      color: var(--main-color);
+    }
+    .service-card p {
+      font-size: 1.01rem;
+      color: var(--text-light);
+    }
+
+    /* אודות */
+    .about-section-custom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.4em 0 3.4em 0;
+      background: none;
+      animation: fadeInUp 1.2s;
+    }
+    .about-flex {
+      display: flex;
+      flex-direction: row;
+      gap: 2.7em;
+      align-items: center;
+      background: #fafbfc;
+      border-radius: 22px;
+      box-shadow: var(--box-shadow);
+      padding: 2.7em 2.1em;
+    }
+    .about-text-custom {
+      flex: 2;
+      font-size: 1.13em;
+      line-height: 2;
+      color: #233b78;
+      animation: fadeIn 1.5s;
+    }
+    .about-text-custom h2 {
+      font-size: 2.13em;
+      margin-bottom: 0.5em;
+      color: var(--main-color);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .about-text-custom strong { color: #245c3f; }
+    .about-highlight {
+      font-size: 1.15em;
+      color: #245c3f;
+      font-weight: bold;
+      margin-top: 2em;
+    }
+    .about-image-custom {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInUp 1.8s;
+    }
+    .about-image-custom img {
+      max-width: 370px;
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px #4158D025;
+      object-fit: cover;
+      border: 2px solid #e3e8fd;
+      transition: box-shadow 0.18s;
+    }
+    .about-image-custom img:hover {
+      box-shadow: 0 12px 38px #C850C044;
+    }
+
+    /* צור קשר */
+    .contact {
+      padding: 4.3rem 0 4.2rem 0;
+      background: linear-gradient(105deg, #f6f7fb 50%, #ede8fa 100%);
+      animation: fadeIn 1.7s;
+    }
+    .contact h2 {
+      text-align: center;
+      font-size: 2.05rem;
+      margin-bottom: 2.2rem;
+      color: var(--main-color);
+      letter-spacing: 1px;
+    }
+    .contact-form {
+      max-width: 540px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 2.5rem 1.7rem;
+      border-radius: 15px;
+      box-shadow: 0 2px 16px #4158D021;
+      border: 1.5px solid #dde6f7;
+      direction: rtl;
+    }
+    .contact-form label {
+      display: block;
+      font-size: 1.02rem;
+      margin-bottom: 0.5rem;
+      color: var(--main-color);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1.4rem;
+      border: 1.5px solid #ececf1;
+      border-radius: 7px;
+      font-size: 1.01rem;
+      font-family: inherit;
+      background: #f8f8fd;
+      transition: border 0.16s, box-shadow 0.13s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border: 1.5px solid var(--main-color);
+      outline: none;
+      box-shadow: 0 0 8px #c850c034;
+      background: #fff;
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-form button {
+      background: var(--main-gradient);
+      color: #fff;
+      padding: 0.82rem 1.7rem;
+      font-size: 1.09rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.19s, transform 0.13s;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 3px 18px #C850C022;
+    }
+    .contact-form button:hover {
+      background: linear-gradient(90deg, #C850C0 0%, #4158D0 100%);
+      box-shadow: 0 7px 25px #4158D044;
+      transform: scale(1.06);
+    }
+    /* Footer */
+    footer {
+      background: var(--main-color);
+      color: #fff;
+      padding: 2.3rem 0 1.1rem 0;
+      margin-top: 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .footer-inner nav ul {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-inner nav ul li a {
+      color: #c6d2fc;
+      font-size: 1.03rem;
+      font-weight: 600;
+      border-radius: 5px;
+      transition: background 0.16s, color 0.2s;
+      padding: 0.28rem 0.8rem;
+    }
+    .footer-inner nav ul li a:hover {
+      background: var(--main-gradient);
+      color: #fff;
+    }
+    .footer-inner p {
+      font-size: 1.02rem;
+      color: #e3e6fa;
+      text-align: center;
+      margin-top: 0.9em;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    /* Mobile Responsive */
+    @media (max-width: 950px) {
+      .hero-inner { flex-direction: column; gap: 1.4rem; max-width: 600px;}
+      .about-flex { flex-direction: column-reverse; gap: 1.5em; padding: 1.3em 0.8em;}
+      .about-image-custom img { max-width: 220px; }
+      .logo-image { height: 42px; }
+      .logo-text { font-size: 1.1rem; }
+    }
+    @media (max-width: 700px) {
+      .header-inner { flex-direction: row; height: auto; min-height: 60px; padding: 0.7rem 0;}
+      nav ul { gap: 0.6rem; flex-direction: column; align-items: flex-start; }
+      .logo-box { margin: 0.5rem 0; }
+      .phone-box { margin: 0.7rem 0; }
+      .hero-inner { gap: 1rem; }
+      .hero-boxes { flex-direction: row; gap: 0.7rem; }
+      .services { padding: 3rem 0 3rem 0; }
+      .about-section-custom { padding: 1.7em 0;}
+      .contact { padding: 2.4rem 0 2rem 0;}
+    }
+    @media (max-width: 540px) {
+      .header-inner { flex-direction: row; }
+      .logo-image { height: 33px; }
+      .logo-text { font-size: 0.98rem; }
+      .container { width: 98%; }
+      .about-section-custom { padding: 1em 0;}
+      .contact-form { padding: 1rem 0.4rem;}
+    }
+    /* Hide nav menu on mobile */
+    @media (max-width: 780px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 76px;
+        right: 8px;
+        background: var(--card-bg);
+        box-shadow: var(--box-shadow);
+        border-radius: 12px;
+        flex-direction: column;
+        gap: 1.2rem;
+        padding: 1.2rem 1.4rem;
+        z-index: 300;
+        min-width: 170px;
+        animation: fadeIn 0.6s;
+      }
+      .nav-mobile { display: flex !important; }
+      .hamburger { display: flex; }
+    }
+    .nav-mobile.active ul {
+      display: flex !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo-box">
+        <img src="logo.png" alt="לוגו עמיעד אבנר – משרד עורך דין" class="logo-image" />
+        <span class="logo-text">עמיעד אבנר – משרד עורך דין</span>
+      </div>
+      <nav>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+        <ul id="navList">
+          <li><a href="#home">דף הבית</a></li>
+          <li><a href="#services">תחומי התמחות</a></li>
+          <li><a href="#about">אודות</a></li>
+          <li><a href="#contact">צרו קשר</a></li>
+          <div class="phone-box">
+            <svg xmlns="http://www.w3.org/2000/svg" class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F7931E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .93 3.67 2 2 0 0 1 2.92 1.5h3a2 2 0 0 1 2 1.72c.13 1.21.36 2.39.7 3.53a2 2 0 0 1-.45 2.11l-1.27 1.28a16 16 0 0 0 6.25 6.25l1.28-1.27a2 2 0 0 1 2.11-.45c1.14.34 2.32.57 3.53.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="phone-number">052-450-0645</span>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1>עמיעד אבנר – מקצועיות, אמינות ושירות מכל הלב</h1>
+        <p>מקרקעין | ייפוי כוח מתמשך | צוואות</p>
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">צור קשר עכשיו</button>
+      </div>
+      <div class="hero-boxes">
+        <div class="hero-box">אמינות</div>
+        <div class="hero-box">מקצועיות</div>
+        <div class="hero-box">שירותיות</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>תחומי התמחות</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="https://source.unsplash.com/100x100/?contract" alt="מקרקעין" />
+          <h3>מקרקעין</h3>
+          <p>עסקאות מכר מקרקעין – ליווי שוטף ללקוחות המשרד בעסקאות נדל"ן על כלל סוגיהן, לרבות עסקאות רכישת או מכירת נדל"ן למגורים, נדל"ן מסחרי וקרקעות.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://source.unsplash.com/100x100/?will" alt="צוואות" />
+          <h3>צוואות</h3>
+          <p>הכנת צוואה מקצועית שתבטיח את רצונכם ותשמור על שלום המשפחה.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://source.unsplash.com/100x100/?power-of-attorney" alt="ייפוי כוח מתמשך" />
+          <h3>ייפוי כוח מתמשך</h3>
+          <p>ייעוץ ועריכת ייפוי כוח מתמשך על מנת להבטיח את הטיפול האחראי במקרה הצורך.</p>
+        </div>
+        <div class="service-card">
+          <img src="https://source.unsplash.com/100x100/?family,law" alt="דיני משפחה" />
+          <h3>דיני משפחה</h3>
+          <p>ייצוג וייעוץ בדיני משפחה, גירושין, מזונות והסדרי ראייה.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about-section-custom">
+    <div class="container about-flex">
+      <div class="about-text-custom">
+        <h2>קצת עליי</h2>
+        <p>
+          בעל ניסיון של למעלה מעשור בליווי לקוחות וייצוגם במגוון תחומים משפטיים.<br>
+          דוגל בגישה אישית, מקצועית ורגישה – תוך הקשבה אמיתית לצרכי כל לקוח והתאמת פתרונות משפטיים מדויקים וייחודיים עבורו.
+        </p>
+        <p>
+          אני בעל תואר ראשון במשפטים (<strong>בהצטיינות</strong>) מאוניברסיטת בר-אילן, את דרכי המקצועית התחלתי במשרדי עורכי הדין המובילים בישראל:<br>
+          במחלקת מיסוי מקרקעין של משרד ארנון תדמור-לוי, מחלקת המקרקעין במשרד וקסלר ברגמן, ובמשרד המיסים אודי ברזלי.
+        </p>
+        <p>
+          <strong>האני מאמין שלי:</strong> “סוף מעשה במחשבה תחילה”.<br>
+          אני מאמין שתכנון משפטי מקדים, יסודי ומותאם לצרכים הייחודיים של הלקוח – הוא המפתח להצלחה ולשקט הנפשי שלך.
+        </p>
+      </div>
+      <div class="about-image-custom">
+        <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>צרו קשר</h2>
+      <form class="contact-form" action="https://formspree.io/f/xyzjezoe" method="POST">
+        <label for="name">שם מלא</label>
+        <input type="text" id="name" name="שם מלא" placeholder="הקלידו את שמכם המלא" required />
+
+        <label for="phone">טלפון</label>
+        <input type="tel" id="phone" name="טלפון" placeholder="הקלידו מספר טלפון" required />
+
+        <label for="email">אימייל</label>
+        <input type="email" id="email" name="אימייל" placeholder="הקלידו כתובת אימייל" required />
+
+        <label for="message">תוכן הפנייה</label>
+        <textarea id="message" name="פנייה" placeholder="כתבו כאן את הפנייה שלכם..." required></textarea>
+
+        <button type="submit">שלח</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <nav>
+        <ul>
+          <li><a href="#home">דף הבית</a></li>
+          <li><a href="#services">תחומי התמחות</a></li>
+          <li><a href="#about">אודות</a></li>
+          <li><a href="#contact">צרו קשר</a></li>
+        </ul>
+      </nav>
+      <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורך דין</p>
+    </div>
+  </footer>
+  <!-- סקריפט נגישות -->
+  <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
+  <!-- סקריפט המבורגר -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navList = document.getElementById('navList');
+    let navMobileOpen = false;
+    function toggleNavMobile() {
+      if (window.innerWidth <= 780) {
+        navList.parentElement.classList.toggle('nav-mobile');
+        navList.parentElement.classList.toggle('active');
+        navMobileOpen = !navMobileOpen;
+      }
+    }
+    hamburger.addEventListener('click', toggleNavMobile);
+    // Close menu on resize up
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 780 && navMobileOpen) {
+        navList.parentElement.classList.remove('nav-mobile', 'active');
+        navMobileOpen = false;
+      }
+    });
+    // Smooth scroll for nav
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          if (window.innerWidth <= 780 && navMobileOpen) {
+            toggleNavMobile();
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
