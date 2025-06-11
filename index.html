@@ -8,27 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
   <!-- סוף – פונט Assistant -->
   <style>
-    /* ... כל שאר ה-CSS ... */
-
-    .service-card img {
-      width: 90px;
-      height: 90px;
-      display: block;
-      margin: 0 auto 1rem auto;
-    }
-
-    /* צור קשר - עיצוב לטקסט החדש */
-    .contact-info-text {
-      font-family: 'Assistant', Arial, sans-serif;
-      color: #123169;
-      font-size: 1.17rem;
-      text-align: center;
-      margin-bottom: 1.7rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    /* כל שאר הקוד שלך נשאר זהה */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
       font-family: "Assistant", sans-serif;
@@ -42,8 +21,425 @@
     ul { list-style: none; }
     h1, h2, h3, h4 { font-weight: 700; }
 
-    /* ... המשך כל ה-CSS שלך ... */
-    /* אין שינוי נוסף בקוד מלבד הסעיפים למעלה */
+    /* צבעים כהים לכותרות, תפריטים, תיבות בולטים */
+    .hero-content h1,
+    .hero-box,
+    .btn-primary,
+    .services h2,
+    .service-card h3,
+    .about-text-custom h2,
+    .contact h2,
+    .footer-inner p,
+    nav ul li a,
+    .logo-text {
+      color: #123169 !important;
+    }
+    /* דגש טקסט בתוכן */
+    .about-text-custom strong,
+    .about-highlight {
+      color: #10325e !important;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* Header */
+    header {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      direction: rtl;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .logo-image {
+      height: 70px;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .logo-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #123169;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      display: inline-block;
+    }
+    .phone-box {
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid #c06a27;
+      color: #c06a27;
+      border-radius: 999px;
+      padding: 0.3em 1em;
+      font-size: 1.05rem;
+      font-weight: 500;
+      background: #fff;
+      gap: 0.3em;
+      margin-left: 1.5rem;
+      margin-right: 0;
+      cursor: default;
+      user-select: text;
+      transition: box-shadow 0.2s;
+    }
+    .phone-box .phone-icon {
+      margin-right: 0.4em;
+      vertical-align: middle;
+    }
+    .phone-number {
+      transition: font-size 0.25s cubic-bezier(.37,.37,.27,1.32), color 0.2s;
+      display: inline-block;
+    }
+    .phone-box:hover .phone-number,
+    .phone-number:hover {
+      font-size: 1.35rem;
+      color: #8a470a;
+    }
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      font-size: 1rem;
+      color: #123169;
+      padding: 0.5rem 0.75rem;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
+    nav ul li a:hover {
+      background: #ecf0f1;
+      border-radius: 4px;
+    }
+    /* Hero */
+    .hero {
+      background: transparent;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      margin-top: 70px;
+    }
+    .hero-inner {
+      display: flex;
+      flex-direction: row;
+      gap: 2.5rem;
+      width: 100%;
+      max-width: 1000px;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-content {
+      position: relative;
+      color: #18305b;
+      background: rgba(255,255,255,0.92);
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(34, 53, 84, 0.07);
+      padding: 3rem 2rem 2rem 2rem;
+      max-width: 540px;
+      min-width: 320px;
+      margin: 0 auto;
+      border: 1px solid #b3cae6;
+      text-align: center;
+      flex: 2;
+    }
+    .hero-content h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+      color: #123169;
+    }
+    .hero-content p {
+      font-size: 1.22rem;
+      margin-bottom: 2rem;
+      color: #18305b;
+    }
+    .btn-primary {
+      background-color: #123169;
+      color: #fff !important;
+      padding: 0.75rem 2.1rem;
+      font-size: 1.07rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px #e7ecf4;
+    }
+    .btn-primary:hover {
+      background-color: #0d203a;
+      box-shadow: 0 2px 12px #b8c7dd;
+    }
+    .hero-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      flex: 1;
+      min-width: 160px;
+      align-items: stretch;
+    }
+    .hero-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(44,99,184,0.07);
+      padding: 1.2em 0.2em;
+      font-size: 1.08rem;
+      font-weight: bold;
+      color: #123169;
+      border: 1.5px solid #b3cae6;
+      letter-spacing: 1px;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .hero-box:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 3px 16px rgba(44,99,184,0.15);
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner {
+        flex-direction: column;
+        gap: 1.2rem;
+        max-width: 600px;
+      }
+      .hero-content {
+        max-width: 100%;
+        min-width: unset;
+      }
+      .hero-boxes {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        min-width: unset;
+      }
+      .hero-box {
+        min-width: 90px;
+        padding: 0.8em 0.2em;
+        font-size: 1rem;
+      }
+      .logo-image {
+        height: 50px;
+      }
+      .logo-text {
+        font-size: 1.13rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem 0;
+      }
+      nav ul { gap: 0.7rem; }
+      .logo-box { margin: 0.5rem 0; }
+      .phone-box { margin: 0.5rem 0; }
+      .hero-inner { gap: 1rem; }
+      .hero-boxes { gap: 0.6rem; }
+    }
+    .services {
+      padding: 4rem 0;
+      background-color: #ffffffcc;
+    }
+    .services h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #123169;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background-color: #fdfdfd;
+      padding: 1.5rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: #123169;
+      border: 1px solid #b3cae6;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    }
+    .service-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: #123169;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: #2a426a;
+    }
+    /* --- אודות חדש --- */
+    .about-section-custom {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3em 0 3em 0;
+      background: none;
+    }
+    .about-flex {
+      display: flex;
+      flex-direction: row;
+      gap: 2.5em;
+      align-items: center;
+      background: #fafbfcf0;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      padding: 2.2em 2em;
+    }
+    .about-text-custom {
+      flex: 2;
+      font-size: 1.1em;
+      line-height: 1.9;
+      color: #123169;
+    }
+    .about-text-custom h2 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: #123169;
+      font-weight: bold;
+    }
+    .about-text-custom strong { color: #10325e; }
+    .about-highlight {
+      font-size: 1.15em;
+      line-height: 2;
+      color: #10325e;
+      font-weight: bold;
+      margin-top: 2em;
+    }
+    .about-image-custom {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .about-image-custom img {
+      max-width: 410px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(34,53,84,0.10);
+      object-fit: cover;
+    }
+    @media (max-width: 900px) {
+      .about-flex {
+        flex-direction: column-reverse;
+        padding: 1.4em 0.7em;
+        gap: 1.5em;
+      }
+      .about-image-custom img {
+        max-width: 200px;
+      }
+      .about-section-custom { padding: 2em 0; }
+    }
+    .contact {
+      padding: 4rem 0;
+      background-color: #f4f6f8cc;
+    }
+    .contact h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #123169;
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      direction: rtl;
+    }
+    .contact-form label {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: #123169;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #b3cae6;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #123169;
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-form button {
+      background-color: #123169;
+      color: #fff !important;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .contact-form button:hover {
+      background-color: #0d203a;
+    }
+    footer {
+      background-color: #123169;
+      color: #ffffff;
+      padding: 2rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .footer-inner nav ul {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-inner nav ul li a {
+      color: #b7c3dc;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-inner nav ul li a:hover {
+      color: #ecf0f1;
+    }
+    .footer-inner p {
+      font-size: 0.9rem;
+      color: #e2eaf9;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -114,6 +510,7 @@
           <h3>ייפוי כוח מתמשך</h3>
           <p>ייעוץ ועריכת ייפוי כוח מתמשך על מנת להבטיח את הטיפול האחראי במקרה הצורך.</p>
         </div>
+        
       </div>
     </div>
   </section>
@@ -135,6 +532,7 @@
           <strong>האני מאמין שלי:</strong> “סוף מעשה במחשבה תחילה”.<br>
          אני מאמין שתכנון משפטי מקדים, יסודי ומותאם לצרכים הייחודיים של הלקוח – הוא המפתח להצלחה ולשקט הנפשי שלך.
         </p>
+        
       </div>
       <div class="about-image-custom">
         <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" />
@@ -146,9 +544,6 @@
   <section id="contact" class="contact">
     <div class="container">
       <h2>צרו קשר</h2>
-      <div class="contact-info-text">
-        התקשרו לטלפון <b>0524500645</b> או כתבו לי ואחזור אליכם בהקדם.
-      </div>
       <form class="contact-form" action="https://formspree.io/f/xyzjezoe" method="POST">
         <label for="name">שם מלא</label>
         <input type="text" id="name" name="שם מלא" placeholder="הקלידו את שמכם המלא" required />
