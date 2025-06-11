@@ -14,10 +14,9 @@
       color: #123169;
       line-height: 1.6;
     }
-    /* === HERO VIDEO BACKGROUND === */
     .hero {
       position: relative;
-      background: none; /* אין רקע, כי הסרטון מחליף */
+      background: none;
       min-height: 400px;
       display: flex;
       align-items: center;
@@ -25,7 +24,7 @@
       text-align: center;
       padding: 0 1rem;
       margin-top: 70px;
-      overflow: hidden; /* כדי שלא יגלוש */
+      overflow: hidden;
       z-index: 1;
     }
     .hero-bg-video {
@@ -35,7 +34,7 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
-      pointer-events: none; /* שלא יפריע ללחיצה על הכפתורים */
+      pointer-events: none;
       user-select: none;
       background: #c7e8f7;
     }
@@ -50,7 +49,21 @@
       align-items: center;
       justify-content: center;
     }
-    /* --- כל שאר העיצוב ללא שינוי --- */
+    .hero-content {
+      position: relative;
+      color: #18305b;
+      background: rgba(255,255,255,0.97);
+      border-radius: 14px;
+      box-shadow: 0 6px 24px rgba(34, 53, 84, 0.07);
+      padding: 3rem 2rem 2rem 2rem;
+      max-width: 540px;
+      min-width: 320px;
+      margin: 0 auto;
+      border: 1.5px solid #b3cae6;
+      text-align: center;
+      flex: 2;
+    }
+    /* כל שאר ה-CSS ללא שינוי... */
     .hero-content h1,
     .hero-box,
     .btn-primary,
@@ -154,7 +167,6 @@
       background: #ecf0f1;
       border-radius: 4px;
     }
-    /* --- המשך העיצוב ללא שינוי (hero-boxes וכו'...) --- */
     .hero-boxes {
       display: flex;
       flex-direction: column;
@@ -249,7 +261,6 @@
       transform: translateY(-5px);
       box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
-    /* ==== עיצוב אחיד וגדול יותר לתמונות השירותים ==== */
     .service-img-wrapper {
       width: 120px;
       height: 120px;
@@ -617,13 +628,12 @@
   </footer>
   <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
   <script>
-    // למנוע לופ - להשאיר על הפריים האחרון
     document.addEventListener("DOMContentLoaded", function() {
       var vid = document.querySelector('.hero-bg-video');
       if (vid) {
         vid.addEventListener('ended', function() {
           vid.pause();
-          vid.currentTime = vid.duration; // לשמור על הפריים האחרון
+          vid.currentTime = vid.duration;
         });
       }
     });
