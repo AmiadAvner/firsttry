@@ -34,12 +34,10 @@
     .logo-text {
       color: #123169 !important;
     }
-    /* דגש טקסט בתוכן */
     .about-text-custom strong,
     .about-highlight {
       color: #10325e !important;
     }
-
     .container {
       width: 90%;
       max-width: 1200px;
@@ -284,11 +282,21 @@
       transform: translateY(-5px);
       box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
+    /* === שינוי עיקרי: תמונות גדולות ומרוכזות === */
     .service-card img {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 1rem;
+      width: 110px;
+      height: 110px;
+      margin-bottom: 1.4rem;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      object-fit: contain;
+      transition: transform 0.2s;
     }
+    .service-card img:hover {
+      transform: scale(1.08) rotate(-4deg);
+    }
+    /* === סוף שינוי עיקרי === */
     .service-card h3 {
       font-size: 1.2rem;
       margin-bottom: 0.75rem;
@@ -369,6 +377,51 @@
       margin-bottom: 2rem;
       color: #123169;
     }
+    /* === עיצוב שורת טלפון מתחת לכותרת צור קשר === */
+    .contact-phone-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.7em;
+      margin-bottom: 2.2em;
+      margin-top: -1.1em;
+    }
+    .contact-phone-icon {
+      width: 32px;
+      height: 32px;
+      color: #1976d2;
+      transition: transform 0.18s, color 0.22s;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 8px #bccfe933);
+      will-change: transform;
+    }
+    .contact-phone-row:hover .contact-phone-icon,
+    .contact-phone-icon:hover {
+      transform: scale(1.17);
+      color: #1250a5;
+      filter: drop-shadow(0 4px 16px #12316933);
+    }
+    .contact-phone-number {
+      font-size: 1.32rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #18305b;
+      font-family: inherit;
+      background: #e9f2fa;
+      border-radius: 999px;
+      padding: 0.35em 1.35em;
+      border: 1.2px solid #d5e2f4;
+      transition: background 0.19s, color 0.17s;
+      box-shadow: 0 2px 12px #c6d9ee13;
+      user-select: text;
+      direction: ltr;
+    }
+    .contact-phone-row:hover .contact-phone-number,
+    .contact-phone-number:hover {
+      background: #d4e6fb;
+      color: #1250a5;
+    }
+    /* === סוף עיצוב שורת טלפון === */
     .contact-form {
       max-width: 600px;
       margin: 0 auto;
@@ -510,7 +563,6 @@
           <h3>ייפוי כוח מתמשך</h3>
           <p>ייעוץ ועריכת ייפוי כוח מתמשך על מנת להבטיח את הטיפול האחראי במקרה הצורך.</p>
         </div>
-        
       </div>
     </div>
   </section>
@@ -532,7 +584,6 @@
           <strong>האני מאמין שלי:</strong> “סוף מעשה במחשבה תחילה”.<br>
          אני מאמין שתכנון משפטי מקדים, יסודי ומותאם לצרכים הייחודיים של הלקוח – הוא המפתח להצלחה ולשקט הנפשי שלך.
         </p>
-        
       </div>
       <div class="about-image-custom">
         <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" />
@@ -544,6 +595,15 @@
   <section id="contact" class="contact">
     <div class="container">
       <h2>צרו קשר</h2>
+      <!-- טלפון ואייקון מתחת לכותרת -->
+      <div class="contact-phone-row" tabindex="0">
+        <svg class="contact-phone-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
+          <circle cx="16" cy="16" r="16" fill="#e7effb"/>
+          <path d="M22.2 23.7c-3.8-1.3-6.9-4.4-8.2-8.2l-0.4-1.1c-0.2-0.7 0-1.4 0.5-1.9l1.1-1.1c0.6-0.6 0.6-1.5 0-2l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1 1c-0.8 0.8-1.1 2-0.8 3.1 1.5 5.1 5.7 9.2 10.8 10.8 1.1 0.3 2.3 0 3.1-0.8l1-1c0.6-0.6 0.6-1.5 0-2.1l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1.1 1.1c-0.5 0.5-1.2 0.7-1.9 0.5l-1.1-0.4z" stroke="#1976d2" stroke-width="1.6"/>
+        </svg>
+        <span class="contact-phone-number">052-4500-645</span>
+      </div>
+      <!-- טופס הפנייה -->
       <form class="contact-form" action="https://formspree.io/f/xyzjezoe" method="POST">
         <label for="name">שם מלא</label>
         <input type="text" id="name" name="שם מלא" placeholder="הקלידו את שמכם המלא" required />
