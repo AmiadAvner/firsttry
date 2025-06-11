@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>עמיעד אבנר – משרד עורך דין</title>
-  <!-- התחלה – פונט Assistant -->
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
-  <!-- סוף – פונט Assistant -->
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
@@ -17,10 +15,9 @@
       line-height: 1.6;
     }
     a { text-decoration: none; color: inherit; }
-    img { max-width: 100%; height: auto; display: block; }
+    img { display: block; }
     ul { list-style: none; }
     h1, h2, h3, h4 { font-weight: 700; }
-
     .hero-content h1,
     .hero-box,
     .btn-primary,
@@ -279,10 +276,10 @@
       box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
 
-    /* ==== עיצוב אחיד לארבע התמונות של השירותים בלבד ==== */
+    /* ==== עיצוב אחיד וגדול יותר לתמונות השירותים ==== */
     .service-img-wrapper {
-      width: 110px;
-      height: 110px;
+      width: 120px;
+      height: 120px;
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 2px 12px #c6d9ee22;
@@ -292,18 +289,23 @@
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 1.4rem;
-      padding: 10px;
+      padding: 0;
       transition: box-shadow 0.2s;
+      overflow: hidden;
     }
     .service-img-wrapper:hover {
       box-shadow: 0 4px 24px #b8c7dd66;
     }
     .service-img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      transition: transform 0.2s;
+      width: 120px;
+      height: 120px;
+      max-width: none;
+      max-height: none;
+      object-fit: cover;
       display: block;
+      margin: 0 auto;
+      /* אפשר לשמור את ההאנימציה של hover אם תרצה */
+      transition: transform 0.2s;
     }
     .service-img-wrapper:hover .service-img {
       transform: scale(1.08) rotate(-4deg);
@@ -612,7 +614,7 @@
       <div class="contact-phone-row" tabindex="0">
         <svg class="contact-phone-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
           <circle cx="16" cy="16" r="16" fill="#e7effb"/>
-          <path d="M22.2 23.7c-3.8-1.3-6.9-4.4-8.2-8.2l-0.4-1.1c-0.2-0.7 0-1.4 0.5-1.9l1.1-1.1c0.6-0.6 0.6-1.5 0-2l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1 1c-0.8 0.8-1.1 2-0.8 3.1 1.5 5.1 5.7 9.2 10.8 10.8 1.1 0.3 2.3 0 3.1-0.8l1-1c0.6-0.6 0.6-1.5 0-2.1l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1.1 1.1c-0.5 0.5-1.2 0.7-1.9 0.5l-1.1-0.4z" stroke="#1976d2" stroke-width="1.6"/>
+          <path d="M22.2 23.7c-3.8-1.3-6.9-4.4-8.2-8.2l-0.4-1.1c-0.2-0.7 0-1.4 0.5-1.9l1.1-1.1c0.6-0.6 0.6-1.5 0-2l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1 1c-0.8 0.8-1.1 2-0.8 3.1 1.5 5.1 5.7 9.2 10.8 10.8 1.1 0.3 2.3 0 3.1-0.8l1-1c0.6-0.6 0.6-1.5 0-2.1l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1.1 1.1c-0.5-0.5-1.2-0.7-1.9-0.5l-1.1-0.4z" stroke="#1976d2" stroke-width="1.6"/>
         </svg>
         <span class="contact-phone-number">0524-500645</span>
       </div>
