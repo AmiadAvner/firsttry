@@ -20,6 +20,7 @@
     img { max-width: 100%; height: auto; display: block; }
     ul { list-style: none; }
     h1, h2, h3, h4 { font-weight: 700; }
+
     .hero-content h1,
     .hero-box,
     .btn-primary,
@@ -277,25 +278,38 @@
       transform: translateY(-5px);
       box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
-    /* *** שינוי עיקרי: רק 4 התמונות של השירותים בגודל זהה *** */
-    .service-img {
+
+    /* ==== עיצוב אחיד לארבע התמונות של השירותים בלבד ==== */
+    .service-img-wrapper {
       width: 110px;
       height: 110px;
-      margin-bottom: 1.4rem;
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
-      object-fit: contain;
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 2px 12px #c6d9ee22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1.4rem;
       padding: 10px;
-      transition: transform 0.2s;
+      transition: box-shadow 0.2s;
     }
-    .service-img:hover {
+    .service-img-wrapper:hover {
+      box-shadow: 0 4px 24px #b8c7dd66;
+    }
+    .service-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.2s;
+      display: block;
+    }
+    .service-img-wrapper:hover .service-img {
       transform: scale(1.08) rotate(-4deg);
     }
-    /* *** סוף שינוי עיקרי *** */
+    /* ==== סוף עיצוב אחיד ==== */
+
     .service-card h3 {
       font-size: 1.2rem;
       margin-bottom: 0.75rem;
@@ -536,22 +550,30 @@
       <h2>תחומי התמחות</h2>
       <div class="services-grid">
         <div class="service-card">
-          <img src="nadlanphoto.png" alt="מקרקעין" class="service-img" />
+          <div class="service-img-wrapper">
+            <img src="nadlanphoto.png" alt="מקרקעין" class="service-img" />
+          </div>
           <h3>מקרקעין</h3>
           <p>עסקאות מכר מקרקעין – ליווי שוטף ללקוחות המשרד בעסקאות נדל"ן על כלל סוגיהן, לרבות עסקאות רכישת או מכירת נדל"ן למגורים, נדל"ן מסחרי וקרקעות.</p>
         </div>
         <div class="service-card">
-          <img src="maskara.png" alt="מיסוי מקרקעין" class="service-img" />
+          <div class="service-img-wrapper">
+            <img src="maskara.png" alt="מיסוי מקרקעין" class="service-img" />
+          </div>
           <h3>מיסוי מקרקעין</h3>
           <p>ייצוג וייעוץ בדיני משפחה, גירושין, מזונות והסדרי ראייה.</p>
         </div>
         <div class="service-card">
-          <img src="wills.png" alt="צוואות" class="service-img" />
+          <div class="service-img-wrapper">
+            <img src="wills.png" alt="צוואות" class="service-img" />
+          </div>
           <h3>צוואות</h3>
           <p>הכנת צוואה מקצועית שתבטיח את רצונכם ותשמור על שלום המשפחה.</p>
         </div>
         <div class="service-card">
-          <img src="mitma.png" alt="ייפוי כוח מתמשך" class="service-img" />
+          <div class="service-img-wrapper">
+            <img src="mitma.png" alt="ייפוי כוח מתמשך" class="service-img" />
+          </div>
           <h3>ייפוי כוח מתמשך</h3>
           <p>ייעוץ ועריכת ייפוי כוח מתמשך על מנת להבטיח את הטיפול האחראי במקרה הצורך.</p>
         </div>
