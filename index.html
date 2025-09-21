@@ -14,10 +14,128 @@
       color: #123169;
       line-height: 1.6;
     }
-    a { text-decoration: none; color: inherit; }
-    img { display: block; }
-    ul { list-style: none; }
-    h1, h2, h3, h4 { font-weight: 700; }
+    .hero {
+      position: relative;
+      background: none;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      margin-top: 70px;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .hero-bg-video {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      background: #c7e8f7;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      gap: 2.5rem;
+      width: 100%;
+      max-width: 1000px;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .hero-content {
+      position: relative;
+      color: #18305b;
+      background: rgba(255,255,255,0.97);
+      border-radius: 14px;
+      box-shadow: 0 6px 24px rgba(34, 53, 84, 0.07);
+      padding: 3rem 2rem 2rem 2rem;
+      max-width: 540px;
+      min-width: 320px;
+      margin: 0 auto;
+      border: 1.5px solid #b3cae6;
+      text-align: center;
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 240px;
+      transition: min-height 0.25s;
+    }
+    .hero-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      flex: 1;
+      min-width: 160px;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .hero-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(44,99,184,0.07);
+      padding: 1.2em 0.2em;
+      font-size: 1.08rem;
+      font-weight: bold;
+      color: #123169;
+      border: 1.5px solid #b3cae6;
+      letter-spacing: 1px;
+      transition: transform 0.18s, box-shadow 0.18s;
+      text-align: center;
+    }
+    .hero-box:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 3px 16px rgba(44,99,184,0.15);
+    }
+    @media (max-width: 900px) {
+      .hero-inner {
+        flex-direction: column;
+        gap: 1.2rem;
+        max-width: 600px;
+        align-items: stretch;
+      }
+      .hero-content {
+        max-width: 100%;
+        min-width: unset;
+      }
+      .hero-boxes {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        min-width: unset;
+      }
+      .hero-box {
+        min-width: 90px;
+        padding: 0.8em 0.2em;
+        font-size: 1rem;
+      }
+      .logo-image {
+        height: 50px;
+      }
+      .logo-text {
+        font-size: 1.13rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem 0;
+      }
+      nav ul { gap: 0.7rem; }
+      .logo-box { margin: 0.5rem 0; }
+      .phone-box { margin: 0.5rem 0; }
+      .hero-inner { gap: 1rem; }
+      .hero-boxes { gap: 0.6rem; }
+    }
     .hero-content h1,
     .hero-box,
     .btn-primary,
@@ -121,51 +239,6 @@
       background: #ecf0f1;
       border-radius: 4px;
     }
-    .hero {
-      background: transparent;
-      min-height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 1rem;
-      position: relative;
-      margin-top: 70px;
-    }
-    .hero-inner {
-      display: flex;
-      flex-direction: row;
-      gap: 2.5rem;
-      width: 100%;
-      max-width: 1000px;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-content {
-      position: relative;
-      color: #18305b;
-      background: rgba(255,255,255,0.92);
-      border-radius: 16px;
-      box-shadow: 0 6px 24px rgba(34, 53, 84, 0.07);
-      padding: 3rem 2rem 2rem 2rem;
-      max-width: 540px;
-      min-width: 320px;
-      margin: 0 auto;
-      border: 1px solid #b3cae6;
-      text-align: center;
-      flex: 2;
-    }
-    .hero-content h1 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
-      color: #123169;
-    }
-    .hero-content p {
-      font-size: 1.22rem;
-      margin-bottom: 2rem;
-      color: #18305b;
-    }
     .btn-primary {
       background-color: #123169;
       color: #fff !important;
@@ -180,71 +253,6 @@
     .btn-primary:hover {
       background-color: #0d203a;
       box-shadow: 0 2px 12px #b8c7dd;
-    }
-    .hero-boxes {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      flex: 1;
-      min-width: 160px;
-      align-items: stretch;
-    }
-    .hero-box {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 1px 6px rgba(44,99,184,0.07);
-      padding: 1.2em 0.2em;
-      font-size: 1.08rem;
-      font-weight: bold;
-      color: #123169;
-      border: 1.5px solid #b3cae6;
-      letter-spacing: 1px;
-      transition: transform 0.18s, box-shadow 0.18s;
-    }
-    .hero-box:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 3px 16px rgba(44,99,184,0.15);
-    }
-    @media (max-width: 900px) {
-      .hero-inner {
-        flex-direction: column;
-        gap: 1.2rem;
-        max-width: 600px;
-      }
-      .hero-content {
-        max-width: 100%;
-        min-width: unset;
-      }
-      .hero-boxes {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 1.5rem;
-        min-width: unset;
-      }
-      .hero-box {
-        min-width: 90px;
-        padding: 0.8em 0.2em;
-        font-size: 1rem;
-      }
-      .logo-image {
-        height: 50px;
-      }
-      .logo-text {
-        font-size: 1.13rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .header-inner {
-        flex-direction: column;
-        height: auto;
-        padding: 0.5rem 0;
-      }
-      nav ul { gap: 0.7rem; }
-      .logo-box { margin: 0.5rem 0; }
-      .phone-box { margin: 0.5rem 0; }
-      .hero-inner { gap: 1rem; }
-      .hero-boxes { gap: 0.6rem; }
     }
     .services {
       padding: 4rem 0;
@@ -275,8 +283,6 @@
       transform: translateY(-5px);
       box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
-
-    /* ==== עיצוב אחיד וגדול יותר לתמונות השירותים ==== */
     .service-img-wrapper {
       width: 120px;
       height: 120px;
@@ -304,14 +310,11 @@
       object-fit: cover;
       display: block;
       margin: 0 auto;
-      /* אפשר לשמור את ההאנימציה של hover אם תרצה */
       transition: transform 0.2s;
     }
     .service-img-wrapper:hover .service-img {
       transform: scale(1.08) rotate(-4deg);
     }
-    /* ==== סוף עיצוב אחיד ==== */
-
     .service-card h3 {
       font-size: 1.2rem;
       margin-bottom: 0.75rem;
@@ -530,12 +533,13 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero עם רקע וידאו -->
   <section id="home" class="hero">
+    <video class="hero-bg-video" src="forest.mp4" autoplay muted playsinline></video>
     <div class="hero-inner">
       <div class="hero-content">
-        <h1>עמיעד אבנר – מקצועיות, אמינות ושירות מכל הלב</h1>
-        <p>מקרקעין | ייפוי כוח מתמשך | צוואות</p>
+        <h1>עמיעד אבנר – יחס אישי. ליווי צמוד. שקט נפשי.</h1>
+        <p>מקרקעין | מיסוי מקרקעין | ייפוי כוח מתמשך | צוואות</p>
         <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">צור קשר עכשיו</button>
       </div>
       <div class="hero-boxes">
@@ -563,21 +567,22 @@
             <img src="maskara.png" alt="מיסוי מקרקעין" class="service-img" />
           </div>
           <h3>מיסוי מקרקעין</h3>
-          <p>ייצוג וייעוץ בדיני משפחה, גירושין, מזונות והסדרי ראייה.</p>
+          <p>המשרד מעניק ייעוץ וייצוג מקיף בתחום מיסוי מקרקעין – החל מהכנת דיווחים לרשות המסים, דרך טיפול בהשגות ובעררים, ועד ליווי בקבלת פטורים והקלות מס. בזכות ניסיון מוכח וחשיבה יצירתית, אנו מציעים פתרונות המותאמים אישית ללקוח, המובילים לחיסכון משמעותי ולתוצאות מיטביות.</p>
         </div>
         <div class="service-card">
           <div class="service-img-wrapper">
             <img src="wills.png" alt="צוואות" class="service-img" />
           </div>
           <h3>צוואות</h3>
-          <p>הכנת צוואה מקצועית שתבטיח את רצונכם ותשמור על שלום המשפחה.</p>
+          <p>עריכת צוואה היא החלטה משמעותית שמעניקה ודאות ושקט נפשי למשפחה. המשרד מלווה אתכם בתהליך ברגישות ובמקצועיות, ומוודא שהרצון שלכם יקבל ביטוי משפטי מחייב וברור..</p>
         </div>
         <div class="service-card">
           <div class="service-img-wrapper">
             <img src="mitma.png" alt="ייפוי כוח מתמשך" class="service-img" />
           </div>
           <h3>ייפוי כוח מתמשך</h3>
-          <p>ייעוץ ועריכת ייפוי כוח מתמשך על מנת להבטיח את הטיפול האחראי במקרה הצורך.</p>
+          <p>יפוי כוח מתמשך הוא מסמך משפטי המאפשר לכם לקבוע כבר היום מי יהיה מוסמך לקבל החלטות בשמכם – בעניינים אישיים, רפואיים ורכושיים – במקרה שבו לא תוכלו לעשות זאת בעתיד. בניגוד לאפוטרופסות שממונה על ידי בית המשפט, כאן אתם בוחרים מראש מי יפעל בשמכם ובאיזו דרך.
+המשרד מלווה אתכם בכל שלבי ההכנה, החל מהבנת הצרכים האישיים, דרך ניסוח מדויק וברור של המסמך, ועד ההפקדה אצל האפוטרופוס הכללי.</p>
         </div>
       </div>
     </div>
@@ -645,5 +650,33 @@
     </div>
   </footer>
   <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
+  <script>
+    // למנוע לופ - להשאיר על הפריים האחרון
+    document.addEventListener("DOMContentLoaded", function() {
+      var vid = document.querySelector('.hero-bg-video');
+      if (vid) {
+        vid.addEventListener('ended', function() {
+          vid.pause();
+          vid.currentTime = vid.duration; // לשמור על הפריים האחרון
+        });
+      }
+    });
+
+    // התאמת גובה hero-content לגובה של hero-boxes
+    function matchHeroContentHeight() {
+      var content = document.querySelector('.hero-content');
+      var boxes = document.querySelector('.hero-boxes');
+      if(content && boxes) {
+        content.style.minHeight = '';
+        var boxesHeight = boxes.offsetHeight;
+        var contentHeight = content.offsetHeight;
+        if(boxesHeight > contentHeight) {
+          content.style.minHeight = boxesHeight + "px";
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', matchHeroContentHeight);
+    window.addEventListener('resize', matchHeroContentHeight);
+  </script>
 </body>
 </html>
