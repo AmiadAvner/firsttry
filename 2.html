@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>עמיעד אבנר – משרד עורך דין</title>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      font-family: "Heebo", "Assistant", sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f8fbff 0%, #e8f4f8 100%);
+      color: #0a1929;
+      line-height: 1.6;
+    }
+    
+    /* הוספת אפקט parallax עדין */
+    .parallax-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.02) 0%, transparent 50%),
+                  radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
+      z-index: -1;
+      animation: parallaxMove 20s ease-in-out infinite;
+    }
+    
+    @keyframes parallaxMove {
+      0%, 100% { transform: translateX(0) translateY(0); }
+      25% { transform: translateX(-10px) translateY(-5px); }
+      50% { transform: translateX(5px) translateY(-10px); }
+      75% { transform: translateX(-5px) translateY(5px); }
+    }
+    
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(10, 25, 41, 0.95) 0%, rgba(15, 35, 65, 0.9) 100%);
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      margin-top: 70px;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .hero-bg-video {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      background: #c7e8f7;
+      opacity: 0.3;
+    }
+    
+    /* אפקט זוהר עדין */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+      animation: glow 8s ease-in-out infinite;
+      z-index: 1;
+    }
+    
+    @keyframes glow {
+      0%, 100% { transform: rotate(0deg); opacity: 0.3; }
+      50% { transform: rotate(180deg); opacity: 0.1; }
+    }
+    
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+      width: 100%;
+      max-width: 1100px;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .hero-content {
+      position: relative;
+      color: #ffffff;
+      background: rgba(255,255,255,0.98);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(10, 25, 41, 0.15), 0 8px 25px rgba(0, 0, 0, 0.1);
+      padding: 3.5rem 2.5rem 3rem 2.5rem;
+      max-width: 600px;
+      min-width: 350px;
+      margin: 0 auto;
+      border: 2px solid rgba(59, 130, 246, 0.1);
+      text-align: center;
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 280px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .hero-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 70px rgba(10, 25, 41, 0.2), 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .hero-content h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0a1929 !important;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      font-family: "Heebo", sans-serif;
+    }
+    
+    .hero-content p {
+      font-size: 1.15rem;
+      color: #1e3a5f !important;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    
+    .hero-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      flex: 1;
+      min-width: 180px;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .hero-box {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(10, 25, 41, 0.1), 0 3px 10px rgba(0, 0, 0, 0.05);
+      padding: 1.5em 0.8em;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #0a1929;
+      border: 2px solid rgba(59, 130, 246, 0.15);
+      letter-spacing: 0.5px;
+      transition: all 0.25s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .hero-box:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 35px rgba(10, 25, 41, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+    
+    .hero-box:hover::before {
+      left: 100%;
+    }
+    
+    @media (max-width: 900px) {
+      .hero-inner {
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 600px;
+        align-items: stretch;
+      }
+      .hero-content {
+        max-width: 100%;
+        min-width: unset;
+        padding: 2.5rem 2rem;
+      }
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .hero-boxes {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+        min-width: unset;
+      }
+      .hero-box {
+        min-width: 100px;
+        padding: 1em 0.5em;
+        font-size: 1rem;
+      }
+      .logo-image {
+        height: 50px;
+      }
+      .logo-text {
+        font-size: 1.13rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem 0;
+      }
+      nav ul { gap: 0.7rem; }
+      .logo-box { margin: 0.5rem 0; }
+      .phone-box { margin: 0.5rem 0; }
+      .hero-inner { gap: 1rem; }
+      .hero-boxes { gap: 0.8rem; }
+    }
+    
+    /* ווידוא שכל הטקסטים בצבע כהה */
+    .hero-content h1,
+    .hero-box,
+    .btn-primary,
+    .services h2,
+    .service-card h3,
+    .about-text-custom h2,
+    .contact h2,
+    .footer-inner p,
+    nav ul li a,
+    .logo-text {
+      color: #0a1929 !important;
+    }
+    .about-text-custom strong,
+    .about-highlight {
+      color: #1e3a5f !important;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(10, 25, 41, 0.08);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+      direction: rtl;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .logo-image {
+      height: 70px;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0a1929;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      display: inline-block;
+      font-family: "Heebo", sans-serif;
+    }
+    .phone-box {
+      display: inline-flex;
+      align-items: center;
+      border: 2px solid #d97706;
+      color: #d97706;
+      border-radius: 25px;
+      padding: 0.4em 1.2em;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #fff 0%, #fefbf7 100%);
+      gap: 0.4em;
+      margin-left: 1.5rem;
+      margin-right: 0;
+      cursor: default;
+      user-select: text;
+      transition: all 0.25s ease;
+      box-shadow: 0 3px 10px rgba(217, 119, 6, 0.1);
+    }
+    .phone-box .phone-icon {
+      margin-right: 0.4em;
+      vertical-align: middle;
+      transition: transform 0.25s ease;
+    }
+    .phone-number {
+      transition: all 0.3s cubic-bezier(.37,.37,.27,1.32);
+      display: inline-block;
+    }
+    .phone-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.2);
+      border-color: #b45309;
+    }
+    .phone-box:hover .phone-number {
+      font-size: 1.25rem;
+      color: #b45309;
+    }
+    .phone-box:hover .phone-icon {
+      transform: rotate(-5deg) scale(1.1);
+    }
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      font-size: 1.05rem;
+      color: #0a1929;
+      padding: 0.6rem 1rem;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 8px;
+      position: relative;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    nav ul li a:hover {
+      background: rgba(59, 130, 246, 0.08);
+      color: #1e40af;
+    }
+    nav ul li a:hover::after {
+      width: 80%;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #0a1929 0%, #1e3a5f 100%);
+      color: #fff !important;
+      padding: 0.9rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 20px rgba(10, 25, 41, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(10, 25, 41, 0.25);
+      background: linear-gradient(135deg, #1e3a5f 0%, #0a1929 100%);
+    }
+    
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+    
+    .services {
+      padding: 5rem 0;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(5px);
+    }
+    .services h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      color: #0a1929;
+      font-weight: 700;
+      font-family: "Heebo", sans-serif;
+      position: relative;
+    }
+    
+    .services h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+    .service-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      padding: 2rem 1.8rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(10, 25, 41, 0.08);
+      text-align: center;
+      transition: all 0.3s ease;
+      color: #0a1929;
+      border: 2px solid rgba(59, 130, 246, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(10, 25, 41, 0.15);
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+    
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .service-img-wrapper {
+      width: 130px;
+      height: 130px;
+      background: linear-gradient(135deg, #fff 0%, #f1f5f9 100%);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(10, 25, 41, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1.8rem;
+      padding: 0;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      border: 3px solid rgba(59, 130, 246, 0.1);
+    }
+    .service-img-wrapper:hover {
+      box-shadow: 0 15px 40px rgba(10, 25, 41, 0.12);
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+    .service-img {
+      width: 130px;
+      height: 130px;
+      max-width: none;
+      max-height: none;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+      transition: transform 0.3s ease;
+    }
+    .service-img-wrapper:hover .service-img {
+      transform: scale(1.1) rotate(-2deg);
+    }
+    .service-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 1rem;
+      color: #0a1929;
+      font-weight: 700;
+      font-family: "Heebo", sans-serif;
+    }
+    .service-card p {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.7;
+    }
+    
+    .about-section-custom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4em 0;
+      background: none;
+    }
+    .about-flex {
+      display: flex;
+      flex-direction: row;
+      gap: 3em;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.9) 100%);
+      border-radius: 25px;
+      box-shadow: 0 15px 50px rgba(10, 25, 41, 0.1);
+      padding: 3em 2.5em;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(59, 130, 246, 0.08);
+    }
+    .about-text-custom {
+      flex: 2;
+      font-size: 1.15em;
+      line-height: 1.8;
+      color: #0a1929;
+    }
+    .about-text-custom h2 {
+      font-size: 2.3em;
+      margin-bottom: 0.7em;
+      color: #0a1929;
+      font-weight: 700;
+      font-family: "Heebo", sans-serif;
+    }
+    .about-text-custom strong { 
+      color: #1e3a5f; 
+      font-weight: 600;
+    }
+    .about-highlight {
+      font-size: 1.2em;
+      line-height: 1.9;
+      color: #1e3a5f;
+      font-weight: 600;
+      margin-top: 2em;
+    }
+    .about-image-custom {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .about-image-custom img {
+      max-width: 450px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(10, 25, 41, 0.15);
+      object-fit: cover;
+      border: 4px solid rgba(255,255,255,0.8);
+      transition: transform 0.3s ease;
+    }
+    
+    .about-image-custom img:hover {
+      transform: scale(1.02);
+    }
+    
+    @media (max-width: 900px) {
+      .about-flex {
+        flex-direction: column-reverse;
+        padding: 2em 1.5em;
+        gap: 2em;
+      }
+      .about-image-custom img {
+        max-width: 250px;
+      }
+      .about-section-custom { padding: 3em 0; }
+    }
+    
+    .contact {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, rgba(248,250,252,0.8) 0%, rgba(241,245,249,0.9) 100%);
+      backdrop-filter: blur(5px);
+    }
+    .contact h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #0a1929;
+      font-weight: 700;
+      font-family: "Heebo", sans-serif;
+      position: relative;
+    }
+    
+    .contact h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .contact-phone-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 3em;
+      margin-top: -1em;
+    }
+    .contact-phone-icon {
+      width: 40px;
+      height: 40px;
+      color: #3b82f6;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 15px rgba(59, 130, 246, 0.2));
+      will-change: transform;
+    }
+    .contact-phone-row:hover .contact-phone-icon,
+    .contact-phone-icon:hover {
+      transform: scale(1.2) rotate(-5deg);
+      color: #1d4ed8;
+      filter: drop-shadow(0 6px 20px rgba(59, 130, 246, 0.3));
+    }
+    .contact-phone-number {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #0a1929;
+      font-family: "Heebo", sans-serif;
+      background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
+      border-radius: 25px;
+      padding: 0.5em 1.8em;
+      border: 2px solid rgba(59, 130, 246, 0.2);
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 20px rgba(10, 25, 41, 0.1);
+      user-select: text;
+      direction: ltr;
+    }
+    .contact-phone-row:hover .contact-phone-number,
+    .contact-phone-number:hover {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      color: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(10, 25, 41, 0.15);
+    }
+    
+    .contact-form {
+      max-width: 700px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(10, 25, 41, 0.1);
+      direction: rtl;
+      border: 2px solid rgba(59, 130, 246, 0.1);
+    }
+    .contact-form label {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+      color: #0a1929;
+      font-weight: 600;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      margin-bottom: 2rem;
+      border: 2px solid rgba(59, 130, 246, 0.2);
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-family: inherit;
+      color: #0a1929;
+      transition: all 0.25s ease;
+      background: rgba(255,255,255,0.8);
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+    .contact-form button {
+      background: linear-gradient(135deg, #0a1929 0%, #1e3a5f 100%);
+      color: #fff !important;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 20px rgba(10, 25, 41, 0.2);
+    }
+    .contact-form button:hover {
+      background: linear-gradient(135deg, #1e3a5f 0%, #0a1929 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(10, 25, 41, 0.25);
+    }
+    
+    footer {
+      background: linear-gradient(135deg, #0a1929 0%, #1e3a5f 100%);
+      color: #ffffff;
+      padding: 3rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-inner nav ul {
+      display: flex;
+      gap: 2rem;
+    }
+    .footer-inner nav ul li a {
+      color: #cbd5e1 !important;
+      font-size: 1rem;
+      transition: all 0.25s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+    .footer-inner nav ul li a:hover {
+      color: #f1f5f9 !important;
+      background: rgba(255,255,255,0.1);
+    }
+    .footer-inner p {
+      font-size: 0.95rem;
+      color: #e2e8f0 !important;
+      text-align: center;
+    }
+    
+    /* אנימציות נוספות */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .service-card,
+    .about-flex,
+    .contact-form {
+      animation: fadeInUp 0.6s ease-out;
+    }
+    
+    .service-card:nth-child(2) { animation-delay: 0.1s; }
+    .service-card:nth-child(3) { animation-delay: 0.2s; }
+    .service-card:nth-child(4) { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+  <div class="parallax-bg"></div>
+  
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo-box">
+        <img src="logo.png" alt="לוגו עמיעד אבנר – משרד עורך דין" class="logo-image" />
+        <span class="logo-text">עמיעד אבנר – משרד עורך דין</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">דף הבית</a></li>
+          <li><a href="#services">תחומי התמחות</a></li>
+          <li><a href="#about">אודות</a></li>
+          <li><a href="#contact">צרו קשר</a></li>
+          <div class="phone-box">
+            <svg xmlns="http://www.w3.org/2000/svg" class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .93 3.67A2 2 0 0 1 2.92 1.5h3a2 2 0 0 1 2 1.72c.13 1.21.36 2.39.7 3.53a2 2 0 0 1-.45 2.11l-1.27 1.28a16 16 0 0 0 6.25 6.25l1.28-1.27a2 2 0 0 1 2.11-.45c1.14.34 2.32.57 3.53.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="phone-number">052-450-0645</span>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero עם רקע וידאו -->
+  <section id="home" class="hero">
+    <video class="hero-bg-video" src="forest.mp4" autoplay muted playsinline></video>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1>עמיעד אבנר – משרד בוטיק.</h1>
+        <p>מקרקעין | מיסוי מקרקעין | ייפוי כוח מתמשך | צוואות</p>
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">צור קשר עכשיו</button>
+      </div>
+      <div class="hero-boxes">
+        <div class="hero-box">אמינות</div>
+        <div class="hero-box">מקצועיות</div>
+        <div class="hero-box">שירותיות</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>תחומי התמחות</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="nadlanphoto.png" alt="מקרקעין" class="service-img" />
+          </div>
+          <h3>מקרקעין</h3>
+          <p>רכישת או מכירת נכס היא אחת העסקאות המשמעותיות בחיים ודורשת ליווי משפטי קפדני. המשרד מעניק ייעוץ וליווי בכל סוגי עסקאות הנדל״ן: נדל״ן מניב, נדל״ן למגורים וכן עסקאות קרקע. המשרד מטפל בכל שלבי העסקה, החל מבדיקות מקדימות בטאבו וברשויות, דרך ניסוח ובדיקת הסכמים ועד להשלמת העסקה בפועל ורישום הזכויות. בזכות ניסיון עשיר והיכרות מעמיקה עם התחום, המשרד מגן על האינטרסים של לקוחותיו ומונע טעויות יקרות.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="maskara.png" alt="מיסוי מקרקעין" class="service-img" />
+          </div>
+          <h3>מיסוי מקרקעין</h3>
+          <p>המשרד מעניק ייעוץ וייצוג מקיף בתחום מיסוי מקרקעין – החל מהכנת דיווחים לרשות המסים, דרך טיפול בהשגות ובעררים, ועד ליווי בקבלת פטורים והקלות מס. בזכות ניסיון מוכח וחשיבה יצירתית, המשרד מציע פתרונות המותאמים אישית ללקוח, המובילים לחיסכון משמעותי ולתוצאות מיטביות.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="wills.png" alt="צוואות" class="service-img" />
+          </div>
+          <h3>צוואות</h3>
+          <p>עריכת צוואה היא החלטה משמעותית שמעניקה ודאות ושקט נפשי למשפחה. המשרד מלווה אתכם בתהליך ברגישות ובמקצועיות, ומוודא שהרצון שלכם יקבל ביטוי משפטי מחייב וברור.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="mitma.png" alt="ייפוי כוח מתמשך" class="service-img" />
+          </div>
+          <h3>ייפוי כוח מתמשך</h3>
+          <p>יפוי כוח מתמשך הוא מסמך משפטי המאפשר לכם לקבוע כבר היום מי יהיה מוסמך לקבל החלטות בשמכם – בעניינים אישיים, רפואיים ורכושיים – במקרה שבו לא תוכלו לעשות זאת בעתיד. בניגוד לאפוטרופסות שממונה על ידי בית המשפט, כאן אתם בוחרים מראש מי יפעל בשמכם ובאיזו דרך.
+המשרד מלווה אתכם בכל שלבי ההכנה, החל מהבנת הצרכים האישיים, דרך ניסוח מדויק וברור של המסמך, ועד ההפקדה אצל האפוטרופוס הכללי.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About (חדש) -->
+  <section id="about" class="about-section-custom">
+    <div class="container about-flex">
+      <div class="about-text-custom">
+        <h2>קצת עליי</h2>
+        <p>
+           בעל ניסיון של למעלה מעשור בליווי לקוחות וייצוגם במגוון תחומים משפטיים.<br>
+           דוגל בגישה אישית, מקצועית ורגישה – תוך הקשבה אמיתית לצרכי כל לקוח והתאמת פתרונות משפטיים מדויקים וייחודיים עבורו.
+        </p>
+        <p>
+          אני בעל תואר ראשון במשפטים (<strong>בהצטיינות</strong>) מאוניברסיטת בר-אילן ואת דרכי המקצועית התחלתי במשרדי עורכי הדין המובילים בישראל:<br>
+          במחלקת מיסוי מקרקעין של משרד ארנון תדמור-לוי, מחלקת המקרקעין במשרד וקסלר ברגמן, ובמשרד המיסים אודי ברזלי.
+        </p>
+        <p>
+          <strong>האני מאמין שלי:</strong> "סוף מעשה במחשבה תחילה".<br>
+         אני מאמין שתכנון משפטי מקדים, יסודי ומותאם לצרכים הייחודיים של הלקוח – הוא המפתח להצלחה ולשקט הנפשי שלך.
+        </p>
+      </div>
+      <div class="about-image-custom">
+        <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>צרו קשר</h2>
+      <div class="contact-phone-row" tabindex="0">
+        <svg class="contact-phone-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
+          <circle cx="16" cy="16" r="16" fill="#e7effb"/>
+          <path d="M22.2 23.7c-3.8-1.3-6.9-4.4-8.2-8.2l-0.4-1.1c-0.2-0.7 0-1.4 0.5-1.9l1.1-1.1c0.6-0.6 0.6-1.5 0-2l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1 1c-0.8 0.8-1.1 2-0.8 3.1 1.5 5.1 5.7 9.2 10.8 10.8 1.1 0.3 2.3 0 3.1-0.8l1-1c0.6-0.6 0.6-1.5 0-2.1l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1.1 1.1c-0.5-0.5-1.2-0.7-1.9-0.5l-1.1-0.4z" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        <span class="contact-phone-number">0524-500645</span>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xyzjezoe" method="POST">
+        <label for="name">שם מלא</label>
+        <input type="text" id="name" name="שם מלא" placeholder="הקלידו את שמכם המלא" required />
+        <label for="phone">טלפון</label>
+        <input type="tel" id="phone" name="טלפון" placeholder="הקלידו מספר טלפון" required />
+        <label for="email">אימייל</label>
+        <input type="email" id="email" name="אימייל" placeholder="הקלידו כתובת אימייל" required />
+        <label for="message">תוכן הפנייה</label>
+        <textarea id="message" name="פנייה" placeholder="כתבו כאן את הפנייה שלכם..." required></textarea>
+        <button type="submit">שלח</button>
+      </form>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container footer-inner">
+      <nav>
+        <ul>
+          <li><a href="#home">דף הבית</a></li>
+          <li><a href="#services">תחומי התמחות</a></li>
+          <li><a href="#about">אודות</a></li>
+          <li><a href="#contact">צרו קשר</a></li>
+        </ul>
+      </nav>
+      <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורך דין</p>
+    </div>
+  </footer>
+  
+  <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
+  <script>
+    // למנוע לופ - להשאיר על הפריים האחרון
+    document.addEventListener("DOMContentLoaded", function() {
+      var vid = document.querySelector('.hero-bg-video');
+      if (vid) {
+        vid.addEventListener('ended', function() {
+          vid.pause();
+          vid.currentTime = vid.duration; // לשמור על הפריים האחרון
+        });
+      }
+      
+      // אנימציה חלקה לכרטיסי שירות
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationDelay = (Array.from(entry.target.parentNode.children).indexOf(entry.target) * 0.1) + 's';
+            entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+          }
+        });
+      });
+      
+      document.querySelectorAll('.service-card').forEach((card) => {
+        observer.observe(card);
+      });
+    });
+
+    // התאמת גובה hero-content לגובה של hero-boxes
+    function matchHeroContentHeight() {
+      var content = document.querySelector('.hero-content');
+      var boxes = document.querySelector('.hero-boxes');
+      if(content && boxes) {
+        content.style.minHeight = '';
+        var boxesHeight = boxes.offsetHeight;
+        var contentHeight = content.offsetHeight;
+        if(boxesHeight > contentHeight) {
+          content.style.minHeight = boxesHeight + "px";
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', matchHeroContentHeight);
+    window.addEventListener('resize', matchHeroContentHeight);
+  </script>
+</body>
+</html>
