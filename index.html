@@ -635,20 +635,60 @@
         <button type="submit">שלח</button>
       </form>
     </div>
-  </section>
-  <footer>
-    <div class="container footer-inner">
-      <nav>
-        <ul>
-          <li><a href="#home">דף הבית</a></li>
-          <li><a href="#services">תחומי התמחות</a></li>
-          <li><a href="#about">אודות</a></li>
-          <li><a href="#contact">צרו קשר</a></li>
-        </ul>
-      </nav>
-      <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורך דין</p>
-    </div>
-  </footer>
+  </section><style>
+  footer{
+    background:#123169;
+    color:#fff;
+    padding:2rem 0;
+  }
+  .footer-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1rem;
+    text-align:center;
+  }
+  .footer-inner nav ul{
+    list-style:none;
+    display:flex;
+    gap:1rem;
+    padding:0;
+    margin:0;
+  }
+  .footer-inner nav a{
+    color:#b7c3dc !important;       /* צבע ברירת מחדל */
+    text-decoration:none;
+    font-size:.95rem;
+    transition:color .25s, text-decoration-color .25s;
+  }
+  .footer-inner nav a:hover,
+  .footer-inner nav a:focus{
+    color:#000000 !important;        /* שחור על hover/focus, כפי שביקשת */
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+  .footer-inner p{
+    color:#e2eaf9 !important;
+    font-size:.9rem;
+    margin:0;
+  }
+</style>
+
+<footer role="contentinfo">
+  <div class="container footer-inner">
+    <nav aria-label="קישורי תחתית">
+      <ul>
+        <li><a href="#home">דף הבית</a></li>
+        <li><a href="#services">תחומי התמחות</a></li>
+        <li><a href="#about">אודות</a></li>
+        <li><a href="#contact">צרו קשר</a></li>
+        <li><a href="/firsttry/privacy.html">מדיניות פרטיות</a></li>
+        <li><a href="/firsttry/terms.html">תנאי שימוש</a></li>
+      </ul>
+    </nav>
+    <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורך דין</p>
+  </div>
+</footer>
   <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
   <script>
     // למנוע לופ - להשאיר על הפריים האחרון
