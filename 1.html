@@ -381,9 +381,10 @@
     </section>
   </main>
 
-  <footer role="contentinfo">
+  
+  <footer>
     <div class="container footer-inner">
-      <nav aria-label="תפריט תחתון">
+      <nav>
         <ul>
           <li><a href="#home">דף הבית</a></li>
           <li><a href="#services">תחומי התמחות</a></li>
@@ -394,24 +395,32 @@
       <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורך דין</p>
     </div>
   </footer>
-
-  <!-- נגישות -->
-  <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js" defer></script>
-
+  
+  <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
   <script>
-    // שמירת הפריים האחרון של הווידאו + נגישות לתעדוף העדפת משתמש
+    // למנוע לופ - להשאיר על הפריים האחרון
     document.addEventListener("DOMContentLoaded", function() {
       var vid = document.querySelector('.hero-bg-video');
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches && vid) {
-        vid.removeAttribute('autoplay');
-        vid.pause();
-      }
       if (vid) {
         vid.addEventListener('ended', function() {
           vid.pause();
-          vid.currentTime = vid.duration;
+          vid.currentTime = vid.duration; // לשמור על הפריים האחרון
         });
       }
+      
+      // אנימציה חלקה לכרטיסי שירות
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationDelay = (Array.from(entry.target.parentNode.children).indexOf(entry.target) * 0.1) + 's';
+            entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+          }
+        });
+      });
+      
+      document.querySelectorAll('.service-card').forEach((card) => {
+        observer.observe(card);
+      });
     });
 
     // התאמת גובה hero-content לגובה של hero-boxes
