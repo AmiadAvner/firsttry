@@ -16,7 +16,6 @@
     }
     .hero {
       position: relative;
-      background: none;
       min-height: 400px;
       display: flex;
       align-items: center;
@@ -29,7 +28,7 @@
     }
     .hero-bg-video {
       position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -50,12 +49,11 @@
       justify-content: center;
     }
     .hero-content {
-      position: relative;
       color: #18305b;
       background: rgba(255,255,255,0.97);
       border-radius: 14px;
       box-shadow: 0 6px 24px rgba(34, 53, 84, 0.07);
-      padding: 3rem 2rem 2rem 2rem;
+      padding: 3rem 2rem 2rem;
       max-width: 540px;
       min-width: 320px;
       margin: 0 auto;
@@ -95,28 +93,10 @@
       box-shadow: 0 3px 16px rgba(44,99,184,0.15);
     }
     @media (max-width: 900px) {
-      .hero-inner {
-        flex-direction: column;
-        gap: 1.2rem;
-        max-width: 600px;
-        align-items: stretch;
-      }
-      .hero-content {
-        max-width: 100%;
-        min-width: unset;
-      }
-      .hero-boxes {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 1.5rem;
-        min-width: unset;
-      }
-      .hero-box {
-        min-width: 90px;
-        padding: 0.8em 0.2em;
-        font-size: 1rem;
-      }
+      .hero-inner { flex-direction: column; gap: 1.2rem; max-width: 600px; align-items: stretch; }
+      .hero-content { max-width: 100%; min-width: unset; }
+      .hero-boxes { flex-direction: row; justify-content: center; gap: 1rem; margin-top: 1.5rem; min-width: unset; }
+      .hero-box { min-width: 90px; padding: 0.8em 0.2em; font-size: 1rem; }
       .logo-image { height: 50px; }
       .logo-text { font-size: 1.13rem; }
     }
@@ -142,22 +122,21 @@
     .about-highlight { color: #10325e !important; }
     .container { width: 90%; max-width: 1200px; margin: 0 auto; }
     header {
-      background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       position: fixed; top: 0; width: 100%; z-index: 100;
     }
     .header-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; direction: rtl; }
     .logo-box { display: flex; align-items: center; gap: 0.6rem; }
     .logo-image { height: 70px; width: auto; display: inline-block; vertical-align: middle; }
-    .logo-text { font-size: 1.4rem; font-weight: 700; color: #123169; margin: 0 0.5rem; display: inline-block; }
+    .logo-text { font-size: 1.4rem; font-weight: 700; margin: 0 0.5rem; display: inline-block; }
     .phone-box {
       display: inline-flex; align-items: center; border: 2px solid #c06a27; color: #c06a27;
       border-radius: 999px; padding: 0.3em 1em; font-size: 1.05rem; font-weight: 500;
-      background: #fff; gap: 0.3ימ; margin-left: 1.5rem; cursor: default; user-select: text; transition: box-shadow 0.2s;
+      background: #fff; gap: 0.3em; margin-left: 1.5rem; cursor: default; user-select: text; transition: box-shadow 0.2s;
     }
     .phone-box .phone-icon { margin-right: 0.4em; vertical-align: middle; }
-    .phone-number {
-      transition: font-size 0.25s cubic-bezier(.37,.37,.27,1.32), color 0.2s; display: inline-block;
-    }
+    .phone-number { transition: font-size 0.25s cubic-bezier(.37,.37,.27,1.32), color 0.2s; display: inline-block; }
     .phone-box:hover .phone-number, .phone-number:hover { font-size: 1.35rem; color: #8a470a; }
     nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
     nav ul li a { font-size: 1rem; color: #123169; padding: 0.5rem 0.75rem; transition: background-color 0.2s; text-decoration: none; }
@@ -167,14 +146,14 @@
       border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.2s, box-shadow 0.2s; box-shadow: 0 2px 8px #e7ecf4;
     }
     .btn-primary:hover { background-color: #0d203a; box-shadow: 0 2px 12px #b8c7dd; }
+
     .services { padding: 4rem 0; background-color: #ffffffcc; }
-    .services h2 { text-align: center; margin-bottom: 2rem; font-size: 2rem; color: #123169; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
-    }
+    .services h2 { text-align: center; margin-bottom: 2rem; font-size: 2rem; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
     .service-card {
-      background-color: #fdfdfד; padding: 1.5rem; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      text-align: center; transition: transform 0.2s, box-shadow 0.2s; color: #123169; border: 1px solid #b3cae6;
+      background-color: #fdfdfd; padding: 1.5rem; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      text-align: center; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #b3cae6;
     }
     .service-card:hover { transform: translateY(-5px); box-shadow: 0 3px 8px rgba(0,0,0,0.15); }
     .service-img-wrapper {
@@ -184,17 +163,17 @@
     .service-img-wrapper:hover { box-shadow: 0 4px 24px #b8c7dd66; }
     .service-img { width: 120px; height: 120px; object-fit: cover; display: block; margin: 0 auto; transition: transform 0.2s; }
     .service-img-wrapper:hover .service-img { transform: scale(1.08) rotate(-4deg); }
-    .service-card h3 { font-size: 1.2rem; margin-bottom: 0.75rem; color: #123169; }
+    .service-card h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
     .service-card p { font-size: 0.95rem; color: #2a426a; }
-    .about-section-custom { max-width: 1000px; margin: 0 auto; padding: 3em 0; background: none; }
+
+    .about-section-custom { max-width: 1000px; margin: 0 auto; padding: 3em 0; }
     .about-flex {
       display: flex; flex-direction: row; gap: 2.5em; align-items: center; background: #fafbfcf0;
       border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); padding: 2.2em 2em;
     }
-    .about-text-custom { flex: 2; font-size: 1.1em; line-height: 1.9; color: #123169; }
-    .about-text-custom h2 { font-size: 2em; margin-bottom: 0.5em; color: #123169; font-weight: bold; }
-    .about-text-custom strong { color: #10325e; }
-    .about-highlight { font-size: 1.15em; line-height: 2; color: #10325e; font-weight: bold; margin-top: 2em; }
+    .about-text-custom { flex: 2; font-size: 1.1em; line-height: 1.9; }
+    .about-text-custom h2 { font-size: 2em; margin-bottom: 0.5em; font-weight: bold; }
+    .about-highlight { font-size: 1.15em; line-height: 2; font-weight: bold; margin-top: 2em; }
     .about-image-custom { flex: 1; display: flex; justify-content: center; align-items: center; }
     .about-image-custom img {
       max-width: 410px; width: 100%; border-radius: 16px; box-shadow: 0 2px 16px rgba(34,53,84,0.10); object-fit: cover;
@@ -207,7 +186,7 @@
 
     /* === Contact === */
     .contact { padding: 4rem 0; background-color: #f4f6f8cc; }
-    .contact h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #123169; }
+    .contact h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
     .contact-phone-row {
       display: flex; justify-content: center; align-items: center; gap: 0.7em;
       margin-bottom: 2.2em; margin-top: -1.1em;
@@ -221,12 +200,10 @@
     }
     .contact-phone-number {
       font-size: 1.32rem; font-weight: 700; letter-spacing: 0.1em; color: #18305b; font-family: inherit;
-      background: #e9f2fa; border-radius: 999px; padding: 0.35em 1.35em; border: 1.2px solid #ד5e2f4;
+      background: #e9f2fa; border-radius: 999px; padding: 0.35em 1.35em; border: 1.2px solid #d5e2f4;
       transition: background 0.19s, color 0.17s; box-shadow: 0 2px 12px #c6d9ee13; user-select: text; direction: ltr;
     }
-    .contact-phone-row:hover .contact-phone-number, .contact-phone-number:hover {
-      background: #d4e6fb; color: #1250a5;
-    }
+    .contact-phone-row:hover .contact-phone-number, .contact-phone-number:hover { background: #d4e6fb; color: #1250a5; }
 
     .contact-grid {
       display: grid;
@@ -243,20 +220,17 @@
       background:#fff; border:1px solid #b3cae6; border-radius:14px; padding:1.5rem;
       box-shadow:0 1px 6px rgba(44,99,184,0.07);
     }
-    .contact-card h3 { margin-bottom: .6rem; font-size:1.25rem; }
+    .contact-card h3 { margin-bottom: .25rem; font-size:1.25rem; }
+    .contact-card .sub { margin-bottom: .8rem; color:#2a426a; font-size:.95rem; }
     .contact-card p { color:#2a426a; }
 
     .contact-form {
       max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 2rem;
       border-radius: 14px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); direction: rtl; border:1px solid #b3cae6;
     }
-    .contact-form .form-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-    }
-    @media (max-width: 600px){
-      .contact-form .form-row { grid-template-columns: 1fr; }
-    }
-    .contact-form label { display: block; font-size: 0.95rem; margin-bottom: 0.35rem; color: #123169; }
+    .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px){ .contact-form .form-row { grid-template-columns: 1fr; } }
+    .contact-form label { display: block; font-size: 0.95rem; margin-bottom: 0.35rem; }
     .contact-form input, .contact-form select, .contact-form textarea {
       width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #b3cae6; border-radius: 6px;
       font-size: 1rem; font-family: inherit; color: #123169; background:#fff;
@@ -264,15 +238,12 @@
     .contact-form textarea { resize: vertical; min-height: 120px; }
     .contact-form .consent { display:flex; align-items:flex-start; gap:.5rem; margin:.5rem 0 1rem; font-size:.95rem; }
     .contact-form .consent input { margin-top: .2rem; }
-    .contact-form .status {
-      display:none; margin-top:.5rem; font-weight:700;
-    }
+    .contact-form .status { display:none; margin-top:.5rem; font-weight:700; }
     .contact-form .status.ok { color:#0a7d25; }
     .contact-form .status.err { color:#a32121; }
     .contact-form button {
       background-color: #123169; color: #fff !important; padding: 0.75rem 1.5rem; font-size: 1rem;
-      border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s;
-      width: 100%;
+      border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s; width: 100%;
     }
     .contact-form button:hover { background-color: #0d203a; }
 
@@ -307,7 +278,7 @@
     </div>
   </header>
 
-  <!-- Hero עם רקע וידאו -->
+  <!-- Hero -->
   <section id="home" class="hero">
     <video class="hero-bg-video" src="forest.mp4" autoplay muted playsinline></video>
     <div class="hero-inner">
@@ -362,7 +333,7 @@
     </div>
   </section>
 
-  <!-- About (חדש) -->
+  <!-- About -->
   <section id="about" class="about-section-custom">
     <div class="container about-flex">
       <div class="about-text-custom">
@@ -400,13 +371,22 @@
       </div>
 
       <div class="contact-grid" role="region" aria-label="פרטי התקשרות וטופס">
-        <!-- פרטי התקשרות קצרים -->
+        <!-- כרטיס צד ימין/שמאל: כותרות ואייקונים -->
         <aside class="contact-card" aria-label="פרטי התקשרות">
-          <h3>פרטים מהירים</h3>
-          <p><strong>טלפון:</strong> <a href="tel:0524500645" style="color:#123169;">052-4500645</a></p>
-          <p><strong>אימייל:</strong> <a href="mailto:office@amiadavner.com" style="color:#123169;">office@amiadavner.com</a></p>
-          <p><strong>שעות פעילות:</strong> א׳–ה׳ 9:00–18:00 (וגם בתיאום)</p>
-          <p style="margin-top:.8rem; font-size:.95rem; color:#2a426a;">מוזמנים להשאיר פרטים ונחזור אליכם בהקדם.</p>
+          <h3>השאירו פרטים או צרו איתנו קשר</h3>
+          <div class="sub">פרטים ליצירת קשר</div>
+
+          <!-- טלפון עם אייקון במקום המילה "טלפון" -->
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:-3px; margin-left:6px;" viewBox="0 0 24 24" fill="none" stroke="#123169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .93 3.67 2 2 0 0 1 2.92 1.5h3a2 2 0 0 1 2 1.72c.13 1.21.36 2.39.7 3.53a2 2 0 0 1-.45 2.11l-1.27 1.28a16 16 0 0 0 6.25 6.25l1.28-1.27a2 2 0 0 1 2.11-.45c1.14.34 2.32.57 3.53.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:0524500645" style="color:#123169;">052-4500645</a>
+          </p>
+
+          <!-- אימייל עם אייקון מעטפה במקום המילה "אימייל" -->
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:-3px; margin-left:6px;" viewBox="0 0 24 24" fill="none" stroke="#123169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <a href="mailto:office@amiadavner.com" style="color:#123169;">office@amiadavner.com</a>
+          </p>
         </aside>
 
         <!-- הטופס -->
@@ -418,38 +398,27 @@
             </div>
             <div>
               <label for="phone">טלפון *</label>
-              <input id="phone" name="phone" type="tel" inputmode="tel" pattern="[0-9+\-()\s]{8,}" required placeholder="לדוג׳ 052-4500645">
+              <!-- הוסר ה-placeholder עם הדוגמה -->
+              <input id="phone" name="phone" type="tel" inputmode="tel" pattern="[0-9+\-()\s]{8,}" required>
             </div>
           </div>
 
-          <div class="form-row">
-            <div>
-              <label for="email">אימייל</label>
-              <input id="email" name="email" type="email" autocomplete="email" placeholder="לא חובה">
-            </div>
-            <div>
-              <label for="topic">נושא הפנייה</label>
-              <select id="topic" name="topic">
-                <option value="עסקת מקרקעין">עסקת מקרקעין</option>
-                <option value="מיסוי מקרקעין">מיסוי מקרקעין</option>
-                <option value="ייפוי כוח מתמשך">ייפוי כוח מתמשך</option>
-                <option value="צוואות">צוואות</option>
-                <option value="אחר">אחר</option>
-              </select>
-            </div>
+          <!-- הוסר שדה "נושא הפנייה" בהתאם לבקשתך -->
+
+          <div>
+            <label for="email">אימייל</label>
+            <input id="email" name="email" type="email" autocomplete="email">
           </div>
 
           <div>
             <label for="message">איך אפשר לעזור?</label>
-            <textarea id="message" name="message" required placeholder="כמה מילים על הפנייה שלך"></textarea>
+            <textarea id="message" name="message" required></textarea>
           </div>
 
-          <!-- שדה honeypot נגד ספאם (לא למלא) -->
+          <!-- honeypot נגד ספאם -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-          <!-- נושא קבוע במיילים שלך -->
           <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - צור קשר">
-          <!-- בקשת תגובה כ-JSON -->
           <input type="hidden" name="_format" value="json">
 
           <label class="consent">
@@ -503,7 +472,7 @@
   <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
 
   <script>
-    // למנוע לופ - להשאיר על הפריים האחרון
+    // עצירת הווידאו על הפריים האחרון
     document.addEventListener("DOMContentLoaded", function() {
       var vid = document.querySelector('.hero-bg-video');
       if (vid) {
@@ -534,7 +503,6 @@
     (function(){
       const form = document.getElementById('contact-form');
       const statusEl = document.getElementById('form-status');
-
       if (!form) return;
 
       form.addEventListener('submit', async function(e){
@@ -544,7 +512,6 @@
         statusEl.textContent = 'שולחת...';
 
         const endpoint = form.getAttribute('action');
-
         try {
           const data = new FormData(form);
           const res = await fetch(endpoint, {
@@ -562,7 +529,7 @@
             statusEl.className = 'status err';
             statusEl.textContent = out.errors && out.errors.length
               ? 'שגיאה: ' + out.errors.map(e=>e.message).join(', ')
-              : 'אירעה תקלה בשליחה. נסה/י שוב מאוחר יותר.';
+              : 'אירעה תקלה בשליחה. נסי/ה שוב מאוחר יותר.';
           }
         } catch(err){
           statusEl.className = 'status err';
