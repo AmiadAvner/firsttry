@@ -298,7 +298,8 @@
 
   <!-- Hero -->
   <section id="home" class="hero">
-    <video class="hero-bg-video" src="forest.mp4" autoplay muted playsinline></video>
+ <video class="hero-bg-video" src="forest.mp4" autoplay muted playsinline loop></video>
+
     <div class="hero-inner">
       <div class="hero-content">
         <h1>עמיעד אבנר – משרד בוטיק.</h1>
@@ -536,5 +537,13 @@
       });
     })();
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const vid = document.querySelector(".hero-bg-video");
+  if (!vid) return;
+  vid.playbackRate = 0.15; // כמה איטי — תוכל לשנות 0.1–0.3
+});
+</script>
+
 </body>
 </html>
