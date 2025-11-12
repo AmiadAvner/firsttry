@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3EFEEM45C4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3EFEEM45C4');
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>עמיעד אבנר – משרד עורך דין</title>
+  <title>עמיעד אבנר – משרד עורכי דין</title>
+
+  <!-- Assistant כגיבוי בלבד -->
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
+    /* טעינת הפונט המקומי שהעלית */
+    @font-face {
+      font-family: "Abraham";
+      src: url("hillelclm-medium-webfont.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     html, body {
-      font-family: "Assistant", sans-serif;
+      /* שימוש בפונט Abraham כברירת־מחדל לכל האתר, עם גיבויים */
+      font-family: "Abraham", "Assistant", Arial, sans-serif;
       min-height: 100vh;
       background: #dbeaf7 url('clouds-bg.png') center center / cover no-repeat fixed;
       color: #123169;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-synthesis: weight style; /* מאפשר הדמיית Bold/Italic במקרה שאין משקלים נוספים */
     }
+
     .hero {
       position: relative;
       min-height: 400px;
@@ -260,8 +287,8 @@
   <header>
     <div class="container header-inner">
       <div class="logo-box">
-        <img src="logo.png" alt="לוגו עמיעד אבנר – משרד עורך דין" class="logo-image" />
-        <span class="logo-text">עמיעד אבנר – משרד עורך דין</span>
+        <img src="logo.png" alt="לוגו עמיעד אבנר – משרד עורכי דין" class="logo-image" />
+        <span class="logo-text">עמיעד אבנר – משרד עורכי דין</span>
       </div>
       <nav>
         <ul>
@@ -283,9 +310,9 @@
     <video class="hero-bg-video" src="forest.mp4" autoplay muted playsinline></video>
     <div class="hero-inner">
       <div class="hero-content">
-        <h1>עמיעד אבנר – משרד בוטיק.</h1>
-        <p>מקרקעין | מיסוי מקרקעין | ייפוי כוח מתמשך | צוואות</p>
-        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">צור קשר עכשיו</button>
+        <h1>עמיעד אבנר – משרד בוטיק</h1>
+        <p>מקרקעין | מיסוי מקרקעין | ייפוי כוח מתמשך | צוואות</p><br>
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">צרו קשר עכשיו</button>
       </div>
       <div class="hero-boxes">
         <div class="hero-box">אמינות</div>
@@ -305,7 +332,8 @@
             <img src="nadlanphoto.png" alt="מקרקעין" class="service-img" />
           </div>
           <h3>מקרקעין</h3>
-          <p>רכישת או מכירת נכס היא אחת העסקאות המשמעותיות בחיים ודורשת ליווי משפטי קפדני. המשרד מעניק ייעוץ וליווי בכל סוגי עסקאות הנדל״ן: נדל״ן מניב, נדל״ן למגורים וכן עסקאות קרקע. המשרד מטפל בכל שלבי העסקה, החל מבדיקות מקדימות, דרך ניסוח ובדיקת הסכמים ועד להשלמת העסקה בפועל ורישום הזכויות. בזכות ניסיון עשיר והיכרות מעמיקה עם התחום, המשרד מגן על האינטרסים של לקוחותיו ומונע טעויות יקרות.</p>
+          <p>רכישת או מכירת נכס היא צעד משמעותי הדורש ליווי משפטי מדויק. המשרד מלווה עסקאות נדל״ן למגורים, נדל״ן מניב וכן עסקאות רכישה ומכירה של קרקעות ומגרשים, משלב הבדיקות המקדימות, דרך ניהול המשא ומתן וניסוח ההסכמים, ועד לרישום הזכויות והשלמת העסקה.
+הניסיון המצטבר וההיכרות העמוקה עם ההיבטים המעשיים והרגולטוריים מבטיחים הגנה מלאה על האינטרסים של לקוחות המשרד ומניעת סיכונים וטעויות.</p>
         </div>
         <div class="service-card">
           <div class="service-img-wrapper">
@@ -360,29 +388,21 @@
   <!-- Contact (עם טופס פעיל ל-Formspree) -->
   <section id="contact" class="contact" aria-labelledby="contact-title">
     <div class="container">
-      <h2 id="contact-title"> השאירו פרטים או צרו עימנו קשר</h2>
-
-     
+      <h2 id="contact-title"> השאירו פרטים או צרו קשר</h2>
 
       <div class="contact-grid" role="region" aria-label="פרטי התקשרות וטופס">
-        <!-- כרטיס צד ימין/שמאל: כותרות ואייקונים -->
         <aside class="contact-card" aria-label="פרטי התקשרות">
           <h3>פרטים ליצירת קשר</h3>
-
-          <!-- טלפון עם אייקון במקום המילה "טלפון" -->
           <p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:-3px; margin-left:6px;" viewBox="0 0 24 24" fill="none" stroke="#123169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .93 3.67 2 2 0 0 1 2.92 1.5h3a2 2 0 0 1 2 1.72c.13 1.21.36 2.39.7 3.53a2 2 0 0 1-.45 2.11l-1.27 1.28a16 16 0 0 0 6.25 6.25l1.28-1.27a2 2 0 0 1 2.11-.45c1.14.34 2.32.57 3.53.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:-3px; margin-left:6px;" viewBox="0 0 24 24" fill="none" stroke="#123169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
             <a href="tel:0524500645" style="color:#123169;">052-4500645</a>
           </p>
-
-          <!-- אימייל עם אייקון מעטפה במקום המילה "אימייל" -->
           <p>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:-3px; margin-left:6px;" viewBox="0 0 24 24" fill="none" stroke="#123169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
             <a href="mailto:office@amiadavner.com" style="color:#123169;">office@amiadavner.co.il</a>
           </p>
         </aside>
 
-        <!-- הטופס -->
         <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/mgvndwpv" novalidate>
           <div class="form-row">
             <div>
@@ -391,12 +411,9 @@
             </div>
             <div>
               <label for="phone">טלפון *</label>
-              <!-- הוסר ה-placeholder עם הדוגמה -->
               <input id="phone" name="phone" type="tel" inputmode="tel" pattern="[0-9+\-()\s]{8,}" required>
             </div>
           </div>
-
-          <!-- הוסר שדה "נושא הפנייה" בהתאם לבקשתך -->
 
           <div>
             <label for="email">אימייל</label>
@@ -408,10 +425,8 @@
             <textarea id="message" name="message" required></textarea>
           </div>
 
-          <!-- honeypot נגד ספאם -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-
-          <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - צור קשר">
+          <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - צרו קשר">
           <input type="hidden" name="_format" value="json">
 
           <label class="consent">
@@ -457,7 +472,7 @@
           <li><a href="/firsttry/terms.html">תנאי שימוש</a></li>
         </ul>
       </nav>
-      <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורך דין</p>
+      <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורכי דין</p>
     </div>
   </footer>
 
