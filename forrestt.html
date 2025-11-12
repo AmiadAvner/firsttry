@@ -1,55 +1,575 @@
-/* service-worker.js */
-const CACHE_NAME = 'amiadavner-v1';
-const ASSETS = [
-  '/', '/index.html',
-  '/clouds-bg.png', '/logo.png',
-  '/forest.mp4',
-  '/nadlanphoto.png', '/maskara.png', '/wills.png', '/mitma.png',
-  '/amiadpic.jpg',
-  '/manifest.webmanifest',
-  '/icons/icon-192.png', '/icons/icon-512.png', '/icons/maskable-192.png', '/icons/maskable-512.png'
-];
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3EFEEM45C4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3EFEEM45C4');
+  </script>
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
-  );
-  self.skipWaiting();
-});
+  <meta charset="UTF-8" />
+  <!-- חשוב לנייד -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.map(k => (k !== CACHE_NAME ? caches.delete(k) : null)))
-    )
-  );
-  self.clients.claim();
-});
+  <title>עמיעד אבנר – משרד עורכי דין</title>
 
-self.addEventListener('fetch', (event) => {
-  const req = event.request;
+  <!-- ===== PWA / Mobile installability ===== -->
+  <!-- צבע כרום/אנדרואיד וסטטוס־בר iOS -->
+  <meta name="theme-color" content="#123169" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="עמיעד אבנר">
+  <!-- אייקונים (שים קבצים בתיקייה /icons) -->
+  <link rel="apple-touch-icon" href="/icons/icon-180.png">
+  <link rel="manifest" href="/manifest.webmanifest">
 
-  // אל תטמין בקשות שאינן GET (למשל Formspree POST)
-  if (req.method !== 'GET') return;
+  <!-- Assistant כגיבוי בלבד -->
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
 
-  // Network-first עבור דפים; Cache-first לנכסים סטטיים
-  if (req.headers.get('accept')?.includes('text/html')) {
-    event.respondWith(
-      fetch(req).then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
-        return res;
-      }).catch(() => caches.match(req).then(m => m || caches.match('/')))
-    );
-  } else {
-    event.respondWith(
-      caches.match(req).then((cached) =>
-        cached || fetch(req).then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
-          return res;
-        })
-      )
-    );
-  }
-});
+  <style>
+    /* טעינת הפונט המקומי שהעלית */
+    @font-face {
+      font-family: "Abraham";
+      src: url("hillelclm-medium-webfont.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      /* שימוש בפונט Abraham כברירת־מחדל לכל האתר, עם גיבויים */
+      font-family: "Abraham", "Assistant", Arial, sans-serif;
+      min-height: 100vh;
+      background: #dbeaf7 url('clouds-bg.png') center center / cover no-repeat fixed; /* fixed יתוקן במובייל במדיה-קווריז */
+      color: #123169;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-synthesis: weight style; /* מאפשר הדמיית Bold/Italic במקרה שאין משקלים נוספים */
+    }
+
+    .hero {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      margin-top: 70px;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .hero-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      background: #c7e8f7;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      gap: 2.5rem;
+      width: 100%;
+      max-width: 1000px;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .hero-content {
+      color: #18305b;
+      background: rgba(255,255,255,0.97);
+      border-radius: 14px;
+      box-shadow: 0 6px 24px rgba(34, 53, 84, 0.07);
+      padding: 3rem 2rem 2rem;
+      max-width: 540px;
+      min-width: 320px;
+      margin: 0 auto;
+      border: 1.5px solid #b3cae6;
+      text-align: center;
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 240px;
+      transition: min-height 0.25s;
+    }
+    .hero-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      flex: 1;
+      min-width: 160px;
+      align-items: stretch;
+      justify-content: center;
+    }
+    .hero-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(44,99,184,0.07);
+      padding: 1.2em 0.2em;
+      font-size: 1.08rem;
+      font-weight: bold;
+      color: #123169;
+      border: 1.5px solid #b3cae6;
+      letter-spacing: 1px;
+      transition: transform 0.18s, box-shadow 0.18s;
+      text-align: center;
+    }
+    .hero-box:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 3px 16px rgba(44,99,184,0.15);
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { flex-direction: column; gap: 1.2rem; max-width: 600px; align-items: stretch; }
+      .hero-content { max-width: 100%; min-width: unset; }
+      .hero-boxes { flex-direction: row; justify-content: center; gap: 1rem; margin-top: 1.5rem; min-width: unset; }
+      .hero-box { min-width: 90px; padding: 0.8em 0.2em; font-size: 1rem; }
+      .logo-image { height: 50px; }
+      .logo-text { font-size: 1.13rem; }
+
+      /* תיקון לרקע fixed במובייל כדי למנוע ג'יטר וקפיצות */
+      html, body { background-attachment: scroll; }
+    }
+    @media (max-width: 600px) {
+      .header-inner { flex-direction: column; height: auto; padding: 0.5rem 0; }
+      nav ul { gap: 0.7rem; }
+      .logo-box { margin: 0.5rem 0; }
+      .phone-box { margin: 0.5rem 0; }
+      .hero-inner { gap: 1rem; }
+      .hero-boxes { gap: 0.6rem; }
+    }
+
+    .hero-content h1,
+    .hero-box,
+    .btn-primary,
+    .services h2,
+    .service-card h3,
+    .about-text-custom h2,
+    .contact h2,
+    .footer-inner p,
+    nav ul li a,
+    .logo-text { color: #123169 !important; }
+    .about-text-custom strong,
+    .about-highlight { color: #10325e !important; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+    header {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed; top: 0; width: 100%; z-index: 100;
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; direction: rtl; }
+    .logo-box { display: flex; align-items: center; gap: 0.6rem; }
+    .logo-image { height: 70px; width: auto; display: inline-block; vertical-align: middle; }
+    .logo-text { font-size: 1.4rem; font-weight: 700; margin: 0 0.5rem; display: inline-block; }
+    .phone-box {
+      display: inline-flex; align-items: center; border: 2px solid #c06a27; color: #c06a27;
+      border-radius: 999px; padding: 0.3em 1em; font-size: 1.05rem; font-weight: 500;
+      background: #fff; gap: 0.3em; margin-left: 1.5rem; cursor: default; user-select: text; transition: box-shadow 0.2s;
+    }
+    .phone-box .phone-icon { margin-right: 0.4em; vertical-align: middle; }
+    .phone-number { transition: font-size 0.25s cubic-bezier(.37,.37,.27,1.32), color 0.2s; display: inline-block; }
+    .phone-box:hover .phone-number, .phone-number:hover { font-size: 1.35rem; color: #8a470a; }
+    nav ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+    nav ul li a { font-size: 1rem; color: #123169; padding: 0.5rem 0.75rem; transition: background-color 0.2s; text-decoration: none; }
+    nav ul li a:hover { background: #ecf0f1; border-radius: 4px; }
+    .btn-primary {
+      background-color: #123169; color: #fff !important; padding: 0.75rem 2.1rem; font-size: 1.07rem;
+      border: none; border-radius: 4px; cursor: pointer; transition: background-color 0.2s, box-shadow 0.2s; box-shadow: 0 2px 8px #e7ecf4;
+    }
+    .btn-primary:hover { background-color: #0d203a; box-shadow: 0 2px 12px #b8c7dd; }
+
+    .services { padding: 4rem 0; background-color: #ffffffcc; }
+    .services h2 { text-align: center; margin-bottom: 2rem; font-size: 2rem; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .service-card {
+      background-color: #fdfdfd; padding: 1.5rem; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      text-align: center; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #b3cae6;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 3px 8px rgba(0,0,0,0.15); }
+    .service-img-wrapper {
+      width: 120px; height: 120px; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px #c6d9ee22;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.4rem; transition: box-shadow 0.2s; overflow: hidden;
+    }
+    .service-img-wrapper:hover { box-shadow: 0 4px 24px #b8c7dd66; }
+    .service-img { width: 120px; height: 120px; object-fit: cover; display: block; margin: 0 auto; transition: transform 0.2s; }
+    .service-img-wrapper:hover .service-img { transform: scale(1.08) rotate(-4deg); }
+    .service-card h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+    .service-card p { font-size: 0.95rem; color: #2a426a; }
+
+    .about-section-custom { max-width: 1000px; margin: 0 auto; padding: 3em 0; }
+    .about-flex {
+      display: flex; flex-direction: row; gap: 2.5em; align-items: center; background: #fafbfcf0;
+      border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); padding: 2.2em 2em;
+    }
+    .about-text-custom { flex: 2; font-size: 1.1em; line-height: 1.9; }
+    .about-text-custom h2 { font-size: 2em; margin-bottom: 0.5em; font-weight: bold; }
+    .about-highlight { font-size: 1.15em; line-height: 2; font-weight: bold; margin-top: 2em; }
+    .about-image-custom { flex: 1; display: flex; justify-content: center; align-items: center; }
+    .about-image-custom img {
+      max-width: 410px; width: 100%; border-radius: 16px; box-shadow: 0 2px 16px rgba(34,53,84,0.10); object-fit: cover;
+    }
+    @media (max-width: 900px) {
+      .about-flex { flex-direction: column-reverse; padding: 1.4em 0.7em; gap: 1.5em; }
+      .about-image-custom img { max-width: 200px; }
+      .about-section-custom { padding: 2em 0; }
+    }
+
+    /* === Contact === */
+    .contact { padding: 4rem 0; background-color: #f4f6f8cc; }
+    .contact h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
+    .contact-phone-row {
+      display: flex; justify-content: center; align-items: center; gap: 0.7em;
+      margin-bottom: 2.2em; margin-top: -1.1em;
+    }
+    .contact-phone-icon {
+      width: 32px; height: 32px; color: #1976d2; transition: transform 0.18s, color 0.22s;
+      flex-shrink: 0; filter: drop-shadow(0 2px 8px #bccfe933); will-change: transform;
+    }
+    .contact-phone-row:hover .contact-phone-icon, .contact-phone-icon:hover {
+      transform: scale(1.17); color: #1250a5; filter: drop-shadow(0 4px 16px #12316933);
+    }
+    .contact-phone-number {
+      font-size: 1.32rem; font-weight: 700; letter-spacing: 0.1em; color: #18305b; font-family: inherit;
+      background: #e9f2fa; border-radius: 999px; padding: 0.35em 1.35em; border: 1.2px solid #d5e2f4;
+      transition: background 0.19s, color 0.17s; box-shadow: 0 2px 12px #c6d9ee13; user-select: text; direction: ltr;
+    }
+    .contact-phone-row:hover .contact-phone-number, .contact-phone-number:hover { background: #d4e6fb; color: #1250a5; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 2rem;
+      align-items: stretch;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    .contact-card {
+      background:#fff; border:1px solid #b3cae6; border-radius:14px; padding:1.5rem;
+      box-shadow:0 1px 6px rgba(44,99,184,0.07);
+    }
+    .contact-card h3 { margin-bottom: .25rem; font-size:1.25rem; }
+    .contact-card .sub { margin-bottom: .8rem; color:#2a426a; font-size:.95rem; }
+    .contact-card p { color:#2a426a; }
+
+    .contact-form {
+      max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 2rem;
+      border-radius: 14px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); direction: rtl; border:1px solid #b3cae6;
+    }
+    .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px){ .contact-form .form-row { grid-template-columns: 1fr; } }
+    .contact-form label { display: block; font-size: 0.95rem; margin-bottom: 0.35rem; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #b3cae6; border-radius: 6px;
+      font-size: 1rem; font-family: inherit; color: #123169; background:#fff;
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form .consent { display:flex; align-items:flex-start; gap:.5rem; margin:.5rem 0 1rem; font-size:.95rem; }
+    .contact-form .consent input { margin-top: .2rem; }
+    .contact-form .status { display:none; margin-top:.5rem; font-weight:700; }
+    .contact-form .status.ok { color:#0a7d25; }
+    .contact-form .status.err { color:#a32121; }
+    .contact-form button {
+      background-color: #123169; color: #fff !important; padding: 0.75rem 1.5rem; font-size: 1rem;
+      border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.2s; width: 100%;
+    }
+    .contact-form button:hover { background-color: #0d203a; }
+
+    footer { background-color: #123169; color: #ffffff; padding: 2rem 0; }
+    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .footer-inner nav ul { display: flex; gap: 1rem; }
+    .footer-inner nav ul li a { color: #b7c3dc; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-inner nav ul li a:hover { color: #ecf0f1; }
+    .footer-inner p { font-size: 0.9rem; color: #e2eaf9; text-align: center; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo-box">
+        <img src="logo.png" alt="לוגו עמיעד אבנר – משרד עורכי דין" class="logo-image" />
+        <span class="logo-text">עמיעד אבנר – משרד עורכי דין</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">דף הבית</a></li>
+          <li><a href="#services">תחומי התמחות</a></li>
+          <li><a href="#about">אודות</a></li>
+          <li><a href="#contact">צרו קשר</a></li>
+          <div class="phone-box" aria-label="טלפון ליצירת קשר">
+            <svg xmlns="http://www.w3.org/2000/svg" class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c06a27" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .93 3.67 2 2 0 0 1 2.92 1.5h3a2 2 0 0 1 2 1.72c.13 1.21.36 2.39.7 3.53a2 2 0 0 1-.45 2.11l-1.27 1.28a16 16 0 0 0 6.25 6.25l1.28-1.27a2 2 0 0 1 2.11-.45c1.14.34 2.32.57 3.53.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="phone-number">052-450-0645</span>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <video class="hero-bg-video" src="forest.mp4" autoplay muted playsinline></video>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1>עמיעד אבנר – משרד בוטיק</h1>
+        <p>מקרקעין | מיסוי מקרקעין | ייפוי כוח מתמשך | צוואות</p><br>
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">צרו קשר עכשיו</button>
+      </div>
+      <div class="hero-boxes">
+        <div class="hero-box">אמינות</div>
+        <div class="hero-box">מקצועיות</div>
+        <div class="hero-box">שירותיות</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>תחומי התמחות</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="nadlanphoto.png" alt="מקרקעין" class="service-img" />
+          </div>
+          <h3>מקרקעין</h3>
+          <p>רכישת או מכירת נכס היא צעד משמעותי הדורש ליווי משפטי מדויק. המשרד מלווה עסקאות נדל״ן למגורים, נדל״ן מניב וכן עסקאות רכישה ומכירה של קרקעות ומגרשים, משלב הבדיקות המקדימות, דרך ניהול המשא ומתן וניסוח ההסכמים, ועד לרישום הזכויות והשלמת העסקה.
+הניסיון המצטבר וההיכרות העמוקה עם ההיבטים המעשיים והרגולטוריים מבטיחים הגנה מלאה על האינטרסים של לקוחות המשרד ומניעת סיכונים וטעויות.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="maskara.png" alt="מיסוי מקרקעין" class="service-img" />
+          </div>
+          <h3>מיסוי מקרקעין</h3>
+          <p>המשרד מעניק ייעוץ וייצוג מקיף בתחום מיסוי מקרקעין – מתן ייעוץ מס, הכנת דיווחים לרשות המסים, תיקוני שומה, השגות ועררים.  בזכות ניסיון מוכח וחשיבה יצירתית, המשרד מציע פתרונות המותאמים אישית ללקוח, המובילים לחיסכון משמעותי ולתוצאות מיטביות.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="wills.png" alt="צוואות" class="service-img" />
+          </div>
+          <h3>צוואות</h3>
+          <p>עריכת צוואה היא החלטה משמעותית שמעניקה ודאות ושקט נפשי למשפחה. המשרד מלווה אתכם בתהליך ברגישות ובמקצועיות, ומוודא שהרצון שלכם יקבל ביטוי משפטי מחייב וברור.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-img-wrapper">
+            <img src="mitma.png" alt="ייפוי כוח מתמשך" class="service-img" />
+          </div>
+          <h3>ייפוי כוח מתמשך</h3>
+          <p>יפוי כוח מתמשך הוא מסמך משפטי המאפשר לכם לקבוע כבר היום מי יהיה מוסמך לקבל החלטות בשמכם – בעניינים אישיים, רפואיים ורכושיים – במקרה שבו לא תוכלו לעשות זאת בעתיד. בניגוד לאפוטרופסות שממונה על ידי בית המשפט, כאן אתם בוחרים מראש מי יפעל בשמכם ובאיזו דרך.
+המשרד מלווה אתכם בכל שלבי ההכנה, החל מהבנת הצרכים האישיים, דרך ניסוח מדויק וברור של המסמך, ועד ההפקדה אצל האפוטרופוס הכללי.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about-section-custom">
+    <div class="container about-flex">
+      <div class="about-text-custom">
+        <h2>קצת עליי</h2>
+        <p>
+           בעל ניסיון של למעלה מעשור בליווי לקוחות וייצוגם במגוון תחומים משפטיים.<br>
+           דוגל בגישה אישית, מקצועית ורגישה – תוך הקשבה אמיתית לצרכי כל לקוח והתאמת פתרונות משפטיים מדויקים וייחודיים עבורו.
+        </p>
+        <p>
+          אני בעל תואר ראשון במשפטים (<strong>בהצטיינות</strong>) מאוניברסיטת בר-אילן ואת דרכי המקצועית התחלתי במשרדי עורכי הדין המובילים בישראל:<br>
+          במחלקת מיסוי מקרקעין של משרד ארנון תדמור-לוי, מחלקת המקרקעין במשרד וקסלר ברגמן, ובמשרד המיסים אודי ברזלי.
+        </p>
+        <p>
+          <strong>האני מאמין שלי:</strong> “סוף מעשה במחשבה תחילה”.<br>
+         אני מאמין שתכנון משפטי מקדים, יסודי ומותאם לצרכים הייחודיים של הלקוח – הוא המפתח להצלחה ולשקט הנפשי שלך.
+        </p>
+      </div>
+      <div class="about-image-custom">
+        <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact (עם טופס פעיל ל-Formspree) -->
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <h2 id="contact-title"> השאירו פרטים או צרו קשר</h2>
+
+      <div class="contact-grid" role="region" aria-label="פרטי התקשרות וטופס">
+        <aside class="contact-card" aria-label="פרטי התקשרות">
+          <h3>פרטים ליצירת קשר</h3>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:-3px; margin-left:6px;" viewBox="0 0 24 24" fill="none" stroke="#123169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <a href="tel:0524500645" style="color:#123169;">052-4500645</a>
+          </p>
+          <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:-3px; margin-left:6px;" viewBox="0 0 24 24" fill="none" stroke="#123169" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <a href="mailto:office@amiadavner.com" style="color:#123169;">office@amiadavner.co.il</a>
+          </p>
+        </aside>
+
+        <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/mgvndwpv" novalidate>
+          <div class="form-row">
+            <div>
+              <label for="name">שם מלא *</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="phone">טלפון *</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" pattern="[0-9+\-()\s]{8,}" required>
+            </div>
+          </div>
+
+          <div>
+            <label for="email">אימייל</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+          </div>
+
+          <div>
+            <label for="message">איך אפשר לעזור?</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_subject" value="פנייה חדשה מהאתר - צרו קשר">
+          <input type="hidden" name="_format" value="json">
+
+          <label class="consent">
+            <input type="checkbox" id="consent" required>
+            <span>אני מאשר/ת את <a href="/firsttry/privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a> ומסכימ/ה ליצירת קשר.</span>
+          </label>
+
+          <button type="submit" aria-label="שליחה">שליחה</button>
+          <div id="form-status" class="status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    footer{
+      background:#123169; color:#fff; padding:2rem 0;
+    }
+    .footer-inner{
+      display:flex; flex-direction:column; align-items:center; gap:1rem; text-align:center;
+    }
+    .footer-inner nav ul{
+      list-style:none; display:flex; gap:1rem; padding:0; margin:0;
+    }
+    .footer-inner nav a{
+      color:#b7c3dc !important; text-decoration:none; font-size:.95rem; transition:color .25s, text-decoration-color .25s;
+    }
+    .footer-inner nav a:hover, .footer-inner nav a:focus{
+      color:#000000 !important; text-decoration:underline; text-underline-offset:3px;
+    }
+    .footer-inner p{ color:#e2eaf9 !important; font-size:.9rem; margin:0; }
+  </style>
+
+  <footer role="contentinfo">
+    <div class="container footer-inner">
+      <nav aria-label="קישורי תחתית">
+        <ul>
+          <li><a href="#home">דף הבית</a></li>
+          <li><a href="#services">תחומי התמחות</a></li>
+          <li><a href="#about">אודות</a></li>
+          <li><a href="#contact">צרו קשר</a></li>
+          <li><a href="/firsttry/privacy.html">מדיניות פרטיות</a></li>
+          <li><a href="/firsttry/terms.html">תנאי שימוש</a></li>
+        </ul>
+      </nav>
+      <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורכי דין</p>
+    </div>
+  </footer>
+
+  <!-- תוסף נגישות -->
+  <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
+
+  <script>
+    // עצירת הווידאו על הפריים האחרון
+    document.addEventListener("DOMContentLoaded", function() {
+      var vid = document.querySelector('.hero-bg-video');
+      if (vid) {
+        vid.addEventListener('ended', function() {
+          vid.pause();
+          vid.currentTime = vid.duration;
+        });
+      }
+    });
+
+    // התאמת גובה hero-content לגובה של hero-boxes
+    function matchHeroContentHeight() {
+      var content = document.querySelector('.hero-content');
+      var boxes = document.querySelector('.hero-boxes');
+      if(content && boxes) {
+        content.style.minHeight = '';
+        var boxesHeight = boxes.offsetHeight;
+        var contentHeight = content.offsetHeight;
+        if(boxesHeight > contentHeight) {
+          content.style.minHeight = boxesHeight + "px";
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', matchHeroContentHeight);
+    window.addEventListener('resize', matchHeroContentHeight);
+
+    // שליחה אסינכרונית ל-Formspree + הודעות סטטוס
+    (function(){
+      const form = document.getElementById('contact-form');
+      const statusEl = document.getElementById('form-status');
+      if (!form) return;
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        statusEl.className = 'status';
+        statusEl.style.display = 'block';
+        statusEl.textContent = 'שולחת...';
+
+        const endpoint = form.getAttribute('action');
+        try {
+          const data = new FormData(form);
+          const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: data
+          });
+
+          if (res.ok) {
+            statusEl.className = 'status ok';
+            statusEl.textContent = 'ההודעה נשלחה! נחזור אלייך בהקדם.';
+            form.reset();
+          } else {
+            const out = await res.json().catch(()=>({}));
+            statusEl.className = 'status err';
+            statusEl.textContent = out.errors && out.errors.length
+              ? 'שגיאה: ' + out.errors.map(e=>e.message).join(', ')
+              : 'אירעה תקלה בשליחה. נסי/ה שוב מאוחר יותר.';
+          }
+        } catch(err){
+          statusEl.className = 'status err';
+          statusEl.textContent = 'שגיאת רשת. בדקי/בדוק חיבור ונסי/ה שוב.';
+        }
+      });
+    })();
+
+    /* ===== רישום Service Worker לאפליקציית ה-PWA ===== */
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .catch(err => console.error('SW registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
