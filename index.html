@@ -40,18 +40,13 @@
       font-synthesis: weight style;
     }
 
-    /* מפנה מקום ל-header הקבוע כך שהתוכן לא "נכנס מתחתיו" */
-    body {
-      padding-top: 80px;
-    }
-
     .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
     /* === Header === */
     header {
       background-color: #ffffff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: fixed;
+      position: sticky;   /* במקום fixed */
       top: 0;
       width: 100%;
       z-index: 100;
@@ -88,7 +83,6 @@
       white-space: nowrap;
     }
 
-    /* עוטף את התפריט והטלפון בצד ימין */
     .header-right {
       display: flex;
       align-items: center;
@@ -166,6 +160,7 @@
       padding: 0 1rem;
       overflow: hidden;
       z-index: 1;
+      margin-top: 0.5rem; /* קצת אוויר מתחת ל-header */
     }
 
     .hero-bg-video {
@@ -240,7 +235,6 @@
       box-shadow: 0 3px 16px rgba(44,99,184,0.15);
     }
 
-    /* צבעי טקסט מרכזיים */
     .hero-content h1,
     .hero-box,
     .btn-primary,
@@ -558,7 +552,7 @@
       background-color: #0d203a;
     }
 
-    /* === Footer (גרסה אחת מסודרת) === */
+    /* === Footer === */
     footer{
       background:#123169;
       color:#fff;
@@ -598,8 +592,7 @@
       margin:0;
     }
 
-    /* === נקודות שבירה (רספונסיביות) === */
-
+    /* === נקודות שבירה === */
     @media (max-width: 900px) {
       .hero-inner {
         flex-direction: column;
@@ -642,10 +635,6 @@
     }
 
     @media (max-width: 600px) {
-      body {
-        padding-top: 110px; /* header גבוה יותר במסכים צרים */
-      }
-
       .header-inner {
         flex-direction: column;
         align-items: flex-start;
