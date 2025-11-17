@@ -46,7 +46,7 @@
     header {
       background-color: #ffffff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      position: sticky;   /* במקום fixed */
+      position: sticky;
       top: 0;
       width: 100%;
       z-index: 100;
@@ -160,7 +160,7 @@
       padding: 0 1rem;
       overflow: hidden;
       z-index: 1;
-      margin-top: 0.5rem; /* קצת אוויר מתחת ל-header */
+      margin-top: 0.5rem;
     }
 
     .hero-bg-video {
@@ -649,8 +649,21 @@
         gap: 0.5rem;
       }
 
+      /* תפריט מובייל – הכל בשורה, בלי גלילה אופקית */
       nav ul {
-        gap: 0.7rem;
+        flex-wrap: nowrap;
+        gap: 0;
+        justify-content: space-between;
+        width: 100%;
+      }
+      nav ul li {
+        flex: 1 1 0;
+      }
+      nav ul li a {
+        display: block;
+        text-align: center;
+        font-size: 0.88rem;
+        padding: 0.45rem 0.15rem;
       }
 
       .logo-image { height: 50px; }
@@ -671,7 +684,7 @@
       }
 
       nav ul {
-        justify-content: flex-start;
+        justify-content: space-between;
       }
 
       .phone-box {
