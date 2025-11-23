@@ -1,449 +1,693 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>עמיעד אבנר – משרד עורך דין</title>
-
-  <!-- SEO & Sharing -->
-  <meta name="description" content="עמיעד אבנר – משרד עורכי דין בוטיק. התמחות במקרקעין, מיסוי מקרקעין, ייפוי כוח מתמשך וצוואות. יחס אישי, מקצועיות ושקט נפשי.">
-  <link rel="canonical" href="https://your-domain.example/" />
-  <meta property="og:locale" content="he_IL">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="עמיעד אבנר – משרד עורך דין">
-  <meta property="og:description" content="מקרקעין | מיסוי מקרקעין | ייפוי כוח מתמשך | צוואות">
-  <meta property="og:image" content="https://your-domain.example/og-image.jpg">
-  <meta property="og:url" content="https://your-domain.example/">
-  <meta name="theme-color" content="#0d244d">
-
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תרגול אנגלית – כיתה ג'</title>
   <style>
-    /* ========== Design Tokens (Darker, more formal palette) ========== */
-    :root{
-      --brand-900:#0d244d; /* deep navy for headings & accents */
-      --brand-800:#123169;
-      --brand-700:#163d80;
-      --ink-900:#0a1a33;  /* body text */
-      --ink-700:#203552;
-      --muted-200:#d8e3f3;
-      --muted-150:#e7effb;
-      --muted-100:#f4f7fb;
-      --white:#ffffff;
-
-      --accent:#c06a27;   /* warm accent for phone / CTAs */
-      --radius-lg:14px;
-      --shadow-md:0 6px 24px rgba(13,36,77,.10);
-      --shadow-sm:0 2px 8px rgba(13,36,77,.10);
-      --shadow-xs:0 1px 4px rgba(13,36,77,.10);
-      --focus: 0 0 0 3px rgba(26,115,232,.25);
+    * {
+      box-sizing: border-box;
     }
-
-    /* Base reset */
-    *{margin:0;padding:0;box-sizing:border-box}
-    html,body{
-      font-family:"Assistant",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif;
-      min-height:100vh;
-      background:#dbeaf7 url('clouds-bg.png') center/cover no-repeat fixed;
-      color:var(--ink-900);
-      line-height:1.7;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      scroll-behavior:smooth;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f7ff;
+      color: #123169;
     }
-
-    /* Accessible focus */
-    :focus-visible{outline: none; box-shadow: var(--focus)}
-
-    /* Skip link */
-    .skip-link{
-      position:absolute;inset-inline-start:1rem;top:-40px;background:var(--brand-900);color:#fff;
-      padding:.5rem 1rem;border-radius:8px;z-index:1000;transition:top .2s
+    header {
+      background: linear-gradient(135deg, #4a90e2, #6fb1fc);
+      color: white;
+      padding: 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .skip-link:focus{top:1rem}
-
-    /* Layout helpers */
-    .container{width:92%;max-width:1200px;margin:0 auto}
-
-    /* Header */
-    header{
-      position:sticky;top:0;width:100%;z-index:100;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:saturate(140%) blur(8px);
-      box-shadow:0 1px 12px rgba(13,36,77,.06)
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
     }
-    .header-inner{
-      display:flex;justify-content:space-between;align-items:center;height:74px
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    .logo-box{display:flex;align-items:center;gap:.6rem}
-    .logo-image{height:64px;width:auto}
-    .logo-text{font-size:1.45rem;font-weight:700;color:var(--brand-900)}
-
-    nav ul{display:flex;gap:1rem;list-style:none;align-items:center}
-    nav a{
-      font-size:1rem;color:var(--brand-900);text-decoration:none;padding:.5rem .75rem;border-radius:8px
+    nav button {
+      border: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      color: #123169;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
     }
-    nav a:hover{background:var(--muted-100)}
-    .nav-phone .phone-box{margin-inline-start:.5rem}
-
-    /* Phone pill */
-    .phone-box{
-      display:inline-flex;align-items:center;gap:.4em;
-      border:2px solid var(--accent);color:var(--accent);
-      border-radius:999px;padding:.35em 1em;font-size:1.05rem;background:#fff;
-      user-select:text;box-shadow:var(--shadow-sm)
+    nav button:hover {
+      background: #ffecb3;
     }
-    .phone-number{direction:ltr}
-    .phone-box:hover .phone-number{font-weight:700}
-
-    /* Hero */
-    .hero{
-      position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;
-      text-align:center;padding:0 1rem;margin-top:0;overflow:hidden
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px;
     }
-    .hero-bg-video{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
-      background:#c7e8f7;filter:brightness(.85)
+    section {
+      background: white;
+      margin-bottom: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
-    /* Readability overlay */
-    .hero::after{
-      content:"";position:absolute;inset:0;z-index:1;
-      background:linear-gradient(180deg,rgba(13,36,77,.32),rgba(13,36,77,.18) 40%,rgba(13,36,77,.05) 70%,transparent)
+    section h2 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .hero-inner{
-      position:relative;z-index:2;display:flex;flex-direction:row;gap:2rem;width:100%;max-width:1100px;align-items:stretch;justify-content:center
+    section h2 span.emoji {
+      font-size: 1.4rem;
     }
-    .hero-content{
-      color:var(--brand-900);background:rgba(255,255,255,.98);border-radius:var(--radius-lg);
-      box-shadow:var(--shadow-md);padding:2.8rem 2rem;max-width:580px;min-width:320px;margin:0 auto;
-      border:1.5px solid var(--muted-200);text-align:center;flex:2;display:flex;flex-direction:column;justify-content:center;min-height:260px
+    p, li {
+      font-size: 0.95rem;
     }
-    .hero-content h1{font-size:2rem;margin-bottom:.5rem;color:var(--brand-900)}
-    .hero-content p{color:var(--ink-700);margin-bottom:1.2rem}
-
-    .hero-boxes{display:flex;flex-direction:column;gap:1.2rem;flex:1;min-width:180px;justify-content:center}
-    .hero-box{
-      background:#fff;border-radius:12px;box-shadow:var(--shadow-xs);padding:1.1em .2em;font-size:1.06rem;font-weight:700;
-      color:var(--brand-900);border:1.5px solid var(--muted-200);letter-spacing:.5px;transition:transform .18s, box-shadow .18s
+    .hint {
+      font-size: 0.85rem;
+      color: #555;
     }
-    .hero-box:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 6px 18px rgba(13,36,77,.14)}
-
-    .btn-primary{
-      align-self:center;background:var(--brand-900);color:#fff;border:none;border-radius:10px;
-      padding:.85rem 2rem;font-size:1.06rem;cursor:pointer;box-shadow:var(--shadow-sm);transition:transform .15s, box-shadow .2s, background .2s
+    .letters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
     }
-    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(13,36,77,.18)}
-    .btn-primary:active{transform:translateY(0)}
-    .btn-primary:focus-visible{box-shadow:var(--focus)}
-
-    /* Sections */
-    .services{padding:4rem 0;background:rgba(255,255,255,.92)}
-    .services h2,
-    .about-text-custom h2,
-    .contact h2{color:var(--brand-900);text-align:center;margin-bottom:2rem;font-size:2rem}
-
-    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem}
-    .service-card{
-      background:#fff;padding:1.6rem;border-radius:12px;border:1px solid var(--muted-200);
-      box-shadow:var(--shadow-xs);text-align:center;transition:transform .2s, box-shadow .2s
+    .card {
+      border-radius: 10px;
+      padding: 10px;
+      background: #f8fbff;
+      border: 1px solid #dde9ff;
     }
-    .service-card:hover{transform:translateY(-5px);box-shadow:0 10px 24px rgba(13,36,77,.12)}
-    .service-img-wrapper{
-      width:120px;height:120px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(13,36,77,.08);
-      display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;overflow:hidden
+    .letter-pair {
+      font-size: 1.6rem;
+      text-align: center;
     }
-    .service-img{width:120px;height:120px;object-fit:cover;transition:transform .25s}
-    .service-img-wrapper:hover .service-img{transform:scale(1.06) rotate(-3deg)}
-    .service-card h3{color:var(--brand-900);font-size:1.2rem;margin-bottom:.6rem}
-    .service-card p{color:var(--ink-700);font-size:.98rem}
-
-    .about-section-custom{max-width:1000px;margin:0 auto;padding:3rem 0;background:none}
-    .about-flex{
-      display:flex;gap:2rem;align-items:center;background:linear-gradient(180deg,#fafbfe,#f6f9ff);
-      border-radius:20px;box-shadow:0 8px 28px rgba(13,36,77,.08);padding:2.2rem
+    .letter-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
-    .about-text-custom{flex:2;font-size:1.08rem;color:var(--ink-900)}
-    .about-text-custom strong{color:var(--brand-800)}
-    .about-image-custom{flex:1;display:flex;justify-content:center;align-items:center}
-    .about-image-custom img{
-      max-width:410px;width:100%;border-radius:16px;box-shadow:0 12px 28px rgba(13,36,77,.14);object-fit:cover
+    .letter-row label {
+      font-size: 0.85rem;
     }
-
-    .contact{padding:4rem 0;background:linear-gradient(180deg,rgba(244,246,248,.85),rgba(231,239,251,.85))}
-    .contact-phone-row{
-      display:flex;justify-content:center;align-items:center;gap:.7em;margin:-1.1em 0 2rem
+    select {
+      padding: 4px 6px;
+      font-size: 0.9rem;
     }
-    .contact-phone-icon{width:32px;height:32px;filter:drop-shadow(0 2px 8px rgba(13,36,77,.08))}
-    .contact-phone-number{
-      font-size:1.28rem;font-weight:700;letter-spacing:.06em;color:var(--brand-900);
-      background:var(--muted-150);border-radius:999px;padding:.35em 1.2em;border:1.2px solid #d5e2f4;direction:ltr
+    button.primary {
+      margin-top: 10px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      background: #4a90e2;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
     }
-    .contact-form{
-      max-width:620px;margin:0 auto;background:#fff;padding:2rem;border-radius:12px;
-      border:1px solid var(--muted-200);box-shadow:var(--shadow-xs)
+    button.primary:hover {
+      background: #3b78be;
     }
-    .contact-form label{display:block;font-size:.95rem;margin-bottom:.5rem;color:var(--brand-900)}
-    .contact-form input,.contact-form textarea{
-      width:100%;padding:.8rem;margin-bottom:1.1rem;border:1px solid var(--muted-200);border-radius:10px;
-      font-size:1rem;color:var(--ink-900);background:#fff
+    .result {
+      margin-top: 8px;
+      font-weight: 600;
     }
-    .contact-form textarea{resize:vertical;min-height:120px}
-    .contact-form button{background:var(--brand-900);color:#fff;border:none;border-radius:10px;padding:.8rem 1.5rem;font-size:1rem;cursor:pointer}
-    .contact-form button:hover{filter:brightness(1.05)}
-    .contact-form input:focus-visible,.contact-form textarea:focus-visible{box-shadow:var(--focus)}
-
-    footer{background:var(--brand-900);color:#fff;padding:2rem 0;margin-top:2rem}
-    .footer-inner{display:flex;flex-direction:column;align-items:center;gap:1rem}
-    .footer-inner nav ul{display:flex;gap:1rem}
-    .footer-inner nav a{color:#b7c3dc;font-size:.9rem}
-    .footer-inner nav a:hover{color:#ecf0f1}
-    .footer-inner p{font-size:.9rem;color:#e2eaf9;text-align:center}
-
-    /* Responsive */
-    @media (max-width:900px){
-      .hero-inner{flex-direction:column;gap:1rem;max-width:720px}
-      .hero-content{max-width:100%}
-      .hero-boxes{flex-direction:row;justify-content:center;gap:1rem;min-width:unset}
-      .hero-box{min-width:100px}
-      .logo-image{height:54px}
-      .logo-text{font-size:1.2rem}
-      .about-flex{flex-direction:column-reverse;padding:1.4rem .9rem}
-      .about-image-custom img{max-width:220px}
+    .correct {
+      border-color: #4caf50 !important;
     }
-    @media (max-width:640px){
-      .header-inner{flex-direction:column;height:auto;padding:.5rem 0;gap:.5rem}
-      nav ul{gap:.5rem;flex-wrap:wrap;justify-content:center}
-      .logo-box{margin:.4rem 0}
+    .incorrect {
+      border-color: #e53935 !important;
     }
-
-    /* Print (clean, black on white) */
-    @media print{
-      header,.hero .hero-bg-video,.hero::after,footer{display:none!important}
-      body{background:#fff;color:#000}
-      a{color:#000;text-decoration:underline}
-      .service-card,.about-flex,.contact-form{box-shadow:none;border:1px solid #ccc}
+    .sound-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+    .sound-table th, .sound-table td {
+      border: 1px solid #dde9ff;
+      padding: 6px;
+      text-align: center;
+    }
+    .sound-table th {
+      background: #eef4ff;
+    }
+    .sound-letter {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #eef4ff;
+      font-size: 0.8rem;
+      margin-inline: 2px;
+    }
+    .english {
+      direction: ltr;
+      unicode-bidi: bidi-override;
+      font-weight: 600;
+    }
+    .flashcard {
+      text-align: center;
+      padding: 16px;
+    }
+    .flashcard .english {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .flashcard .hebrew {
+      font-size: 1.4rem;
+      margin-top: 8px;
+      min-height: 1.4em;
+    }
+    .center-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .quiz-question {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+    }
+    .quiz-options button {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #dde9ff;
+      background: #f8fbff;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .quiz-options button:hover {
+      background: #e3f2fd;
+    }
+    .small-note {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 4px;
+    }
+    .audio-btn {
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-inline-start: 4px;
+    }
+    .audio-btn:hover {
+      transform: scale(1.1);
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.3rem;
+      }
+      section {
+        padding: 12px;
+      }
     }
   </style>
-
-  <!-- Structured Data: LegalService -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LegalService",
-    "name":"עמיעד אבנר – משרד עורך דין",
-    "url":"https://your-domain.example/",
-    "areaServed":"IL",
-    "priceRange":"$$",
-    "telephone":"+972-52-450-0645",
-    "image":"https://your-domain.example/og-image.jpg",
-    "sameAs":[]
-  }
-  </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">דלגי ישירות לתוכן</a>
+<header>
+  <h1>תרגול אנגלית – כיתה ג'</h1>
+  <nav>
+    <button onclick="scrollToSection('letters')">אותיות</button>
+    <button onclick="scrollToSection('reading')">קריאה</button>
+    <button onclick="scrollToSection('vocab')">אוצר מילים</button>
+    <button onclick="scrollToSection('quiz')">חידון</button>
+  </nav>
+</header>
 
-  <!-- Header -->
-  <header>
-    <div class="container header-inner" role="navigation" aria-label="תפריט ראשי">
-      <div class="logo-box">
-        <img src="logo.png" alt="לוגו עמיעד אבנר – משרד עורך דין" class="logo-image" loading="eager" fetchpriority="high" />
-        <span class="logo-text">עמיעד אבנר – משרד עורך דין</span>
+<main>
+  <!-- אותיות -->
+  <section id="letters">
+    <h2><span class="emoji">🔤</span> אותיות – Aa, Bb, Dd, Gg, Nn</h2>
+    <p>
+      כאן מתרגלים:
+    </p>
+    <ul>
+      <li>התאמה בין אות קטנה לאות גדולה.</li>
+      <li>זיהוי צליל תחילת המילה (beginning sound).</li>
+    </ul>
+
+    <h3>1. התאמת אות גדולה לאות קטנה</h3>
+    <p class="hint">בחרי לכל אות קטנה את האות הגדולה המתאימה ואז לחצי על “בדיקה”.</p>
+    <div class="letters-grid" id="lettersMatch">
+      <div class="card letter-row">
+        <div class="letter-pair english">a</div>
+        <label for="sel-a">אות גדולה מתאימה:</label>
+        <select id="sel-a" data-correct="A">
+          <option value="">-- בחרי --</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="D">D</option>
+          <option value="G">G</option>
+          <option value="N">N</option>
+        </select>
       </div>
-      <nav>
-        <ul>
-          <li><a href="#home">דף הבית</a></li>
-          <li><a href="#services">תחומי התמחות</a></li>
-          <li><a href="#about">אודות</a></li>
-          <li><a href="#contact">צרו קשר</a></li>
-          <li class="nav-phone">
-            <div class="phone-box" aria-label="טלפון ליצירת קשר">
-              <svg xmlns="http://www.w3.org/2000/svg" class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.16 8.81 19.86 19.86 0 0 1 .93 3.67 2 2 0 0 1 2.92 1.5h3a2 2 0 0 1 2 1.72c.13 1.21.36 2.39.7 3.53a2 2 0 0 1-.45 2.11l-1.27 1.28a16 16 0 0 0 6.25 6.25l1.28-1.27a2 2 0 0 1 2.11-.45c1.14.34 2.32.57 3.53.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span class="phone-number">052-450-0645</span>
-            </div>
-          </li>
-        </ul>
-      </nav>
+      <div class="card letter-row">
+        <div class="letter-pair english">b</div>
+        <label for="sel-b">אות גדולה מתאימה:</label>
+        <select id="sel-b" data-correct="B">
+          <option value="">-- בחרי --</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="D">D</option>
+          <option value="G">G</option>
+          <option value="N">N</option>
+        </select>
+      </div>
+      <div class="card letter-row">
+        <div class="letter-pair english">d</div>
+        <label for="sel-d">אות גדולה מתאימה:</label>
+        <select id="sel-d" data-correct="D">
+          <option value="">-- בחרי --</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="D">D</option>
+          <option value="G">G</option>
+          <option value="N">N</option>
+        </select>
+      </div>
+      <div class="card letter-row">
+        <div class="letter-pair english">g</div>
+        <label for="sel-g">אות גדולה מתאימה:</label>
+        <select id="sel-g" data-correct="G">
+          <option value="">-- בחרי --</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="D">D</option>
+          <option value="G">G</option>
+          <option value="N">N</option>
+        </select>
+      </div>
+      <div class="card letter-row">
+        <div class="letter-pair english">n</div>
+        <label for="sel-n">אות גדולה מתאימה:</label>
+        <select id="sel-n" data-correct="N">
+          <option value="">-- בחרי --</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="D">D</option>
+          <option value="G">G</option>
+          <option value="N">N</option>
+        </select>
+      </div>
     </div>
-  </header>
+    <button class="primary" onclick="checkLetters()">בדיקה</button>
+    <div id="lettersResult" class="result"></div>
 
-  <main id="main">
-    <!-- Hero -->
-    <section id="home" class="hero" aria-label="חלק פתיחה">
-      <video class="hero-bg-video" src="forest.mp4" autoplay muted playsinline aria-hidden="true"></video>
-      <div class="hero-inner">
-        <div class="hero-content">
-          <h1>עמיעד אבנר – משרד בוטיק.</h1>
-          <p>מקרקעין | מיסוי מקרקעין | ייפוי כוח מתמשך | צוואות</p>
-          <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" aria-label="מעבר לטופס יצירת קשר">צור קשר עכשיו</button>
-        </div>
-        <div class="hero-boxes" aria-label="ערכי המשרד">
-          <div class="hero-box">אמינות</div>
-          <div class="hero-box">מקצועיות</div>
-          <div class="hero-box">שירותיות</div>
-        </div>
+    <h3 style="margin-top:16px;">2. צליל תחילת מילה (Beginning Sound)</h3>
+    <p class="hint">
+      הסתכלי על המילה (והאימוג'י 😊). איזו אות פותחת את המילה? A / B / D / G / N
+    </p>
+    <table class="sound-table">
+      <thead>
+        <tr>
+          <th>מילה</th>
+          <th>תמונה</th>
+          <th>אות פותחת</th>
+          <th>בדיקה</th>
+        </tr>
+      </thead>
+      <tbody id="soundBody">
+        <!-- שורות ייווצרו בג'אווה־סקריפט -->
+      </tbody>
+    </table>
+    <p class="small-note">טיפ: כדאי להגיד בקול את הצליל הראשון של המילה ולהקשיב – דְ, בְּ, גְּ, נְ, אַ.</p>
+  </section>
+
+  <!-- קריאה -->
+  <section id="reading">
+    <h2><span class="emoji">📖</span> קריאה</h2>
+    <p>
+      כאן מתרגלים לקרוא מילים. הילדה קוראת בקול, ואז לוחצת “הצג תרגום” לבדוק אם הבינה.
+    </p>
+    <div class="flashcard">
+      <div id="readingWord" class="english">blue</div>
+      <div id="readingTranslation" class="hebrew"></div>
+      <div class="center-buttons">
+        <button class="primary" onclick="showReadingTranslation()">הצג תרגום</button>
+        <button class="primary" onclick="nextReadingWord()">מילה הבאה</button>
+        <button class="audio-btn" onclick="speakCurrentReadingWord()" title="השמעת המילה">🔊</button>
       </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="services" aria-label="תחומי התמחות">
-      <div class="container">
-        <h2>תחומי התמחות</h2>
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-img-wrapper">
-              <img src="nadlanphoto.png" alt="מקרקעין" class="service-img" loading="lazy" />
-            </div>
-            <h3>מקרקעין</h3>
-            <p>רכישת או מכירת נכס היא אחת העסקאות המשמעותיות בחיים ודורשת ליווי משפטי קפדני. המשרד מעניק ייעוץ וליווי בכל סוגי עסקאות הנדל״ן: נדל״ן מניב, נדל״ן למגורים וכן עסקאות קרקע. המשרד מטפל בכל שלבי העסקה, החל מבדיקות מקדימות בטאבו וברשויות, דרך ניסוח ובדיקת הסכמים ועד להשלמת העסקה בפועל ורישום הזכויות. בזכות ניסיון עשיר והיכרות מעמיקה עם התחום, המשרד מגן על האינטרסים של לקוחותיו ומונע טעויות יקרות.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-img-wrapper">
-              <img src="maskara.png" alt="מיסוי מקרקעין" class="service-img" loading="lazy" />
-            </div>
-            <h3>מיסוי מקרקעין</h3>
-            <p>המשרד מעניק ייעוץ וייצוג מקיף בתחום מיסוי מקרקעין – החל מהכנת דיווחים לרשות המסים, דרך טיפול בהשגות ובעררים, ועד ליווי בקבלת פטורים והקלות מס. בזכות ניסיון מוכח וחשיבה יצירתית, המשרד מציע פתרונות המותאמים אישית ללקוח, המובילים לחיסכון משמעותי ולתוצאות מיטביות.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-img-wrapper">
-              <img src="wills.png" alt="צוואות" class="service-img" loading="lazy" />
-            </div>
-            <h3>צוואות</h3>
-            <p>עריכת צוואה היא החלטה משמעותית שמעניקה ודאות ושקט נפשי למשפחה. המשרד מלווה אתכם בתהליך ברגישות ובמקצועיות, ומוודא שהרצון שלכם יקבל ביטוי משפטי מחייב וברור.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-img-wrapper">
-              <img src="mitma.png" alt="ייפוי כוח מתמשך" class="service-img" loading="lazy" />
-            </div>
-            <h3>ייפוי כוח מתמשך</h3>
-            <p>יפוי כוח מתמשך הוא מסמך משפטי המאפשר לכם לקבוע כבר היום מי יהיה מוסמך לקבל החלטות בשמכם – בעניינים אישיים, רפואיים ורכושיים – במקרה שבו לא תוכלו לעשות זאת בעתיד. בניגוד לאפוטרופסות שממונה על ידי בית המשפט, כאן אתם בוחרים מראש מי יפעל בשמכם ובאיזו דרך.
-המשרד מלווה אתכם בכל שלבי ההכנה, החל מהבנת הצרכים האישיים, דרך ניסוח מדויק וברור של המסמך, ועד ההפקדה אצל האפוטרופוס הכללי.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="about-section-custom" aria-label="אודות">
-      <div class="container about-flex">
-        <div class="about-text-custom">
-          <h2>קצת עליי</h2>
-          <p>
-            בעל ניסיון של למעלה מעשור בליווי לקוחות וייצוגם במגוון תחומים משפטיים.<br>
-            דוגל בגישה אישית, מקצועית ורגישה – תוך הקשבה אמיתית לצרכי כל לקוח והתאמת פתרונות משפטיים מדויקים וייחודיים עבורו.
-          </p>
-          <p>
-            אני בעל תואר ראשון במשפטים (<strong>בהצטיינות</strong>) מאוניברסיטת בר-אילן ואת דרכי המקצועית התחלתי במשרדי עורכי הדין המובילים בישראל:<br>
-            במחלקת מיסוי מקרקעין של משרד ארנון תדמור-לוי, מחלקת המקרקעין במשרד וקסלר ברגמן, ובמשרד המיסים אודי ברזלי.
-          </p>
-          <p>
-            <strong>האני מאמין שלי:</strong> “סוף מעשה במחשבה תחילה”.<br>
-            אני מאמין שתכנון משפטי מקדים, יסודי ומותאם לצרכים הייחודיים של הלקוח – הוא המפתח להצלחה ולשקט הנפשי שלך.
-          </p>
-        </div>
-        <div class="about-image-custom">
-          <img src="amiadpic.jpg" alt="עו&quot;ד עמיעד אבנר במשרדו" loading="lazy" />
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="contact" aria-label="צרו קשר">
-      <div class="container">
-        <h2>צרו קשר</h2>
-        <div class="contact-phone-row" tabindex="0" aria-label="מספר טלפון ליצירת קשר">
-          <svg class="contact-phone-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32" aria-hidden="true">
-            <circle cx="16" cy="16" r="16" fill="#e7effb"/>
-            <path d="M22.2 23.7c-3.8-1.3-6.9-4.4-8.2-8.2l-0.4-1.1c-0.2-0.7 0-1.4 0.5-1.9l1.1-1.1c0.6-0.6 0.6-1.5 0-2l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1 1c-0.8 0.8-1.1 2-0.8 3.1 1.5 5.1 5.7 9.2 10.8 10.8 1.1 0.3 2.3 0 3.1-0.8l1-1c0.6-0.6 0.6-1.5 0-2.1l-2.1-2.1c-0.6-0.6-1.5-0.6-2.1 0l-1.1 1.1c-0.5-0.5-1.2-0.7-1.9-0.5l-1.1-0.4z" stroke="#1a73e8" stroke-width="1.6"/>
-          </svg>
-          <span class="contact-phone-number">052-450-0645</span>
-        </div>
-        <form class="contact-form" action="https://formspree.io/f/xyzjezoe" method="POST" novalidate>
-          <label for="name">שם מלא</label>
-          <input type="text" id="name" name="שם מלא" placeholder="הקלידו את שמכם המלא" autocomplete="name" required />
-
-          <label for="phone">טלפון</label>
-          <input type="tel" id="phone" name="טלפון" inputmode="tel" placeholder="הקלידו מספר טלפון" autocomplete="tel" required />
-
-          <label for="email">אימייל</label>
-          <input type="email" id="email" name="אימייל" placeholder="הקלידו כתובת אימייל" autocomplete="email" required />
-
-          <label for="message">תוכן הפנייה</label>
-          <textarea id="message" name="פנייה" placeholder="כתבו כאן את הפנייה שלכם..." required></textarea>
-
-          <button type="submit" class="btn-primary">שלח</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  
-  <footer>
-    <div class="container footer-inner">
-      <nav>
-        <ul>
-          <li><a href="#home">דף הבית</a></li>
-          <li><a href="#services">תחומי התמחות</a></li>
-          <li><a href="#about">אודות</a></li>
-          <li><a href="#contact">צרו קשר</a></li>
-        </ul>
-      </nav>
-      <p>כל הזכויות שמורות © עמיעד אבנר – משרד עורך דין</p>
+      <p class="small-note">אין צורך לדעת לכתוב – רק לקרוא ולתרגם.</p>
     </div>
-  </footer>
-  
-  <script src="https://cdn.enable.co.il/licenses/enable-L44070br8fhn4357-0625-71493/init.js"></script>
-  <script>
-    // למנוע לופ - להשאיר על הפריים האחרון
-    document.addEventListener("DOMContentLoaded", function() {
-      var vid = document.querySelector('.hero-bg-video');
-      if (vid) {
-        vid.addEventListener('ended', function() {
-          vid.pause();
-          vid.currentTime = vid.duration; // לשמור על הפריים האחרון
-        });
+  </section>
+
+  <!-- אוצר מילים -->
+  <section id="vocab">
+    <h2><span class="emoji">💡</span> אוצר מילים</h2>
+    <p>
+      כל המילים למבחן, עם תרגום לעברית. אפשר לעבור עליהן כמו פלש־קארדס:
+      רואים אנגלית, מנסים לזכור, ואז לוחצים “הצג תרגום”.
+    </p>
+
+    <div class="flashcard">
+      <div id="vocabWord" class="english">zero</div>
+      <div id="vocabTranslation" class="hebrew"></div>
+      <div class="center-buttons">
+        <button class="primary" onclick="showVocabTranslation()">הצג תרגום</button>
+        <button class="primary" onclick="nextVocabWord()">מילה הבאה</button>
+        <button class="audio-btn" onclick="speakCurrentVocabWord()" title="השמעת המילה">🔊</button>
+      </div>
+      <p class="small-note">
+        אפשר לחזור כמה פעמים על כל מילה. <span class="pill">מספרים</span>
+        <span class="pill">צבעים</span> <span class="pill">משפחה</span>
+        <span class="pill">חפצים</span> <span class="pill">תארים</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- חידון -->
+  <section id="quiz">
+    <h2><span class="emoji">🧠</span> חידון – התאמת עברית לאנגלית</h2>
+    <p>
+      בחידון הזה רואים מילה בעברית וצריכים לבחור את התרגום הנכון באנגלית.
+    </p>
+    <div class="quiz-question">
+      <div>מה התרגום הנכון לאנגלית?</div>
+      <div id="quizHebrew" style="font-size:1.4rem; margin-top:6px;">בית</div>
+    </div>
+    <div class="quiz-options" id="quizOptions">
+      <!-- ייווצר בג'אווה־סקריפט -->
+    </div>
+    <div id="quizResult" class="result"></div>
+    <div class="center-buttons">
+      <button class="primary" onclick="newQuizQuestion()">שאלה חדשה</button>
+    </div>
+  </section>
+</main>
+
+<script>
+  // *********** גלילה חלקה לסекции ***********
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // *********** אוצר מילים ***********
+  const vocab = [
+    // Numbers
+    { english: "zero", hebrew: "אפס", category: "numbers" },
+    { english: "one", hebrew: "אחד", category: "numbers" },
+    { english: "two", hebrew: "שניים", category: "numbers" },
+    { english: "three", hebrew: "שלושה", category: "numbers" },
+    { english: "four", hebrew: "ארבעה", category: "numbers" },
+    { english: "five", hebrew: "חמישה", category: "numbers" },
+    { english: "six", hebrew: "שישה", category: "numbers" },
+    { english: "seven", hebrew: "שבעה", category: "numbers" },
+    { english: "eight", hebrew: "שמונה", category: "numbers" },
+    { english: "nine", hebrew: "תשעה", category: "numbers" },
+    { english: "ten", hebrew: "עשרה", category: "numbers" },
+    { english: "eleven", hebrew: "אחד עשר", category: "numbers" },
+    { english: "twelve", hebrew: "שנים עשר", category: "numbers" },
+
+    // Colors
+    { english: "blue", hebrew: "כחול", category: "colors" },
+    { english: "black", hebrew: "שחור", category: "colors" },
+    { english: "yellow", hebrew: "צהוב", category: "colors" },
+    { english: "green", hebrew: "ירוק", category: "colors" },
+    { english: "gray", hebrew: "אפור", category: "colors" },
+    { english: "white", hebrew: "לבן", category: "colors" },
+    { english: "red", hebrew: "אדום", category: "colors" },
+    { english: "orange", hebrew: "כתום", category: "colors" },
+
+    // People/Animals
+    { english: "dog", hebrew: "כלב", category: "people" },
+    { english: "cat", hebrew: "חתול", category: "people" },
+    { english: "boy", hebrew: "ילד", category: "people" },
+    { english: "girl", hebrew: "ילדה", category: "people" },
+    { english: "apple", hebrew: "תפוח", category: "objects" },
+    { english: "man", hebrew: "גבר", category: "people" },
+    { english: "woman", hebrew: "אישה", category: "people" },
+    { english: "mom", hebrew: "אמא", category: "family" },
+    { english: "dad", hebrew: "אבא", category: "family" },
+    { english: "sister", hebrew: "אחות", category: "family" },
+    { english: "brother", hebrew: "אח", category: "family" },
+    { english: "baby", hebrew: "תינוק", category: "family" },
+    { english: "grandma", hebrew: "סבתא", category: "family" },
+    { english: "grandpa", hebrew: "סבא", category: "family" },
+
+    // Objects
+    { english: "house", hebrew: "בית", category: "objects" },
+    { english: "door", hebrew: "דלת", category: "objects" },
+    { english: "bag", hebrew: "תיק", category: "objects" },
+    { english: "book", hebrew: "ספר", category: "objects" },
+    { english: "notebook", hebrew: "מחברת", category: "objects" },
+    { english: "computer", hebrew: "מחשב", category: "objects" },
+    { english: "desk", hebrew: "שולחן כתיבה", category: "objects" },
+    { english: "box", hebrew: "קופסה", category: "objects" },
+
+    // Adjectives / feelings
+    { english: "big", hebrew: "גדול", category: "adjectives" },
+    { english: "small", hebrew: "קטן", category: "adjectives" },
+    { english: "gift", hebrew: "מתנה", category: "objects" },
+    { english: "sad", hebrew: "עצוב", category: "feelings" }
+  ];
+
+  function shuffle(array) {
+    const arr = array.slice();
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  // *********** אותיות – התאמה ***********
+  function checkLetters() {
+    const selects = document.querySelectorAll('#lettersMatch select');
+    let correctCount = 0;
+    selects.forEach(sel => {
+      sel.classList.remove('correct', 'incorrect');
+      if (!sel.value) {
+        return;
       }
-      
-      // אנימציה חלקה לכרטיסי שירות
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.animationDelay = (Array.from(entry.target.parentNode.children).indexOf(entry.target) * 0.1) + 's';
-            entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
-          }
-        });
-      });
-      
-      document.querySelectorAll('.service-card').forEach((card) => {
-        observer.observe(card);
-      });
+      if (sel.value === sel.dataset.correct) {
+        correctCount++;
+        sel.classList.add('correct');
+      } else {
+        sel.classList.add('incorrect');
+      }
+    });
+    const resultEl = document.getElementById('lettersResult');
+    if (correctCount === selects.length) {
+      resultEl.textContent = "כל הכבוד! כל ההתאמות נכונות ✅";
+      resultEl.style.color = "#2e7d32";
+    } else {
+      resultEl.textContent = "יש עדיין טעויות, נסו שוב 🙂";
+      resultEl.style.color = "#c62828";
+    }
+  }
+
+  // *********** Beginning sound ***********
+  const soundItems = [
+    { word: "dog", emoji: "🐶", correct: "D" },
+    { word: "girl", emoji: "👧", correct: "G" },
+    { word: "nine", emoji: "9️⃣", correct: "N" },
+    { word: "apple", emoji: "🍎", correct: "A" },
+    { word: "boy", emoji: "👦", correct: "B" },
+    { word: "dad", emoji: "👨", correct: "D" }
+  ];
+
+  function buildSoundTable() {
+    const tbody = document.getElementById('soundBody');
+    soundItems.forEach((item, index) => {
+      const tr = document.createElement('tr');
+
+      const tdWord = document.createElement('td');
+      tdWord.innerHTML = '<span class="english">' + item.word + '</span>';
+      tr.appendChild(tdWord);
+
+      const tdEmoji = document.createElement('td');
+      tdEmoji.textContent = item.emoji;
+      tr.appendChild(tdEmoji);
+
+      const tdSelect = document.createElement('td');
+      const sel = document.createElement('select');
+      sel.id = 'sound-' + index;
+      sel.dataset.correct = item.correct;
+      const letters = ["", "A", "B", "D", "G", "N"];
+      const placeholder = document.createElement('option');
+      placeholder.value = "";
+      placeholder.textContent = "-- בחרי --";
+      sel.appendChild(placeholder);
+      for (let i = 1; i < letters.length; i++) {
+        const opt = document.createElement('option');
+        opt.value = letters[i];
+        opt.textContent = letters[i];
+        sel.appendChild(opt);
+      }
+      tdSelect.appendChild(sel);
+      tr.appendChild(tdSelect);
+
+      const tdBtn = document.createElement('td');
+      const btn = document.createElement('button');
+      btn.textContent = "בדיקה";
+      btn.className = "primary";
+      btn.style.padding = "4px 8px";
+      btn.onclick = function () {
+        checkSoundRow(sel);
+      };
+      tdBtn.appendChild(btn);
+      tr.appendChild(tdBtn);
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function checkSoundRow(sel) {
+    sel.classList.remove('correct', 'incorrect');
+    if (!sel.value) return;
+    if (sel.value === sel.dataset.correct) {
+      sel.classList.add('correct');
+    } else {
+      sel.classList.add('incorrect');
+    }
+  }
+
+  // *********** קריאה – פלשקארד ***********
+  let readingOrder = [];
+  let readingIndex = 0;
+
+  function initReading() {
+    readingOrder = shuffle(vocab);
+    readingIndex = 0;
+    updateReadingCard();
+  }
+
+  function updateReadingCard() {
+    const wordObj = readingOrder[readingIndex];
+    document.getElementById('readingWord').textContent = wordObj.english;
+    document.getElementById('readingTranslation').textContent = "";
+  }
+
+  function showReadingTranslation() {
+    const wordObj = readingOrder[readingIndex];
+    document.getElementById('readingTranslation').textContent = wordObj.hebrew;
+  }
+
+  function nextReadingWord() {
+    readingIndex = (readingIndex + 1) % readingOrder.length;
+    updateReadingCard();
+  }
+
+  function speakCurrentReadingWord() {
+    const wordObj = readingOrder[readingIndex];
+    speak(wordObj.english);
+  }
+
+  // *********** אוצר מילים – פלשקארד ***********
+  let vocabOrder = [];
+  let vocabIndex = 0;
+
+  function initVocab() {
+    vocabOrder = shuffle(vocab);
+    vocabIndex = 0;
+    updateVocabCard();
+  }
+
+  function updateVocabCard() {
+    const wordObj = vocabOrder[vocabIndex];
+    document.getElementById('vocabWord').textContent = wordObj.english;
+    document.getElementById('vocabTranslation').textContent = "";
+  }
+
+  function showVocabTranslation() {
+    const wordObj = vocabOrder[vocabIndex];
+    document.getElementById('vocabTranslation').textContent = wordObj.hebrew;
+  }
+
+  function nextVocabWord() {
+    vocabIndex = (vocabIndex + 1) % vocabOrder.length;
+    updateVocabCard();
+  }
+
+  function speakCurrentVocabWord() {
+    const wordObj = vocabOrder[vocabIndex];
+    speak(wordObj.english);
+  }
+
+  // *********** חידון ***********
+  let currentQuizWord = null;
+
+  function newQuizQuestion() {
+    const randomIndex = Math.floor(Math.random() * vocab.length);
+    currentQuizWord = vocab[randomIndex];
+
+    document.getElementById('quizHebrew').textContent = currentQuizWord.hebrew;
+
+    // בוחרים עוד 3 מילים אחרות
+    const otherWords = shuffle(
+      vocab.filter(w => w.english !== currentQuizWord.english)
+    ).slice(0, 3);
+
+    const options = shuffle([currentQuizWord, ...otherWords]);
+    const optionsContainer = document.getElementById('quizOptions');
+    optionsContainer.innerHTML = "";
+
+    options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.textContent = opt.english;
+      btn.onclick = function () {
+        checkQuizAnswer(opt.english);
+      };
+      optionsContainer.appendChild(btn);
     });
 
-    // התאמת גובה hero-content לגובה של hero-boxes
-    function matchHeroContentHeight() {
-      var content = document.querySelector('.hero-content');
-      var boxes = document.querySelector('.hero-boxes');
-      if(content && boxes) {
-        content.style.minHeight = '';
-        var boxesHeight = boxes.offsetHeight;
-        var contentHeight = content.offsetHeight;
-        if(boxesHeight > contentHeight) {
-          content.style.minHeight = boxesHeight + "px";
-        }
-      }
+    document.getElementById('quizResult').textContent = "";
+  }
+
+  function checkQuizAnswer(selected) {
+    const resultEl = document.getElementById('quizResult');
+    if (!currentQuizWord) return;
+    if (selected === currentQuizWord.english) {
+      resultEl.textContent = "כל הכבוד! תשובה נכונה ✅";
+      resultEl.style.color = "#2e7d32";
+    } else {
+      resultEl.textContent = "לא מדויק... התשובה הנכונה היא: " + currentQuizWord.english;
+      resultEl.style.color = "#c62828";
     }
-    window.addEventListener('DOMContentLoaded', matchHeroContentHeight);
-    window.addEventListener('resize', matchHeroContentHeight);
-  </script>
+  }
+
+  // *********** דיבור (text-to-speech) ***********
+  function speak(text) {
+    if (!('speechSynthesis' in window)) {
+      alert("הדפדפן לא תומך בהשמעת קול.");
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // *********** אתחול ***********
+  document.addEventListener('DOMContentLoaded', function () {
+    buildSoundTable();
+    initReading();
+    initVocab();
+    newQuizQuestion();
+  });
+</script>
 </body>
 </html>
-
-
-
-
-
-
