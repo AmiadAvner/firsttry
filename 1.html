@@ -1,693 +1,254 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>תרגול אנגלית – כיתה ג'</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f7ff;
-      color: #123169;
-    }
-    header {
-      background: linear-gradient(135deg, #4a90e2, #6fb1fc);
-      color: white;
-      padding: 16px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 1.6rem;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    nav button {
-      border: none;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.9);
-      color: #123169;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-    nav button:hover {
-      background: #ffecb3;
-    }
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 16px;
-    }
-    section {
-      background: white;
-      margin-bottom: 16px;
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-    section h2 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    section h2 span.emoji {
-      font-size: 1.4rem;
-    }
-    p, li {
-      font-size: 0.95rem;
-    }
-    .hint {
-      font-size: 0.85rem;
-      color: #555;
-    }
-    .letters-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin-top: 10px;
-    }
-    .card {
-      border-radius: 10px;
-      padding: 10px;
-      background: #f8fbff;
-      border: 1px solid #dde9ff;
-    }
-    .letter-pair {
-      font-size: 1.6rem;
-      text-align: center;
-    }
-    .letter-row {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .letter-row label {
-      font-size: 0.85rem;
-    }
-    select {
-      padding: 4px 6px;
-      font-size: 0.9rem;
-    }
-    button.primary {
-      margin-top: 10px;
-      padding: 8px 14px;
-      border-radius: 8px;
-      border: none;
-      background: #4a90e2;
-      color: white;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    button.primary:hover {
-      background: #3b78be;
-    }
-    .result {
-      margin-top: 8px;
-      font-weight: 600;
-    }
-    .correct {
-      border-color: #4caf50 !important;
-    }
-    .incorrect {
-      border-color: #e53935 !important;
-    }
-    .sound-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 8px;
-      font-size: 0.9rem;
-    }
-    .sound-table th, .sound-table td {
-      border: 1px solid #dde9ff;
-      padding: 6px;
-      text-align: center;
-    }
-    .sound-table th {
-      background: #eef4ff;
-    }
-    .sound-letter {
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    .pill {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: #eef4ff;
-      font-size: 0.8rem;
-      margin-inline: 2px;
-    }
-    .english {
-      direction: ltr;
-      unicode-bidi: bidi-override;
-      font-weight: 600;
-    }
-    .flashcard {
-      text-align: center;
-      padding: 16px;
-    }
-    .flashcard .english {
-      font-size: 1.8rem;
-      margin-bottom: 8px;
-    }
-    .flashcard .hebrew {
-      font-size: 1.4rem;
-      margin-top: 8px;
-      min-height: 1.4em;
-    }
-    .center-buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    .quiz-question {
-      text-align: center;
-      margin-bottom: 12px;
-    }
-    .quiz-options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 8px;
-    }
-    .quiz-options button {
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #dde9ff;
-      background: #f8fbff;
-      cursor: pointer;
-      font-size: 0.95rem;
-    }
-    .quiz-options button:hover {
-      background: #e3f2fd;
-    }
-    .small-note {
-      font-size: 0.8rem;
-      color: #777;
-      margin-top: 4px;
-    }
-    .audio-btn {
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-size: 1rem;
-      margin-inline-start: 4px;
-    }
-    .audio-btn:hover {
-      transform: scale(1.1);
-    }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.3rem;
-      }
-      section {
-        padding: 12px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiddo-English: אתר התרגול למבחן 🚀</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff; /* כחול בהיר */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: right;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff6347; /* אדום-כתום */
+            text-align: center;
+            border-bottom: 3px solid #ff6347;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #3cb371; /* ירוק-אביבי */
+            border-right: 5px solid #3cb371;
+            padding-right: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #4682b4; /* כחול פלדה */
+            margin-top: 25px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        .quiz-item {
+            background-color: #fffacd; /* צהוב בהיר */
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .answer-box {
+            background-color: #e0ffff; /* תכלת */
+            padding: 10px;
+            border: 1px dashed #4682b4;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none; /* כדי להסתיר את התשובות בהתחלה */
+        }
+        .show-answers-btn {
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .show-answers-btn:hover {
+            background-color: #e55337;
+        }
+        .family-word {
+            display: inline-block;
+            background-color: #add8e6; /* כחול בהיר מאוד */
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function toggleAnswers(sectionId) {
+            var answers = document.getElementById(sectionId);
+            var btn = document.querySelector(`[onclick="toggleAnswers('${sectionId}')"]`);
+            if (answers.style.display === "none") {
+                answers.style.display = "block";
+                btn.textContent = '👇 הסתרת תשובות 👇';
+            } else {
+                answers.style.display = "none";
+                btn.textContent = '👆 הצגת תשובות 👆';
+            }
+        }
+    </script>
 </head>
 <body>
-<header>
-  <h1>תרגול אנגלית – כיתה ג'</h1>
-  <nav>
-    <button onclick="scrollToSection('letters')">אותיות</button>
-    <button onclick="scrollToSection('reading')">קריאה</button>
-    <button onclick="scrollToSection('vocab')">אוצר מילים</button>
-    <button onclick="scrollToSection('quiz')">חידון</button>
-  </nav>
-</header>
+    <div class="container">
+        <h1>🌈 Kiddo-English: אתר התרגול למבחן 🚀</h1>
+        <hr>
 
-<main>
-  <!-- אותיות -->
-  <section id="letters">
-    <h2><span class="emoji">🔤</span> אותיות – Aa, Bb, Dd, Gg, Nn</h2>
-    <p>
-      כאן מתרגלים:
-    </p>
-    <ul>
-      <li>התאמה בין אות קטנה לאות גדולה.</li>
-      <li>זיהוי צליל תחילת המילה (beginning sound).</li>
-    </ul>
+        <section id="home">
+            <h2>🏠 דף הבית: מוכנים ל-A+?</h2>
+            <p>היי! אני ג'מבו הפיל, ואני הולך לעזור לך להתכונן למבחן באנגלית! בואי נתחיל! 🎉</p>
 
-    <h3>1. התאמת אות גדולה לאות קטנה</h3>
-    <p class="hint">בחרי לכל אות קטנה את האות הגדולה המתאימה ואז לחצי על “בדיקה”.</p>
-    <div class="letters-grid" id="lettersMatch">
-      <div class="card letter-row">
-        <div class="letter-pair english">a</div>
-        <label for="sel-a">אות גדולה מתאימה:</label>
-        <select id="sel-a" data-correct="A">
-          <option value="">-- בחרי --</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="D">D</option>
-          <option value="G">G</option>
-          <option value="N">N</option>
-        </select>
-      </div>
-      <div class="card letter-row">
-        <div class="letter-pair english">b</div>
-        <label for="sel-b">אות גדולה מתאימה:</label>
-        <select id="sel-b" data-correct="B">
-          <option value="">-- בחרי --</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="D">D</option>
-          <option value="G">G</option>
-          <option value="N">N</option>
-        </select>
-      </div>
-      <div class="card letter-row">
-        <div class="letter-pair english">d</div>
-        <label for="sel-d">אות גדולה מתאימה:</label>
-        <select id="sel-d" data-correct="D">
-          <option value="">-- בחרי --</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="D">D</option>
-          <option value="G">G</option>
-          <option value="N">N</option>
-        </select>
-      </div>
-      <div class="card letter-row">
-        <div class="letter-pair english">g</div>
-        <label for="sel-g">אות גדולה מתאימה:</label>
-        <select id="sel-g" data-correct="G">
-          <option value="">-- בחרי --</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="D">D</option>
-          <option value="G">G</option>
-          <option value="N">N</option>
-        </select>
-      </div>
-      <div class="card letter-row">
-        <div class="letter-pair english">n</div>
-        <label for="sel-n">אות גדולה מתאימה:</label>
-        <select id="sel-n" data-correct="N">
-          <option value="">-- בחרי --</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="D">D</option>
-          <option value="G">G</option>
-          <option value="N">N</option>
-        </select>
-      </div>
+            <p>בחרי את הנושא שאת רוצה לתרגל:</p>
+            <ul>
+                <li><a href="#letters">🐘 אותיות ומילים מתחילות (A, B, D, G, N)</a></li>
+                <li><a href="#reading">📚 קריאה (חיבור צלילים)</a></li>
+                <li><a href="#vocabulary">🎨 אוצר מילים גדול!</a></li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="letters">
+            <h2>1. 🐘 אותיות ומילים מתחילות (Letters & Sounds)</h2>
+            <p><strong>המטרה:</strong> לדעת את צורת האות, את הצליל שלה ולזהות מילים שמתחילות בה!</p>
+
+            <h3>📝 התאמת זוגות (Pair Match)</h3>
+            <p>חברי את האות הגדולה לאות הקטנה (התשובות מחכות למטה!):</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>צד ימין (גדול)</th>
+                        <th>החבר שלה (קטן)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>**B**</td><td>**n**</td></tr>
+                    <tr><td>**G**</td><td>**d**</td></tr>
+                    <tr><td>**N**</td><td>**a**</td></tr>
+                    <tr><td>**A**</td><td>**b**</td></tr>
+                    <tr><td>**D**</td><td>**g**</td></tr>
+                </tbody>
+            </table>
+            <button class="show-answers-btn" onclick="toggleAnswers('answers-letters-1')">👆 הצגת תשובות 👆</button>
+            <div id="answers-letters-1" class="answer-box">
+                B $\rightarrow$ b, G $\rightarrow$ g, N $\rightarrow$ n, A $\rightarrow$ a, D $\rightarrow$ d
+            </div>
+
+            <h3>🎤 מה הצליל? (What's the Sound?)</h3>
+            <p>באיזו אות מתחילה כל מילה? נסי לומר את המילה ולשמוע את הצליל הראשון:</p>
+            <ul>
+                <li>___reen (ירוק) $\rightarrow$ **G**</li>
+                <li>___ad (אבא) $\rightarrow$ **D**</li>
+                <li>___pple (תפוח) $\rightarrow$ **A**</li>
+                <li>___oy (ילד) $\rightarrow$ **B**</li>
+                <li>___ine (תשע) $\rightarrow$ **N**</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section id="reading">
+            <h2>2. 📚 בּוּם! קריאה (Reading Power!)</h2>
+            <p><strong>המטרה:</strong> לחבר את האותיות יחד ולקרוא מילים קצרות!</p>
+
+            <h3>👂 תרגול צלילים:</h3>
+            <p>קראי את המילים האלה בקול רם, לאט לאט, ותני למילים "להידבק" יחד:</p>
+            <div class="quiz-item">
+                D - A - D $\rightarrow$ **Dad** 👨‍🦰<br>
+                B - A - G $\rightarrow$ **Bag** 🎒<br>
+                B - I - G $\rightarrow$ **Big** 🐳<br>
+                D - O - G $\rightarrow$ **Dog** 🐕<br>
+                A - N - D $\rightarrow$ **And**
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="vocabulary">
+            <h2>3. 🎨 אוצר מילים גדול! (Vocabulary Vault)</h2>
+            <p><strong>המטרה:</strong> לדעת לתרגם את כל המילים שפגשנו!</p>
+
+            <h3>🥇 משימה 3.1: תרגום מהיר!</h3>
+            <table>
+                <thead><tr><th>English 🇺🇸</th><th>Hebrew 🇮🇱</th><th>English 🇺🇸</th><th>Hebrew 🇮🇱</th></tr></thead>
+                <tbody>
+                    <tr><td>**ten**</td><td>_____</td><td>**yellow**</td><td>_____</td></tr>
+                    <tr><td>**brother**</td><td>_____</td><td>**house**</td><td>_____</td></tr>
+                    <tr><td>**white**</td><td>_____</td><td>**small**</td><td>_____</td></tr>
+                    <tr><td>**apple**</td><td>_____</td><td>**cat**</td><td>_____</td></tr>
+                    <tr><td>**sad**</td><td>_____</td><td>**gift**</td><td>_____</td></tr>
+                </tbody>
+            </table>
+             <button class="show-answers-btn" onclick="toggleAnswers('answers-vocab-1')">👆 הצגת תשובות 👆</button>
+            <div id="answers-vocab-1" class="answer-box">
+                עשר, צהוב; אח, בית; לבן, קטן; תפוח, חתול; עצוב, מתנה
+            </div>
+
+            <h3>🧩 משימה 3.2: המשפחה המאושרת (The Happy Family)</h3>
+            <p>מה התרגום של...</p>
+            <div class="quiz-item">
+                <span class="family-word">Grandpa $\rightarrow$ סבא</span>
+                <span class="family-word">Mom $\rightarrow$ אמא</span>
+                <span class="family-word">Sister $\rightarrow$ אחות</span>
+                <span class="family-word">Woman $\rightarrow$ אישה</span>
+                <span class="family-word">Boy $\rightarrow$ ילד</span>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="quiz">
+            <h2>🌟 המבחן הקצר של ג'מבו! (Mini Quiz)</h2>
+            <p>בחרי את התשובה הנכונה:</p>
+            <ol>
+                <li class="quiz-item">
+                    באיזו מילה הצליל הראשון הוא כמו האות **N**?
+                    <ul>
+                        <li>(a) Dog</li>
+                        <li>(b) Nine</li>
+                        <li>(c) Girl</li>
+                    </ul>
+                </li>
+                <li class="quiz-item">
+                    מה התרגום של המילה **red**?
+                    <ul>
+                        <li>(a) כחול</li>
+                        <li>(b) אדום</li>
+                        <li>(c) כתום</li>
+                    </ul>
+                </li>
+                <li class="quiz-item">
+                    איזו אות היא האות הקטנה של **A**?
+                    <ul>
+                        <li>(a) b</li>
+                        <li>(b) a</li>
+                        <li>(c) n</li>
+                    </ul>
+                </li>
+            </ol>
+            <button class="show-answers-btn" onclick="toggleAnswers('answers-quiz')">👆 הצגת תשובות 👆</button>
+            <div id="answers-quiz" class="answer-box">
+                1. (b) Nine, 2. (b) אדום, 3. (b) a
+            </div>
+        </section>
+
+        <hr>
+
+        <p style="text-align: center; font-weight: bold; color: #ff6347;">כל הכבוד! סיימת את כל התרגול! את מוכנה למבחן! 🥳</p>
+        <p style="text-align: center;"><a href="#home">חזרה לראש העמוד</a></p>
     </div>
-    <button class="primary" onclick="checkLetters()">בדיקה</button>
-    <div id="lettersResult" class="result"></div>
-
-    <h3 style="margin-top:16px;">2. צליל תחילת מילה (Beginning Sound)</h3>
-    <p class="hint">
-      הסתכלי על המילה (והאימוג'י 😊). איזו אות פותחת את המילה? A / B / D / G / N
-    </p>
-    <table class="sound-table">
-      <thead>
-        <tr>
-          <th>מילה</th>
-          <th>תמונה</th>
-          <th>אות פותחת</th>
-          <th>בדיקה</th>
-        </tr>
-      </thead>
-      <tbody id="soundBody">
-        <!-- שורות ייווצרו בג'אווה־סקריפט -->
-      </tbody>
-    </table>
-    <p class="small-note">טיפ: כדאי להגיד בקול את הצליל הראשון של המילה ולהקשיב – דְ, בְּ, גְּ, נְ, אַ.</p>
-  </section>
-
-  <!-- קריאה -->
-  <section id="reading">
-    <h2><span class="emoji">📖</span> קריאה</h2>
-    <p>
-      כאן מתרגלים לקרוא מילים. הילדה קוראת בקול, ואז לוחצת “הצג תרגום” לבדוק אם הבינה.
-    </p>
-    <div class="flashcard">
-      <div id="readingWord" class="english">blue</div>
-      <div id="readingTranslation" class="hebrew"></div>
-      <div class="center-buttons">
-        <button class="primary" onclick="showReadingTranslation()">הצג תרגום</button>
-        <button class="primary" onclick="nextReadingWord()">מילה הבאה</button>
-        <button class="audio-btn" onclick="speakCurrentReadingWord()" title="השמעת המילה">🔊</button>
-      </div>
-      <p class="small-note">אין צורך לדעת לכתוב – רק לקרוא ולתרגם.</p>
-    </div>
-  </section>
-
-  <!-- אוצר מילים -->
-  <section id="vocab">
-    <h2><span class="emoji">💡</span> אוצר מילים</h2>
-    <p>
-      כל המילים למבחן, עם תרגום לעברית. אפשר לעבור עליהן כמו פלש־קארדס:
-      רואים אנגלית, מנסים לזכור, ואז לוחצים “הצג תרגום”.
-    </p>
-
-    <div class="flashcard">
-      <div id="vocabWord" class="english">zero</div>
-      <div id="vocabTranslation" class="hebrew"></div>
-      <div class="center-buttons">
-        <button class="primary" onclick="showVocabTranslation()">הצג תרגום</button>
-        <button class="primary" onclick="nextVocabWord()">מילה הבאה</button>
-        <button class="audio-btn" onclick="speakCurrentVocabWord()" title="השמעת המילה">🔊</button>
-      </div>
-      <p class="small-note">
-        אפשר לחזור כמה פעמים על כל מילה. <span class="pill">מספרים</span>
-        <span class="pill">צבעים</span> <span class="pill">משפחה</span>
-        <span class="pill">חפצים</span> <span class="pill">תארים</span>
-      </p>
-    </div>
-  </section>
-
-  <!-- חידון -->
-  <section id="quiz">
-    <h2><span class="emoji">🧠</span> חידון – התאמת עברית לאנגלית</h2>
-    <p>
-      בחידון הזה רואים מילה בעברית וצריכים לבחור את התרגום הנכון באנגלית.
-    </p>
-    <div class="quiz-question">
-      <div>מה התרגום הנכון לאנגלית?</div>
-      <div id="quizHebrew" style="font-size:1.4rem; margin-top:6px;">בית</div>
-    </div>
-    <div class="quiz-options" id="quizOptions">
-      <!-- ייווצר בג'אווה־סקריפט -->
-    </div>
-    <div id="quizResult" class="result"></div>
-    <div class="center-buttons">
-      <button class="primary" onclick="newQuizQuestion()">שאלה חדשה</button>
-    </div>
-  </section>
-</main>
-
-<script>
-  // *********** גלילה חלקה לסекции ***********
-  function scrollToSection(id) {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
-  // *********** אוצר מילים ***********
-  const vocab = [
-    // Numbers
-    { english: "zero", hebrew: "אפס", category: "numbers" },
-    { english: "one", hebrew: "אחד", category: "numbers" },
-    { english: "two", hebrew: "שניים", category: "numbers" },
-    { english: "three", hebrew: "שלושה", category: "numbers" },
-    { english: "four", hebrew: "ארבעה", category: "numbers" },
-    { english: "five", hebrew: "חמישה", category: "numbers" },
-    { english: "six", hebrew: "שישה", category: "numbers" },
-    { english: "seven", hebrew: "שבעה", category: "numbers" },
-    { english: "eight", hebrew: "שמונה", category: "numbers" },
-    { english: "nine", hebrew: "תשעה", category: "numbers" },
-    { english: "ten", hebrew: "עשרה", category: "numbers" },
-    { english: "eleven", hebrew: "אחד עשר", category: "numbers" },
-    { english: "twelve", hebrew: "שנים עשר", category: "numbers" },
-
-    // Colors
-    { english: "blue", hebrew: "כחול", category: "colors" },
-    { english: "black", hebrew: "שחור", category: "colors" },
-    { english: "yellow", hebrew: "צהוב", category: "colors" },
-    { english: "green", hebrew: "ירוק", category: "colors" },
-    { english: "gray", hebrew: "אפור", category: "colors" },
-    { english: "white", hebrew: "לבן", category: "colors" },
-    { english: "red", hebrew: "אדום", category: "colors" },
-    { english: "orange", hebrew: "כתום", category: "colors" },
-
-    // People/Animals
-    { english: "dog", hebrew: "כלב", category: "people" },
-    { english: "cat", hebrew: "חתול", category: "people" },
-    { english: "boy", hebrew: "ילד", category: "people" },
-    { english: "girl", hebrew: "ילדה", category: "people" },
-    { english: "apple", hebrew: "תפוח", category: "objects" },
-    { english: "man", hebrew: "גבר", category: "people" },
-    { english: "woman", hebrew: "אישה", category: "people" },
-    { english: "mom", hebrew: "אמא", category: "family" },
-    { english: "dad", hebrew: "אבא", category: "family" },
-    { english: "sister", hebrew: "אחות", category: "family" },
-    { english: "brother", hebrew: "אח", category: "family" },
-    { english: "baby", hebrew: "תינוק", category: "family" },
-    { english: "grandma", hebrew: "סבתא", category: "family" },
-    { english: "grandpa", hebrew: "סבא", category: "family" },
-
-    // Objects
-    { english: "house", hebrew: "בית", category: "objects" },
-    { english: "door", hebrew: "דלת", category: "objects" },
-    { english: "bag", hebrew: "תיק", category: "objects" },
-    { english: "book", hebrew: "ספר", category: "objects" },
-    { english: "notebook", hebrew: "מחברת", category: "objects" },
-    { english: "computer", hebrew: "מחשב", category: "objects" },
-    { english: "desk", hebrew: "שולחן כתיבה", category: "objects" },
-    { english: "box", hebrew: "קופסה", category: "objects" },
-
-    // Adjectives / feelings
-    { english: "big", hebrew: "גדול", category: "adjectives" },
-    { english: "small", hebrew: "קטן", category: "adjectives" },
-    { english: "gift", hebrew: "מתנה", category: "objects" },
-    { english: "sad", hebrew: "עצוב", category: "feelings" }
-  ];
-
-  function shuffle(array) {
-    const arr = array.slice();
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  }
-
-  // *********** אותיות – התאמה ***********
-  function checkLetters() {
-    const selects = document.querySelectorAll('#lettersMatch select');
-    let correctCount = 0;
-    selects.forEach(sel => {
-      sel.classList.remove('correct', 'incorrect');
-      if (!sel.value) {
-        return;
-      }
-      if (sel.value === sel.dataset.correct) {
-        correctCount++;
-        sel.classList.add('correct');
-      } else {
-        sel.classList.add('incorrect');
-      }
-    });
-    const resultEl = document.getElementById('lettersResult');
-    if (correctCount === selects.length) {
-      resultEl.textContent = "כל הכבוד! כל ההתאמות נכונות ✅";
-      resultEl.style.color = "#2e7d32";
-    } else {
-      resultEl.textContent = "יש עדיין טעויות, נסו שוב 🙂";
-      resultEl.style.color = "#c62828";
-    }
-  }
-
-  // *********** Beginning sound ***********
-  const soundItems = [
-    { word: "dog", emoji: "🐶", correct: "D" },
-    { word: "girl", emoji: "👧", correct: "G" },
-    { word: "nine", emoji: "9️⃣", correct: "N" },
-    { word: "apple", emoji: "🍎", correct: "A" },
-    { word: "boy", emoji: "👦", correct: "B" },
-    { word: "dad", emoji: "👨", correct: "D" }
-  ];
-
-  function buildSoundTable() {
-    const tbody = document.getElementById('soundBody');
-    soundItems.forEach((item, index) => {
-      const tr = document.createElement('tr');
-
-      const tdWord = document.createElement('td');
-      tdWord.innerHTML = '<span class="english">' + item.word + '</span>';
-      tr.appendChild(tdWord);
-
-      const tdEmoji = document.createElement('td');
-      tdEmoji.textContent = item.emoji;
-      tr.appendChild(tdEmoji);
-
-      const tdSelect = document.createElement('td');
-      const sel = document.createElement('select');
-      sel.id = 'sound-' + index;
-      sel.dataset.correct = item.correct;
-      const letters = ["", "A", "B", "D", "G", "N"];
-      const placeholder = document.createElement('option');
-      placeholder.value = "";
-      placeholder.textContent = "-- בחרי --";
-      sel.appendChild(placeholder);
-      for (let i = 1; i < letters.length; i++) {
-        const opt = document.createElement('option');
-        opt.value = letters[i];
-        opt.textContent = letters[i];
-        sel.appendChild(opt);
-      }
-      tdSelect.appendChild(sel);
-      tr.appendChild(tdSelect);
-
-      const tdBtn = document.createElement('td');
-      const btn = document.createElement('button');
-      btn.textContent = "בדיקה";
-      btn.className = "primary";
-      btn.style.padding = "4px 8px";
-      btn.onclick = function () {
-        checkSoundRow(sel);
-      };
-      tdBtn.appendChild(btn);
-      tr.appendChild(tdBtn);
-
-      tbody.appendChild(tr);
-    });
-  }
-
-  function checkSoundRow(sel) {
-    sel.classList.remove('correct', 'incorrect');
-    if (!sel.value) return;
-    if (sel.value === sel.dataset.correct) {
-      sel.classList.add('correct');
-    } else {
-      sel.classList.add('incorrect');
-    }
-  }
-
-  // *********** קריאה – פלשקארד ***********
-  let readingOrder = [];
-  let readingIndex = 0;
-
-  function initReading() {
-    readingOrder = shuffle(vocab);
-    readingIndex = 0;
-    updateReadingCard();
-  }
-
-  function updateReadingCard() {
-    const wordObj = readingOrder[readingIndex];
-    document.getElementById('readingWord').textContent = wordObj.english;
-    document.getElementById('readingTranslation').textContent = "";
-  }
-
-  function showReadingTranslation() {
-    const wordObj = readingOrder[readingIndex];
-    document.getElementById('readingTranslation').textContent = wordObj.hebrew;
-  }
-
-  function nextReadingWord() {
-    readingIndex = (readingIndex + 1) % readingOrder.length;
-    updateReadingCard();
-  }
-
-  function speakCurrentReadingWord() {
-    const wordObj = readingOrder[readingIndex];
-    speak(wordObj.english);
-  }
-
-  // *********** אוצר מילים – פלשקארד ***********
-  let vocabOrder = [];
-  let vocabIndex = 0;
-
-  function initVocab() {
-    vocabOrder = shuffle(vocab);
-    vocabIndex = 0;
-    updateVocabCard();
-  }
-
-  function updateVocabCard() {
-    const wordObj = vocabOrder[vocabIndex];
-    document.getElementById('vocabWord').textContent = wordObj.english;
-    document.getElementById('vocabTranslation').textContent = "";
-  }
-
-  function showVocabTranslation() {
-    const wordObj = vocabOrder[vocabIndex];
-    document.getElementById('vocabTranslation').textContent = wordObj.hebrew;
-  }
-
-  function nextVocabWord() {
-    vocabIndex = (vocabIndex + 1) % vocabOrder.length;
-    updateVocabCard();
-  }
-
-  function speakCurrentVocabWord() {
-    const wordObj = vocabOrder[vocabIndex];
-    speak(wordObj.english);
-  }
-
-  // *********** חידון ***********
-  let currentQuizWord = null;
-
-  function newQuizQuestion() {
-    const randomIndex = Math.floor(Math.random() * vocab.length);
-    currentQuizWord = vocab[randomIndex];
-
-    document.getElementById('quizHebrew').textContent = currentQuizWord.hebrew;
-
-    // בוחרים עוד 3 מילים אחרות
-    const otherWords = shuffle(
-      vocab.filter(w => w.english !== currentQuizWord.english)
-    ).slice(0, 3);
-
-    const options = shuffle([currentQuizWord, ...otherWords]);
-    const optionsContainer = document.getElementById('quizOptions');
-    optionsContainer.innerHTML = "";
-
-    options.forEach(opt => {
-      const btn = document.createElement('button');
-      btn.textContent = opt.english;
-      btn.onclick = function () {
-        checkQuizAnswer(opt.english);
-      };
-      optionsContainer.appendChild(btn);
-    });
-
-    document.getElementById('quizResult').textContent = "";
-  }
-
-  function checkQuizAnswer(selected) {
-    const resultEl = document.getElementById('quizResult');
-    if (!currentQuizWord) return;
-    if (selected === currentQuizWord.english) {
-      resultEl.textContent = "כל הכבוד! תשובה נכונה ✅";
-      resultEl.style.color = "#2e7d32";
-    } else {
-      resultEl.textContent = "לא מדויק... התשובה הנכונה היא: " + currentQuizWord.english;
-      resultEl.style.color = "#c62828";
-    }
-  }
-
-  // *********** דיבור (text-to-speech) ***********
-  function speak(text) {
-    if (!('speechSynthesis' in window)) {
-      alert("הדפדפן לא תומך בהשמעת קול.");
-      return;
-    }
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
-    window.speechSynthesis.speak(utterance);
-  }
-
-  // *********** אתחול ***********
-  document.addEventListener('DOMContentLoaded', function () {
-    buildSoundTable();
-    initReading();
-    initVocab();
-    newQuizQuestion();
-  });
-</script>
 </body>
 </html>
