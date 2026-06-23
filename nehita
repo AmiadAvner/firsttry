@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עו"ד עמיעד אבנר - ייפוי כוח מתמשך</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0b2c5c; /* כחול כהה וסולידי - מתכתב עם התמונה */
+            --secondary-color: #d4af37; /* זהב יוקרתי לכפתורים */
+            --bg-color: #f4f7f6;
+            --text-color: #333333;
+            --problem-bg: #ffeef0;
+            --problem-border: #d9534f;
+            --solution-bg: #eef8f2;
+            --solution-border: #5cb85c;
+        }
+
+        body {
+            font-family: 'Assistant', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin: 0 0 15px 0;
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 40px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .box {
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .box h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        .problem-box {
+            background-color: var(--problem-bg);
+            border-right: 6px solid var(--problem-border);
+        }
+
+        .solution-box {
+            background-color: var(--solution-bg);
+            border-right: 6px solid var(--solution-border);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-img-container {
+            text-align: center;
+        }
+
+        .profile-img {
+            max-width: 100%;
+            border-radius: 50%;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 800;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+            background-color: #ebd076;
+        }
+
+        .legal-footer {
+            font-size: 0.85rem;
+            text-align: center;
+            color: #777;
+            margin-top: 40px;
+            padding-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid, .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .profile-img {
+                max-width: 200px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>הבטיחו את עתידכם היום וקחו שליטה על חייכם</h1>
+        <p>אל תשאירו את ההחלטות החשובות ביותר בידיים של זרים. עריכת ייפוי כוח מתמשך היא הדרך הבטוחה והחכמה ביותר להגן עליכם ועל יקיריכם.</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="card">
+            <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 30px;">למה אסור לדחות את זה למחר?</h2>
+            <div class="comparison-grid">
+                
+                <div class="box problem-box">
+                    <h3 style="color: var(--problem-border);">הבעיה: כשאין ייפוי כוח מתמשך</h3>
+                    <p>אם חלילה אדם מאבד את כשרותו המשפטית (עקב תאונה, מחלה או דמנציה), המשפחה נאלצת לפנות לבית המשפט כדי <strong>למנות אפוטרופוס</strong>.</p>
+                    <ul>
+                        <li><strong>הליך יקר וארוך:</strong> כרוך בתשלום אגרות, עורכי דין והמתנה ממושכת.</li>
+                        <li><strong>סרבול בירוקרטי:</strong> דורש דיווחים שנתיים לאפוטרופוס הכללי והתערבות של תסקיר עובדים סוציאליים.</li>
+                        <li><strong>חוסר שליטה:</strong> בית המשפט יכול למנות אדם או גוף שאינם לרוחכם.</li>
+                        <li><strong>פגיעה בכבוד:</strong> הליך לא נעים שחושף פרטים אישיים בפני גורמים זרים.</li>
+                    </ul>
+                </div>
+
+                <div class="box solution-box">
+                    <h3 style="color: var(--solution-border);">הפתרון: ייפוי כוח מתמשך</h3>
+                    <p>המסמך המשפטי המאפשר לכם לקבוע היום, כשתם צלולים וקשירים, מי יקבל החלטות עבורכם בעתיד (רפואיות, רכושיות ואישיות).</p>
+                    <ul>
+                        <li><strong>שליטה מלאה:</strong> אתם בוחרים את האנשים שאתם סומכים עליהם בעיניים עצומות.</li>
+                        <li><strong>הליך קצר ונעים:</strong> ללא בתי משפט, ללא בירוקרטיה מיותרת - פשוט וידידותי.</li>
+                        <li><strong>נוחות מקסימלית:</strong> עריכת המסמך מתבצעת בנוחות, לעיתים אף בסלון ביתכם.</li>
+                        <li><strong>שקט נפשי:</strong> מונע סכסוכים משפחתיים ומבטיח שרצונכם יכובד במלואו.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="about-grid">
+                <div class="profile-img-container">
+                    <img src="amiadblue.jpg" alt="עו&quot;ד עמיעד אבנר" class="profile-img">
+                </div>
+                <div>
+                    <h2 style="color: var(--primary-color); margin-top: 0;">נעים להכיר, עורך דין עמיעד אבנר</h2>
+                    <p>מייסד ובעלים של משרד עורכי דין בוטיק. עם ניסיון עשיר של למעלה מ-10 שנים וכהיותי בוגר הפקולטה למשפטים באוניברסיטת בר-אילן, אני מתמחה בהעברה בין-דורית, הגנה משפטית לגיל השלישי, והכנת ייפויי כוח מתמשכים וצוואות.</p>
+                    <p>אני מאמין במתן שירות אישי, שקוף ובגובה העיניים. ההליך מבוצע ברגישות המרבית ותוך התאמה אישית מדויקת לצרכים, למבנה המשפחתי ולרצונות הייחודיים שלכם, במטרה להעניק לכם רשת ביטחון משפטית חזקה וראש שקט לשנים קדימה.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="color: var(--primary-color);">אל תשאירו את העתיד שלכם ליד המקרה</h2>
+            <p style="font-size: 1.2rem;">לקבלת הצעת מחיר הוגנת וייעוץ מקצועי ללא התחייבות, לחצו כאן וחייגו עכשיו.</p>
+            <a href="tel:052450645" class="btn">התקשרו עכשיו: 052-450-645</a>
+        </div>
+
+        <div class="legal-footer">
+            <p>הליך ייפוי כוח מתמשך נערך בהתאם להוראות חוק הכשרות המשפטית והאפוטרופסות, תשכ"ב-1962 (תיקון מס' 18), על ידי עורך דין שהוסמך לכך מטעם האפוטרופוס הכללי ומשרד המשפטים.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
